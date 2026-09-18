@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consent Form</title>
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 2;
+  }
+  p, li { margin: 0 0 1.5em 0; }
+  .title { font-weight: bold; font-size: 1.15em; }
+  ul { padding-left: 1.5em; }
+</style>
+</head>
+<body>
+
+<div id="content">
+
+  <p class="title">Consent Form</p>
+
+  <p>By selecting "I agree to participate", you confirm that:</p>
+
+  <ul>
+    <li>I, the undersigned, declare that I am willing to take part in research for the project entitled "Stakeholders' Perspectives on Adapting Textbook Exercises for Children with Developmental Coordination Disorder/'Dyspraxia"</li>
+    <li>I declare that I have been fully briefed on the nature of this study and my role in it and have been given the opportunity to ask questions before agreeing to participate.</li>
+    <li>The nature of my participation has been explained to me, and I have full knowledge of how the information collected will be used.</li>
+    <li>I am aware that information gathered in the survey may be used in future academic presentations and publications about this study.</li>
+    <li>I fully understand that there is no obligation on me to participate in this study.</li>
+    <li>I fully understand that I am free to withdraw my participation without having to explain or give a reason, up to a period of two weeks after the data collection is completed. (closing date of survey). Once the data is fully anonymised, it will no longer be possible to withdraw data.</li>
+    <li>I acknowledge that the researcher does guarantee that they will not use my name or any other information, that would identify me in any outputs of the research.</li>
+    <li>I declare that I have read and fully understand the contents of the Research Privacy Notice.</li>
+  </ul>
+
+  <p>This research study has received Ethics approval from the Education and Health Sciences Research Ethics Committee EHS REC (Log: 026_07_06_EHS (ER).</p>
+
+  <p>If you have any concerns about this study and wish to contact someone independent, you may contact:<br>
+  Chair Education and Health Sciences Research Ethics Committee EHS Faculty Office University of Limerick<br>
+  Tel: (061) 234101</p>
+
+</div>
+
+<script>
+  var colors = ['#0000FF', '#CC0000', '#007700'];
+
+  function wrapWords(root) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    var textNodes = [];
+    var node;
+    while (node = walker.nextNode()) {
+      if (node.textContent.trim() !== '') textNodes.push(node);
+    }
+    textNodes.forEach(function (tn) {
+      var parts = tn.textContent.split(/(\s+)/);
+      var frag = document.createDocumentFragment();
+      parts.forEach(function (part) {
+        if (part.trim() === '') {
+          frag.appendChild(document.createTextNode(part));
+        } else {
+          var span = document.createElement('span');
+          span.className = 'word';
+          span.textContent = part;
+          frag.appendChild(span);
+        }
+      });
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
+  function recolor() {
+    var words = Array.prototype.slice.call(document.querySelectorAll('.word'));
+    var lines = [];
+    words.forEach(function (w) {
+      var top = Math.round(w.getBoundingClientRect().top);
+      var line = lines.find(function (l) { return Math.abs(l.top - top) < 3; });
+      if (!line) {
+        line = { top: top, words: [] };
+        lines.push(line);
+      }
+      line.words.push(w);
+    });
+    lines.sort(function (a, b) { return a.top - b.top; });
+    lines.forEach(function (line, i) {
+      var color = colors[i % colors.length];
+      line.words.forEach(function (w) { w.style.color = color; });
+    });
+  }
+
+  wrapWords(document.getElementById('content'));
+  recolor();
+  window.addEventListener('resize', recolor);
+</script>
+
+</body>
+</html>
