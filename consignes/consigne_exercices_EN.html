@@ -7,34 +7,38 @@
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; background: #fff; }
-  body { padding: 2px 10px 10px 2px; }
-  body { font-family: arial, helvetica, sans-serif; font-size: 16px; color: #2b2b2b; overflow: hidden; }
+  /* Mise en forme adaptée dys : Arial 20, lettres espacées, interligne double */
+  body { padding: 2px 10px 10px 2px; overflow: hidden; color: #2b2b2b;
+         font-family: Arial, "Liberation Sans", Helvetica, sans-serif; font-size: 20px;
+         letter-spacing: 0.1em; line-height: 2; }
+  .row { display: flex; flex-wrap: nowrap; gap: 24px; align-items: flex-start; text-align: left; }
+  .txt { flex: 1 1 auto; min-width: 0; }
+  .txt p, .txt ol { margin: 0 0 0.3em; }
+  .txt ol { padding-left: 1.6em; }
+  .titre { font-size: 1.2em; line-height: 1.5; margin-bottom: 0.4em !important; }
+  .gif { flex: 0 0 auto; width: 480px; max-width: 60%; }
+  .gif img { display: block; width: 100%; height: auto; border: 1px solid #bfc5cc; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
 </style>
 </head>
 <body>
-<div style="display:flex; flex-wrap:nowrap; gap:24px; align-items:flex-start; text-align:left; line-height:1.4;">
-<div style="flex:1 1 300px; min-width:220px;">
-<p style="margin:0 0 10px; font-size:1.25em;"><strong>Rating the adapted exercises</strong></p>
-<p style="margin:0 0 10px;">You will rate <strong>16 exercises</strong>, shown in random order. <strong>Put yourself in the shoes of a child with DCD.</strong></p>
-<p style="margin:0 0 6px;">In the animation (dummy content), follow the 3 steps in the blue banner:</p>
-<ol style="margin:0 0 10px; padding-left:22px;"><li style="margin:0 0 5px;">the original exercise;</li><li style="margin:0 0 5px;">the adapted exercise, to be completed in full: see how to change pages and what the end looks like, then tick the confirmation box;</li><li style="margin:0 0 5px;">three ratings from 1 to 5: overall, motor demands (writing, clicking, circling) and visual-spatial demands (finding your way around the exercise).</li></ol>
-<p style="margin:0;">There are no right or wrong answers, and what you do in the exercise is not recorded. You will not be able to go back to previous pages.</p>
-</div>
-<div style="flex:0 1 560px; min-width:0;">
-<img src="../demos/demo_consigne_exercices_EN.gif" alt="Demonstration animation" style="display:block; width:100%; height:auto; border:1px solid #bfc5cc; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.15);">
-</div>
+<div class="row">
+<div class="txt"><p class="titre"><strong>Rating the exercises</strong></p><p>16 exercises, in random order.</p><p><strong>Put yourself in the shoes of a child with DCD.</strong></p><p>The animation shows the 3 steps:</p><ol><li>the original exercise</li><li>the adapted exercise, done in full</li><li>3 ratings from 1 to 5: overall, motor (writing, clicking, circling), visual-spatial (finding your way)</li></ol><p>No right or wrong answers.</p></div>
+<div class="gif"><img src="../demos/demo_consigne_exercices_EN.gif" alt="Demonstration animation"></div>
 </div>
 <script>
-  // Réduit la taille du texte si le contenu dépasse la hauteur du cadre (pas de défilement interne).
+  // Si le contenu dépasse la hauteur du cadre, on rétrécit le GIF (la colonne de texte s'élargit)
+  // sans jamais toucher à la taille du texte. En dernier recours, défilement dans le cadre.
   function ajuster() {
-    var t = 16;
-    document.body.style.fontSize = t + 'px';
-    while (document.documentElement.scrollHeight > window.innerHeight && t > 12) {
-      t -= 0.5;
-      document.body.style.fontSize = t + 'px';
+    var g = document.querySelector('.gif'), w = 480;
+    g.style.width = w + 'px';
+    document.body.style.overflow = 'hidden';
+    while (document.documentElement.scrollHeight > window.innerHeight && w > 360) {
+      w -= 20; g.style.width = w + 'px';
     }
+    if (document.documentElement.scrollHeight > window.innerHeight) document.body.style.overflow = 'auto';
   }
-  window.addEventListener('load', ajuster);
+  var img = document.querySelector('.gif img');
+  if (img.complete) ajuster(); else img.addEventListener('load', ajuster);
   window.addEventListener('resize', ajuster);
 </script>
 </body>
