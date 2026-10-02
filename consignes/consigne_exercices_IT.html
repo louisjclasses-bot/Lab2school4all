@@ -1,12 +1,41 @@
-<div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start; text-align:left; font-size:16px; line-height:1.4;">
-<div style="flex:1 1 300px; min-width:260px;">
-<p style="margin:0 0 10px; font-size:20px;"><strong>Valutazione degli esercizi adattati</strong></p>
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consignes</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #fff; }
+  body { padding: 2px 10px 10px 2px; }
+  body { font-family: arial, helvetica, sans-serif; font-size: 16px; color: #2b2b2b; overflow: hidden; }
+</style>
+</head>
+<body>
+<div style="display:flex; flex-wrap:nowrap; gap:24px; align-items:flex-start; text-align:left; line-height:1.4;">
+<div style="flex:1 1 300px; min-width:220px;">
+<p style="margin:0 0 10px; font-size:1.25em;"><strong>Valutazione degli esercizi adattati</strong></p>
 <p style="margin:0 0 10px;">Valuterà <strong>16 esercizi</strong>, presentati in ordine casuale. <strong>Si metta nei panni di un bambino con disprassia.</strong></p>
 <p style="margin:0 0 6px;">Nell'animazione (contenuto fittizio), segua le 3 fasi indicate nella fascia blu:</p>
 <ol style="margin:0 0 10px; padding-left:22px;"><li style="margin:0 0 5px;">l'esercizio originale;</li><li style="margin:0 0 5px;">l'esercizio adattato, da svolgere per intero: osservi come cambiare pagina e come appare la fine, poi spunti la casella di conferma;</li><li style="margin:0 0 5px;">tre punteggi da 1 a 5: complessivo, richieste motorie (scrivere, cliccare, cerchiare) e richieste visuo-spaziali (orientarsi nell'esercizio).</li></ol>
 <p style="margin:0;">Non ci sono risposte giuste o sbagliate e ciò che fa nell'esercizio non viene registrato. Non potrà tornare alle pagine precedenti.</p>
 </div>
-<div style="flex:0 1 560px; min-width:300px;">
-<img src="https://louisjclasses-bot.github.io/Lab2school4all/demos/demo_consigne_exercices_IT.gif" alt="Animazione dimostrativa" style="display:block; width:100%; height:auto; border:1px solid #bfc5cc; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.15);">
+<div style="flex:0 1 560px; min-width:0;">
+<img src="../demos/demo_consigne_exercices_IT.gif" alt="Animazione dimostrativa" style="display:block; width:100%; height:auto; border:1px solid #bfc5cc; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.15);">
 </div>
 </div>
+<script>
+  // Réduit la taille du texte si le contenu dépasse la hauteur du cadre (pas de défilement interne).
+  function ajuster() {
+    var t = 16;
+    document.body.style.fontSize = t + 'px';
+    while (document.documentElement.scrollHeight > window.innerHeight && t > 12) {
+      t -= 0.5;
+      document.body.style.fontSize = t + 'px';
+    }
+  }
+  window.addEventListener('load', ajuster);
+  window.addEventListener('resize', ajuster);
+</script>
+</body>
+</html>
