@@ -54,9 +54,7 @@ header,
 
 /* 5. Questions et options de réponse en noir (pas de gris) */
 .question,
-.question *:not([class*="error"]):not([class*="Error"]),
-.Skin .QuestionOuter,
-.Skin .QuestionOuter *:not([class*="error"]):not([class*="Error"]) {
+.question *:not([class*="error"]):not([class*="Error"]) {
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
 }
