@@ -48,13 +48,24 @@ Les quatre branches ont la même structure. Seules les listes propres à chaque 
 
 ## Données exportées
 
-Chaque variable porte le préfixe de son pays : `IE_`, `UK_` ou `IT_`, par exemple `UK_RC_overall` ou `IT_inegalite`. Les variables françaises gardent leurs noms d'origine. Les réponses des quatre pays peuvent ainsi être fusionnées et comparées.
+Chaque variable porte le préfixe de son pays : `FR_`, `IE_`, `UK_` ou `IT_`. Seule la question du pays garde son nom, `Q33`. Le reste du nom est identique d'un pays à l'autre, ce qui permet de fusionner les quatre pays :
+
+- questions démographiques : `FR_Q176`, `IE_Q176`, `UK_Q176`, `IT_Q176` désignent la même question (âge du parent) ;
+- exercices : `<pays>_<exercice>_orig` (image), `_done` (case « au bout de l'exercice »), `_overall`, `_motor`, `_visuospatial` (notes de 1 à 5) ;
+- comparaisons : `<pays>_inegalite`, `<pays>_CM_carre_colonne`, `<pays>_Coche_cadre_colonne`, `<pays>_coche_ligne_cadre`, `<pays>_coche_ligne_colonne` ;
+- choix « Autre » : colonne supplémentaire `..._TEXT` avec le texte saisi.
+
+Pour que tout soit identifiable dans le CSV :
+- aucun nom de variable n'est en double ;
+- aucun libellé de choix multiple ne contient de virgule, puisque Qualtrics sépare les réponses multiples par des virgules ;
+- les listes déroulantes (âges, années) exportent la valeur affichée : 18 pour « 18 », 70 pour « 70+ », et 0 pour « pas encore de diagnostic » ;
+- les anciens blocs anglais (hors flux) ont été mis dans la corbeille de Qualtrics, d'où ils restent restaurables.
 
 ## Codage des comparaisons
 
-Chaque image de comparaison porte un code fixe, identique dans les quatre pays. On sait donc toujours quelle adaptation a été choisie, quel que soit l'ordre d'affichage (aléatoire) :
+Chaque image de comparaison porte un code, identique dans les quatre pays. On sait donc toujours quelle adaptation a été choisie, quel que soit l'ordre d'affichage (aléatoire). En export « texte des choix », le CSV contient directement le mot (masqué à l'écran pour les participants) ; en export « valeurs numériques », il contient le chiffre :
 
-| Comparaison | Code texte (export « texte des choix ») | Code numérique (export « valeurs numériques ») |
+| Comparaison | Texte | Nombre |
 |---|---|---|
 | Inégalités | `semantique` / `symbole` | 1 / 2 |
 | CM | `carre` / `colonne` | 1 / 2 |

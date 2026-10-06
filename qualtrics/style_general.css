@@ -59,6 +59,12 @@ header,
   -webkit-text-fill-color: #000 !important;
 }
 
+/* 6. Code des comparaisons : invisible pour les participants, présent dans l'export CSV */
+.jl-code,
+.question .jl-code {
+  display: none !important;
+}
+
 /* ========================================================
    AJUSTEMENT DE LA TAILLE DES ADAPTATIONS
    ======================================================== */
