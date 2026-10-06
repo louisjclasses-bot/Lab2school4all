@@ -52,6 +52,16 @@ header,
   padding: 0px !important;
 }
 
+/* 5. Questions et options de réponse en noir (pas de gris) */
+.question-display, .question-display *,
+.choice-label, .choice-label *,
+.choice-content, .choice-content *,
+.question select, .question option,
+.Skin .QuestionText, .Skin .QuestionText *,
+.Skin .LabelWrapper label, .Skin .LabelWrapper label * {
+  color: #000 !important;
+}
+
 /* ========================================================
    AJUSTEMENT DE LA TAILLE DES ADAPTATIONS
    ======================================================== */
