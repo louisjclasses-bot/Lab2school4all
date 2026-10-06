@@ -1,0 +1,256 @@
+/* ========================================================
+   SUPPRESSION DU GRAND BLANC EN HAUT (TOUS TYPES DE SLIDES)
+   ======================================================== */
+
+/* 1. Désactiver le centrage vertical forcé de Qualtrics */
+body,
+html,
+main,
+.survey-container,
+.page,
+.page-content,
+#page {
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  align-content: flex-start !important;
+  padding-top: 0px !important;
+  margin-top: 0px !important;
+}
+
+/* 2. Ancien moteur Qualtrics (Classic / Flat) */
+.Skin .SkinInner,
+.Skin #SkinContent,
+.Skin .QuestionOuter,
+.Skin .QuestionBody {
+  padding-top: 0px !important;
+  margin-top: 0px !important;
+}
+
+/* 3. Nouveau moteur Qualtrics (Simple Layout) */
+section.question,
+.question,
+.question-display-wrapper,
+.question-content,
+.overflow-container {
+  padding-top: 0px !important;
+  margin-top: 0px !important;
+}
+
+/* 4. Masquer les en-têtes et réserves invisibles */
+header,
+.header-container,
+.Skin #HeaderContainer,
+.Skin #Header,
+.Skin #LogoContainer,
+.Skin .Separator,
+.progressbar-container,
+.progress-bar-container,
+[data-testid="header"] {
+  display: none !important;
+  height: 0px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+/* ========================================================
+   AJUSTEMENT DE LA TAILLE DES ADAPTATIONS
+   ======================================================== */
+
+/* Empêcher la réduction de la largeur maximum du contenu d'une question */
+.question .question-display {
+  max-width: inherit;
+}
+
+/* Forcer une largeur maximale et une hauteur minimale à l'encadré des adaptations. */
+.question .jl-adaptation-wrap {
+  width: 100%;
+  max-width: 96vw;
+  height: calc(100vh - 120px);
+  min-height: 400px;
+  max-height: 600px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.question .jl-adaptation-wrap > iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+#preview #preview-container {
+  top: 0
+}
+
+
+/* ========================================================
+   AJUSTEMENTS SPECIFIQUES A UNE QUESTION
+   ======================================================== */
+
+
+/* 1. Largeur globale de la question pour s'aligner sur l'image */
+[id*="QID101"] {
+  width: 100% !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+}
+
+/* 2. Conteneur des réponses (alignement horizontal moderne) */
+[id*="QID101"] .answers-container,
+[id*="QID101"] fieldset,
+[id*="QID101"] [role="radiogroup"],
+[id*="QID101"] .answers,
+[id*="QID101"] .QuestionBody {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 25px auto 0 auto !important;
+  padding: 0 !important;
+  justify-content: space-around !important;
+}
+
+/* 3. Attribution de 50 % de largeur exacte à chaque colonne de choix */
+[id*="QID101"] .answers-container > *,
+[id*="QID101"] .choice,
+[id*="QID101"] .answer-container,
+[id*="QID101"] [role="radiogroup"] > div,
+[id*="QID101"] [role="radiogroup"] > label,
+[id*="QID101"] fieldset > div {
+  flex: 1 1 50% !important;
+  width: 50% !important;
+  max-width: 50% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+
+
+/* ________________________________________________________
+   COMPARAISONS D'ADAPTATIONS (5 questions par pays)
+   France  : QID98, QID103, QID315, QID316, QID317
+   Irlande : QID463 à QID467
+   UK      : QID607 à QID611
+   Italie  : QID751 à QID755
+   Pour ajouter une question, ajoutez son QID dans CHAQUE
+   liste :is(...) ci-dessous (9 endroits).
+   ________________________________________________________ */
+
+/* 1. Élargissement de la question sur tout l'écran */
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"]) {
+  width: 95vw !important;
+  max-width: 1200px !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* 2. Débridage des conteneurs internes */
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"])
+  :is(.overflow-container, .overflow-content, .question-content, .mc-content) {
+  overflow: visible !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"]) .shadow {
+  display: none !important;
+}
+
+/* 3. Alignement horizontal des deux colonnes */
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"]) .choices {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  gap: 28px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 4. Chaque colonne prend 50 % de l'espace disponible */
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"]) .choice {
+  flex: 1 1 0 !important;
+  width: 50% !important;
+  max-width: 50% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+}
+
+/* 5. Annulation des brides de largeur de Qualtrics sur les images */
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"])
+  :is(.choice-error-container, .choice-error, .choice-label, .choice-content,
+      .display-with-image, .display-with-image-display) {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  display: block !important;
+  text-align: center !important;
+  cursor: pointer !important;
+}
+
+/* 6. Masquage complet du bouton radio */
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"]) .radio-button {
+  display: none !important;
+}
+
+/* 7. Format et bordure de base des images */
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"]) .choice img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border: 3px solid transparent !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* 8. Retour visuel au survol */
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"]) .choice:hover img {
+  border-color: #007ac0 !important;
+}
+
+/* 9. Retour visuel sur l'image sélectionnée */
+:is([id*="QID98"], [id*="QID103"], [id*="QID315"], [id*="QID316"], [id*="QID317"],
+    [id*="QID463"], [id*="QID464"], [id*="QID465"], [id*="QID466"], [id*="QID467"],
+    [id*="QID607"], [id*="QID608"], [id*="QID609"], [id*="QID610"], [id*="QID611"],
+    [id*="QID751"], [id*="QID752"], [id*="QID753"], [id*="QID754"], [id*="QID755"])
+  :is(.choice.q-checked img, .choice:has(input:checked) img) {
+  border-color: #007ac0 !important;
+  box-shadow: 0 0 0 3px rgba(0, 122, 192, 0.35) !important;
+}
