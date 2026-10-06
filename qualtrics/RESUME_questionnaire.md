@@ -50,9 +50,18 @@ Les quatre branches ont la même structure. Seules les listes propres à chaque 
 
 Chaque variable porte le préfixe de son pays : `IE_`, `UK_` ou `IT_`, par exemple `UK_RC_overall` ou `IT_inegalite`. Les variables françaises gardent leurs noms d'origine. Les réponses des quatre pays peuvent ainsi être fusionnées et comparées.
 
+## Réponses obligatoires
+
+Toutes les questions des quatre branches sont obligatoires. Pour l'âge au diagnostic des jeunes adultes, la réponse « pas encore de diagnostic » a été ajoutée, comme dans la question des parents.
+
+## Images
+
+Les captures des exercices d'origine (découpées dans les cahiers d'exercices FR, EN et IT) et les captures des comparaisons sont hébergées sur GitHub Pages, dans `images/originaux/` et `images/comparaisons/`. Les branches Irlande, Royaume-Uni et Italie y renvoient directement, sans passer par la bibliothèque Qualtrics. La branche France garde ses images Qualtrics ; des versions françaises refaites de la même façon sont aussi disponibles.
+
 ## Reste à finaliser
 
-- **Images :** les images des exercices d'origine et des comparaisons sont encore en français dans les branches Irlande, Royaume-Uni et Italie.
+- **Publication :** les images, les nouveaux exercices « coche » et le consentement italien ne s'afficheront qu'une fois la branche fusionnée sur la branche principale (GitHub Pages).
+- **Codage des comparaisons :** dans les nouvelles branches, le choix 1 est « sémantique » pour les inégalités et « carré » pour CM. À vérifier dans la branche France pour que les données soient codées de la même façon.
 - **Italie, fiche d'information :** la fiche n'existe pas en italien. La branche renvoie pour l'instant vers la fiche anglaise.
-- **Italie, consentement :** le formulaire (`consent-form-tricolore_IT.html`) est à faire relire par l'équipe italienne et à publier sur GitHub Pages.
+- **Italie, consentement :** le formulaire (`consent-form-tricolore_IT.html`) est à faire relire par l'équipe italienne.
 - **Question de recontact :** les focus groups ne sont précisés que pour la France (Île-de-France, février et mars 2027).
