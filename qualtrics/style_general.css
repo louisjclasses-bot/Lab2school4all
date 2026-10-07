@@ -74,15 +74,39 @@ header,
   max-width: inherit;
 }
 
-/* Forcer une largeur maximale et une hauteur minimale à l'encadré des adaptations. */
+/* Réglages du cadre des exercices :
+ * --jl-cadre-largeur-max : largeur maximale sur les très grands écrans ;
+ * --jl-cadre-reserve : hauteur gardée sous le cadre pour la case
+ *   « au bout de l'exercice » et le bouton Suivant (à augmenter si la page défile encore). */
+:root {
+  --jl-cadre-largeur-max: 1400px;
+  --jl-cadre-reserve: 160px;
+}
+
+/* Cadre élargi (96 % de l'écran, centré) et à hauteur d'écran, sans plafond de 600 px. */
 .question .jl-adaptation-wrap {
-  width: 100%;
-  max-width: 96vw;
-  height: calc(100vh - 120px);
+  box-sizing: border-box;
+  width: min(96vw, var(--jl-cadre-largeur-max));
+  max-width: none;
+  position: relative;
+  left: 50%;
+  margin-left: calc(min(96vw, var(--jl-cadre-largeur-max)) / -2);
+  height: calc(100vh - var(--jl-cadre-reserve));
+  height: calc(100dvh - var(--jl-cadre-reserve));
   min-height: 400px;
-  max-height: 600px;
+  max-height: none;
   overflow: hidden;
   border: 1px solid #ccc;
+}
+
+/* Laisser le cadre déborder de la colonne de la question sans être coupé. */
+.question:has(.jl-adaptation-wrap),
+.question:has(.jl-adaptation-wrap) :is(.question-display-wrapper, .question-display, .question-content, .overflow-container, .overflow-content) {
+  overflow: visible !important;
+}
+
+.question:has(.jl-adaptation-wrap) .shadow {
+  display: none !important;
 }
 
 .question .jl-adaptation-wrap > iframe {
