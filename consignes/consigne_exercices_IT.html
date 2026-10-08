@@ -11,34 +11,49 @@
   body { padding: 2px 10px 10px 2px; overflow: hidden; color: #2b2b2b;
          font-family: Arial, "Liberation Sans", Helvetica, sans-serif; font-size: 20px;
          letter-spacing: 0.1em; line-height: 2; }
-  .row { display: flex; flex-wrap: nowrap; gap: 24px; align-items: flex-start; text-align: left; }
-  .txt { flex: 1 1 auto; min-width: 0; }
   .txt p, .txt ol { margin: 0 0 0.3em; }
   .txt ol { padding-left: 1.6em; }
   .titre { font-size: 1.2em; line-height: 1.5; margin-bottom: 0.4em !important; }
-  .gif { flex: 0 0 auto; width: 480px; max-width: 60%; }
-  .gif img { display: block; width: 100%; height: auto; border: 1px solid #bfc5cc; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  /* Trois images fixes légendées, numérotées comme les étapes */
+  .etapes { display: flex; gap: 16px; align-items: flex-start; margin-top: 0.6em; width: 100%; }
+  .etapes figure { flex: 1 1 0; min-width: 0; margin: 0; }
+  .etapes img { display: block; width: 100%; height: auto; border: 1px solid #bfc5cc; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  .etapes figcaption { font-size: 0.85em; line-height: 1.5; margin-top: 0.4em; }
+  .num { display: inline-block; width: 1.5em; height: 1.5em; line-height: 1.5em; text-align: center; border-radius: 50%;
+         background: #16324f; color: #fff; font-weight: bold; letter-spacing: 0; margin-right: 0.3em; }
 </style>
 </head>
 <body>
-<div class="row">
-<div class="txt"><p class="titre"><strong>Valutare gli esercizi</strong></p><p>16 esercizi, in ordine casuale.</p><p><strong>Si metta nei panni di un bambino con disprassia.</strong></p><p>L'animazione mostra le 3 fasi:</p><ol><li>l'esercizio originale</li><li>l'esercizio adattato, da fare per intero</li><li>valutazione globale, motoria (scrivere, cliccare), visuo-spaziale (orientarsi)</li></ol><p>Nessuna risposta giusta o sbagliata.</p></div>
-<div class="gif"><img src="../demos/demo_consigne_exercices_IT.gif" alt="Animazione dimostrativa"></div>
+<div class="txt">
+  <p class="titre"><strong>Ora Le verrà chiesto di valutare 16 brevi esercizi.</strong></p>
+  <ol>
+    <li>Si metta nei panni di un bambino con disprassia.</li>
+    <li>Guardi l'esercizio originale.</li>
+    <li>Completi l'esercizio adattato e clicchi quando ha finito.</li>
+    <li>Valuti l'efficacia dell'adattamento: globale; motoria (scrivere, cliccare); visuo-spaziale (orientarsi).</li>
+  </ol>
+  <p>Nessuna risposta giusta o sbagliata. Non si preoccupi, i Suoi esercizi saranno in italiano.</p>
+</div>
+<div class="etapes">
+  <figure><img src="../demos/etape_origine_IT.png" alt="Esempio di esercizio originale"><figcaption><span class="num">2</span>Ecco l'esercizio originale</figcaption></figure>
+  <figure><img src="../demos/etape_adapte_IT.png" alt="Esempio di esercizio adattato"><figcaption><span class="num">3</span>Ecco l'esercizio adattato</figcaption></figure>
+  <figure><img src="../demos/etape_evaluation_IT.png" alt="Esempio di domanda di valutazione"><figcaption><span class="num">4</span>Ecco come si presenta la valutazione</figcaption></figure>
 </div>
 <script>
-  // Si le contenu dépasse la hauteur du cadre, on rétrécit le GIF (la colonne de texte s'élargit)
+  // Si le contenu dépasse la hauteur du cadre, on réduit la largeur de la rangée d'images
   // sans jamais toucher à la taille du texte. En dernier recours, défilement dans le cadre.
   function ajuster() {
-    var g = document.querySelector('.gif'), w = 480;
-    g.style.width = w + 'px';
+    var e = document.querySelector('.etapes'), w = 100;
+    e.style.width = w + '%';
     document.body.style.overflow = 'hidden';
-    while (document.documentElement.scrollHeight > window.innerHeight && w > 360) {
-      w -= 20; g.style.width = w + 'px';
+    while (document.documentElement.scrollHeight > window.innerHeight && w > 60) {
+      w -= 4; e.style.width = w + '%';
     }
     if (document.documentElement.scrollHeight > window.innerHeight) document.body.style.overflow = 'auto';
   }
-  var img = document.querySelector('.gif img');
-  if (img.complete) ajuster(); else img.addEventListener('load', ajuster);
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.etapes img'));
+  imgs.forEach(function (i) { if (!i.complete) i.addEventListener('load', ajuster); });
+  ajuster();
   window.addEventListener('resize', ajuster);
 </script>
 </body>
