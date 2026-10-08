@@ -7,20 +7,54 @@
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; background: #fff; }
-  /* Mise en forme adaptée dys : Arial 20, lettres espacées, interligne double */
-  body { padding: 2px 10px 10px 2px; overflow: hidden; color: #2b2b2b;
-         font-family: Arial, "Liberation Sans", Helvetica, sans-serif; font-size: 20px;
-         letter-spacing: 0.1em; line-height: 2; }
-  .txt p, .txt ol { margin: 0 0 0.3em; }
-  .txt ol { padding-left: 1.6em; }
-  .titre { font-size: 1.2em; line-height: 1.5; margin-bottom: 0.4em !important; }
+  
+  /* Mise en forme adaptée dys : Arial 20, double interligne, double espace */
+  body { 
+    padding: 10px; 
+    overflow: hidden; 
+    color: #2b2b2b;
+    font-family: Arial, "Liberation Sans", Helvetica, sans-serif; 
+    font-size: 20px;
+    letter-spacing: 0.1em; 
+    word-spacing: 0.35em; /* Double espace entre les mots */
+    line-height: 2;        /* Interligne double */
+  }
+  
+  .txt p, .txt ol { margin: 0 0 0.5em; }
+  .txt ol { padding-left: 1.8em; }
+  
+  /* Conserve la taille de base (20px) et l'interligne double (2) */
+  .titre { 
+    font-size: 20px; 
+    line-height: 2; 
+    margin-bottom: 0.5em !important; 
+  }
+  
   /* Trois images fixes légendées, numérotées comme les étapes */
-  .etapes { display: flex; gap: 16px; align-items: flex-start; margin-top: 0.6em; width: 100%; }
+  .etapes { display: flex; gap: 16px; align-items: flex-start; margin-top: 0.8em; width: 100%; }
   .etapes figure { flex: 1 1 0; min-width: 0; margin: 0; }
   .etapes img { display: block; width: 100%; height: auto; border: 1px solid #bfc5cc; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
-  .etapes figcaption { font-size: 0.85em; line-height: 1.5; margin-top: 0.4em; }
-  .num { display: inline-block; width: 1.5em; height: 1.5em; line-height: 1.5em; text-align: center; border-radius: 50%;
-         background: #16324f; color: #fff; font-weight: bold; letter-spacing: 0; margin-right: 0.3em; }
+  
+  .etapes figcaption { 
+    font-size: 20px; 
+    line-height: 2; 
+    margin-top: 0.4em; 
+  }
+  
+  .num { 
+    display: inline-block; 
+    width: 1.5em; 
+    height: 1.5em; 
+    line-height: 1.5em; 
+    text-align: center; 
+    border-radius: 50%;
+    background: #16324f; 
+    color: #fff; 
+    font-weight: bold; 
+    letter-spacing: 0; 
+    word-spacing: normal;
+    margin-right: 0.3em; 
+  }
 </style>
 </head>
 <body>
