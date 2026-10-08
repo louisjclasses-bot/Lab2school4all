@@ -15,26 +15,29 @@ const CAPTURES = path.join(__dirname, 'captures');
 const ORIGINAUX = path.join(RACINE, 'images', 'originaux');
 const PDF = path.join(__dirname, 'guide_animateur.pdf');
 
-// Ordre et fichiers repris du questionnaire Qualtrics.
+// Numéros et fichiers repris du questionnaire Qualtrics.
 // code : nom de l'image d'origine et de la capture ; fichier : exercice adapté (FR, puis _EN et _IT).
 const EXERCICES = [
-  { code: 'RC', fichier: 'RC', titre: 'Compléter une phrase' },
-  { code: 'TransformeMot', fichier: 'TransformeMot', titre: 'Transformer un mot' },
-  { code: 'CocheGroupeMots', fichier: 'CocheGroupeMots', titre: 'Cliquer sur des groupes de mots' },
-  { code: 'CochePhrase', fichier: 'CochePhrase', titre: 'Cliquer sur des phrases' },
-  { code: 'CacheIntrus', fichier: 'CacheIntrus', titre: "Cacher l'intrus" },
-  { code: 'EditPhrase', fichier: 'EditPhrase', titre: 'Corriger une phrase' },
-  { code: 'Classe', fichier: 'Classe', titre: 'Classer des mots par couleur' },
-  { code: 'Associe', fichier: 'associe_colonne_noms', titre: 'Associer des noms' },
-  { code: 'RCDouble', fichier: 'RCDouble', titre: 'Remplacer un mot par son contraire' },
-  { code: 'CliqueEcrire', fichier: 'CliqueEcrire_1', titre: 'Repérer des mots dans un texte' },
-  { code: 'EcritureNombres', fichier: 'EcritureNombres', titre: 'Écrire des nombres en chiffres' },
-  { code: 'Comptage', fichier: 'Comptage', titre: 'Compter des objets' },
-  { code: 'Decomposition', fichier: 'Decomposition', titre: 'Décomposer un nombre' },
-  { code: 'CM_Math', fichier: 'CM_Math', titre: 'Comparer des nombres' },
-  { code: 'AdditionsPosees', fichier: 'AdditionsPosees', titre: 'Additions posées' },
-  { code: 'GroupeEchange', fichier: 'GroupeEchange', titre: 'Ranger des nombres dans l\'ordre' },
+  { num: 1, code: 'RC', fichier: 'RC', titre: 'Compléter une phrase' },
+  { num: 2, code: 'TransformeMot', fichier: 'TransformeMot', titre: 'Transformer un mot' },
+  { num: 3, code: 'CocheGroupeMots', fichier: 'CocheGroupeMots', titre: 'Cliquer sur des groupes de mots' },
+  { num: 4, code: 'CochePhrase', fichier: 'CochePhrase', titre: 'Cliquer sur des phrases' },
+  { num: 5, code: 'CacheIntrus', fichier: 'CacheIntrus', titre: "Cacher l'intrus" },
+  { num: 6, code: 'EditPhrase', fichier: 'EditPhrase', titre: 'Corriger une phrase' },
+  { num: 7, code: 'Classe', fichier: 'Classe', titre: 'Classer des mots par couleur' },
+  { num: 8, code: 'Associe', fichier: 'associe_colonne_noms', titre: 'Associer des noms' },
+  { num: 9, code: 'RCDouble', fichier: 'RCDouble', titre: 'Remplacer un mot par son contraire' },
+  { num: 10, code: 'CliqueEcrire', fichier: 'CliqueEcrire_1', titre: 'Repérer des mots dans un texte' },
+  { num: 11, code: 'EcritureNombres', fichier: 'EcritureNombres', titre: 'Écrire des nombres en chiffres' },
+  { num: 12, code: 'Comptage', fichier: 'Comptage', titre: 'Compter des objets' },
+  { num: 13, code: 'Decomposition', fichier: 'Decomposition', titre: 'Décomposer un nombre' },
+  { num: 14, code: 'CM_Math', fichier: 'CM_Math', titre: 'Comparer des nombres' },
+  { num: 15, code: 'AdditionsPosees', fichier: 'AdditionsPosees', titre: 'Additions posées' },
+  { num: 16, code: 'GroupeEchange', fichier: 'GroupeEchange', titre: 'Ranger des nombres dans l\'ordre' },
 ];
+// Ordre des pages du PDF, par numéro d'origine (l'exercice 10, CliqueEcrire, est retiré du guide).
+const ORDRE = [12, 15, 3, 5, 4, 9, 8, 13, 7, 11, 2, 16, 14, 1, 6];
+const PAGES = ORDRE.map(n => EXERCICES.find(ex => ex.num === n));
 const LANGUES = [['FR', 'Français', ''], ['EN', 'English', '_EN'], ['IT', 'Italiano', '_IT']];
 const url = p => 'file://' + p.split(path.sep).map(encodeURIComponent).join('/');
 
@@ -55,9 +58,9 @@ async function capturer(navigateur) {
 }
 
 function html() {
-  const pages = EXERCICES.map((ex, i) => `
+  const pages = PAGES.map(ex => `
 <section class="page">
-  <header><span class="num">${i + 1} / ${EXERCICES.length}</span><h1>${ex.titre}<code>${ex.code}</code></h1></header>
+  <header><span class="num">Ex. ${ex.num}</span><h1>${ex.titre}<code>${ex.code}</code></h1></header>
   <div class="cols"><div>Exercice adapté · Adapted · Adattato</div><div>Exercice d'origine · Original · Originale</div></div>
   ${LANGUES.map(([l, nom]) => `
   <div class="band">
