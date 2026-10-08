@@ -15,27 +15,27 @@ const CAPTURES = path.join(__dirname, 'captures');
 const ORIGINAUX = path.join(RACINE, 'images', 'originaux');
 const PDF = path.join(__dirname, 'guide_animateur.pdf');
 
-// Numéros et fichiers repris du questionnaire Qualtrics.
-// code : nom de l'image d'origine et de la capture ; fichier : exercice adapté (FR, puis _EN et _IT).
+// num : numéro de l'exercice dans le manuel (badge vert de l'image d'origine).
+// Fichiers repris du questionnaire Qualtrics. code : nom de l'image d'origine et de la capture ; fichier : exercice adapté (FR, puis _EN et _IT).
 const EXERCICES = [
-  { num: 1, code: 'RC', fichier: 'RC', titre: 'Compléter une phrase' },
-  { num: 2, code: 'TransformeMot', fichier: 'TransformeMot', titre: 'Transformer un mot' },
-  { num: 3, code: 'CocheGroupeMots', fichier: 'CocheGroupeMots', titre: 'Cliquer sur des groupes de mots' },
-  { num: 4, code: 'CochePhrase', fichier: 'CochePhrase', titre: 'Cliquer sur des phrases' },
-  { num: 5, code: 'CacheIntrus', fichier: 'CacheIntrus', titre: "Cacher l'intrus" },
-  { num: 6, code: 'EditPhrase', fichier: 'EditPhrase', titre: 'Corriger une phrase' },
+  { num: 1, code: 'GroupeEchange', fichier: 'GroupeEchange', titre: 'Ranger des nombres dans l\'ordre' },
+  { num: 2, code: 'Comptage', fichier: 'Comptage', titre: 'Compter des objets' },
+  { num: 3, code: 'EcritureNombres', fichier: 'EcritureNombres', titre: 'Écrire des nombres en chiffres' },
+  { num: 4, code: 'CM_Math', fichier: 'CM_Math', titre: 'Comparer des nombres' },
+  { num: 5, code: 'Decomposition', fichier: 'Decomposition', titre: 'Décomposer un nombre' },
+  { num: 6, code: 'AdditionsPosees', fichier: 'AdditionsPosees', titre: 'Additions posées' },
   { num: 7, code: 'Classe', fichier: 'Classe', titre: 'Classer des mots par couleur' },
-  { num: 8, code: 'Associe', fichier: 'associe_colonne_noms', titre: 'Associer des noms' },
-  { num: 9, code: 'RCDouble', fichier: 'RCDouble', titre: 'Remplacer un mot par son contraire' },
+  { num: 8, code: 'CocheGroupeMots', fichier: 'CocheGroupeMots', titre: 'Cliquer sur des groupes de mots' },
+  { num: 9, code: 'Associe', fichier: 'associe_colonne_noms', titre: 'Associer des noms' },
   { num: 10, code: 'CliqueEcrire', fichier: 'CliqueEcrire_1', titre: 'Repérer des mots dans un texte' },
-  { num: 11, code: 'EcritureNombres', fichier: 'EcritureNombres', titre: 'Écrire des nombres en chiffres' },
-  { num: 12, code: 'Comptage', fichier: 'Comptage', titre: 'Compter des objets' },
-  { num: 13, code: 'Decomposition', fichier: 'Decomposition', titre: 'Décomposer un nombre' },
-  { num: 14, code: 'CM_Math', fichier: 'CM_Math', titre: 'Comparer des nombres' },
-  { num: 15, code: 'AdditionsPosees', fichier: 'AdditionsPosees', titre: 'Additions posées' },
-  { num: 16, code: 'GroupeEchange', fichier: 'GroupeEchange', titre: 'Ranger des nombres dans l\'ordre' },
+  { num: 11, code: 'CochePhrase', fichier: 'CochePhrase', titre: 'Cliquer sur des phrases' },
+  { num: 12, code: 'RC', fichier: 'RC', titre: 'Compléter une phrase' },
+  { num: 13, code: 'CacheIntrus', fichier: 'CacheIntrus', titre: "Cacher l'intrus" },
+  { num: 14, code: 'EditPhrase', fichier: 'EditPhrase', titre: 'Corriger une phrase' },
+  { num: 15, code: 'TransformeMot', fichier: 'TransformeMot', titre: 'Transformer un mot' },
+  { num: 16, code: 'RCDouble', fichier: 'RCDouble', titre: 'Remplacer un mot par son contraire' },
 ];
-// Ordre des pages du PDF, par numéro d'origine (l'exercice 10, CliqueEcrire, est retiré du guide).
+// Ordre des pages du PDF : ordre du manuel, par numéro d'exercice (le 10, CliqueEcrire, est retiré).
 const ORDRE = [12, 15, 3, 5, 4, 9, 8, 13, 7, 11, 2, 16, 14, 1, 6];
 const PAGES = ORDRE.map(n => EXERCICES.find(ex => ex.num === n));
 const LANGUES = [['FR', 'Français', ''], ['EN', 'English', '_EN'], ['IT', 'Italiano', '_IT']];
