@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab2school4all: information sheet</title>
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 52px;
+  }
+  p, li { margin: 0 0 1.5em 0; }
+  .title { font-weight: bold; font-size: 1.15em; }
+  ul { padding-left: 1.5em; }
+  .box { border: 3px solid #000; padding: 4px 24px 0 24px; margin: 0 0 1.5em 0; }
+  .box ul { margin: 0; }
+</style>
+</head>
+<body>
+
+<div id="content">
+
+  <p class="title">Lab2school4all</p>
+
+  <p class="title">Information sheet for questionnaire participants</p>
+
+  <div class="box">
+    <p class="title">The essentials</p>
+    <ul>
+      <li>An online questionnaire to give your opinion on adaptations of textbook exercises for children with dyspraxia.</li>
+      <li>Duration: about 30-40 minutes, on a computer.</li>
+      <li>Voluntary participation: you can stop at any time before submitting your answers.</li>
+      <li>Anonymous answers: the questionnaire does not ask for your name.</li>
+      <li>Anonymous data shared in open access.</li>
+    </ul>
+  </div>
+
+  <p class="title">What is this about?</p>
+
+  <p>This research focuses on adapting textbook exercises for children with dyspraxia (dyspraxia is also called Developmental Coordination Disorder). These children may have difficulties with exercises that require motor coordination (for example writing) or visuospatial processing (for example finding their way around the page layout). Adaptations can make textbooks more accessible and support their learning.</p>
+
+  <p>The results will guide the automatic adaptation of textbooks and inform the design of digital textbooks, as part of the European project Lab2school4all (funded by the European Union, Horizon Europe). The study is preregistered on the Open Science Framework (OSF).</p>
+
+  <p class="title">Why am I invited?</p>
+
+  <p>You are invited because you are:</p>
+
+  <ul>
+    <li>a parent of a child with dyspraxia, with experience of adapting school exercises;</li>
+    <li>a primary school teacher, with experience of teaching children with dyspraxia;</li>
+    <li>a healthcare professional (occupational therapist or psychomotor therapist) working with children with dyspraxia;</li>
+    <li>an adult with dyspraxia (aged 18 to 25), with personal experience of using school textbooks.</li>
+  </ul>
+
+  <p class="title">What do I have to do?</p>
+
+  <p>The questionnaire includes short questions about you and your experience with textbook adaptations, and examples of school exercises adapted to help children with dyspraxia, in order to assess how effective the adaptation is from a motor and visuospatial point of view.</p>
+
+  <p class="title">Benefits and risks</p>
+
+  <p>There is no direct personal benefit. Your answers will help design more accessible textbooks, support parents with homework, and inform the practice of teachers and healthcare professionals.</p>
+
+  <p>There is no physical risk. Risks are minimal: you may feel tired or uncomfortable when thinking back on difficulties you have experienced. The risk of being identified is limited by the anonymity of the questionnaire (see "Your data").</p>
+
+  <p class="title">Participation and withdrawal</p>
+
+  <p>Your participation is voluntary: you can decline without giving a reason and without any consequence, take a break, or stop at any time before submitting your answers by closing the page. Once submitted, your (anonymous) answers can no longer be withdrawn, unless you choose to leave your email address to be contacted about the second phase of the research: the relevant question explains this possibility in detail.</p>
+
+  <p class="title">Your data</p>
+
+  <p><strong>Anonymity:</strong> the questionnaire does not ask for your name, and your IP address and location are not recorded. Please do not enter your first or last name, or any other identifying data, in the open-answer fields.</p>
+
+  <p><strong>Hosting and access:</strong> the questionnaire is hosted by Qualtrics on servers located in Ireland (European Union). Only the study researchers have access to the raw data.</p>
+
+  <p><strong>Use and sharing:</strong> the results will be presented in scientific publications and presentations. Anonymous, non-identifying data (excluding the texts of the "Other" option) will be openly accessible following the FAIR principles.</p>
+
+  <p><strong>Retention:</strong> anonymous data are stored securely at the University of Limerick for 5 years after the end of the project.</p>
+
+  <p><strong>Data controllers and data protection officers:</strong> University of Limerick (Plassey, Limerick, Ireland; dataprotection@ul.ie) and Inserm, the French National Institute of Health and Medical Research (101 rue de Tolbiac, 75654 Paris Cedex 13, France, for the attention of the data protection officer).</p>
+
+  <p><strong>Legal basis:</strong> scientific research within the Lab2school4all project. The processing of your email address (optional), and of your answers as long as they remain linked to it, is based on your explicit consent (GDPR). No transfer outside the European Economic Area is planned.</p>
+
+  <p><strong>Your rights:</strong> regarding your email address, you can request access, rectification, erasure, restriction of processing and a copy in a portable format, and withdraw your consent at any time (mellissa.prunty@ul.ie). These rights do not apply to anonymous answers. You can also lodge a complaint with the authority of your country: CNIL (France), Data Protection Commission (Ireland), Garante Privacy (Italy) or Information Commissioner's Office (United Kingdom).</p>
+
+  <p class="title">Ethics and contacts</p>
+
+  <p><strong>Ethical approval:</strong> favourable opinion from the University of Limerick research ethics committee on 18 August 2026 (reference: 2026_07_06_EHS (ER)). Independent contact: Chair, Education and Health Sciences Research Ethics Committee, EHS Faculty Office, University of Limerick, tel.: +353 61 234101.</p>
+
+  <p><strong>Questions or concerns:</strong> Dr Mellissa Prunty, questionnaire lead, School of Allied Health, University of Limerick, mellissa.prunty@ul.ie. The team will reply promptly.</p>
+
+  <p><strong>Team:</strong> Dr Caroline Huron (Inserm), project lead; Dr Jeremy Louis and Dr Michelle Bergin, postdoctoral researchers, who process the data.</p>
+
+  <p>Thank you for taking the time to read this information sheet.</p>
+
+</div>
+
+<script>
+  var colors = ['#0000FF', '#CC0000', '#007700'];
+
+  function wrapWords(root) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    var textNodes = [];
+    var node;
+    while (node = walker.nextNode()) {
+      if (node.textContent.trim() !== '') textNodes.push(node);
+    }
+    textNodes.forEach(function (tn) {
+      var parts = tn.textContent.split(/(\s+)/);
+      var frag = document.createDocumentFragment();
+      parts.forEach(function (part) {
+        if (part.trim() === '') {
+          frag.appendChild(document.createTextNode(part));
+        } else {
+          var span = document.createElement('span');
+          span.className = 'word';
+          span.textContent = part;
+          frag.appendChild(span);
+        }
+      });
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
+  function recolor() {
+    var words = Array.prototype.slice.call(document.querySelectorAll('.word'));
+    var lines = [];
+    words.forEach(function (w) {
+      var top = Math.round(w.getBoundingClientRect().top);
+      var line = lines.find(function (l) { return Math.abs(l.top - top) < 3; });
+      if (!line) {
+        line = { top: top, words: [] };
+        lines.push(line);
+      }
+      line.words.push(w);
+    });
+    lines.sort(function (a, b) { return a.top - b.top; });
+    lines.forEach(function (line, i) {
+      var color = colors[i % colors.length];
+      line.words.forEach(function (w) { w.style.color = color; });
+    });
+  }
+
+  wrapWords(document.getElementById('content'));
+  recolor();
+  window.addEventListener('resize', recolor);
+</script>
+
+</body>
+</html>
