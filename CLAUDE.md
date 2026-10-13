@@ -20,7 +20,7 @@ Ce dépôt héberge les exercices et les fichiers du questionnaire Qualtrics **L
 
 - **Publication :** GitHub Pages publie la branche `main` à l'adresse https://louisjclasses-bot.github.io/Lab2school4all/
 - **Un fichier n'est visible en ligne qu'après fusion sur `main`.** Travailler sur la branche de session, puis ouvrir une demande de fusion (pull request) quand l'utilisateur le demande.
-- Les demandes de fusion n°9 et n°10 ont déjà été fusionnées. Pour la suite, repartir de `main` à jour.
+- Plusieurs sessions Claude travaillent sur ce dépôt, chacune sur sa branche, et `main` avance souvent : toujours repartir de `main` à jour avant un nouveau travail.
 
 ### Arborescence
 
@@ -28,12 +28,13 @@ Ce dépôt héberge les exercices et les fichiers du questionnaire Qualtrics **L
 |---|---|
 | `*.html` à la racine | Les exercices. Version française sans suffixe, `_EN` (Irlande et Royaume-Uni), `_IT` (Italie). |
 | `communs/` | CSS et JS partagés par les exercices « classiques » (maths). Ne pas modifier : touche tous les exercices de maths. |
-| `consignes/` | Pages de consigne intégrées en iframe : `consigne_exercices_{FR,EN,IT}.html`, `consigne_comparaison_{FR,EN,IT}.html`. |
+| `consignes/` | Pages de consigne intégrées en iframe : `consigne_exercices_{FR,EN,IT}.html` (texte et images fixes), `consigne_exercices_demo_{FR,EN,IT}.html` (GIF de démonstration), `consigne_comparaison_{FR,EN,IT}.html`. |
 | `demos/` | GIF animés des consignes. |
 | `images/originaux/{FR,EN,IT}/` | Captures des 16 exercices d'origine, découpées dans les cahiers d'exercices PDF. |
 | `images/comparaisons/{FR,EN,IT}/` | Captures des 7 versions comparées. |
 | `consent-form-tricolore.html`, `_FR`, `_IT` | Formulaires de consentement, en iframe dans l'introduction. |
-| `fiche_information_FR.html` | Notice d'information (FR). EN : fichier Qualtrics de Limerick. IT : n'existe pas encore. |
+| `fiche_information_{FR,EN,IT}.html` | Notices d'information. Dans le .qsf, seule la branche France y renvoie ; les branches IE, UK et IT renvoient encore à l'ancienne fiche de Limerick hébergée par Qualtrics (`File.php?F=F_0PArUWsokMQDzcG`). |
+| `guide_animateur/` | Guide imprimable pour les sessions de formation (PDF, captures, scripts de génération ; voir son README). |
 | `qualtrics/Lab2School4All_6.qsf` | Export Qualtrics complet, à importer. |
 | `qualtrics/style_general.css` | CSS général de Qualtrics (à coller dans *Look & Feel > Style > CSS personnalisé*). |
 | `qualtrics/RESUME_questionnaire.md` | Résumé lisible du questionnaire pour l'équipe. |
@@ -203,8 +204,8 @@ Tailles de cadre avec le CSS actuel :
 
 ## Reste à faire (au 13 octobre 2026)
 
-- **Addition :** le .qsf pointe encore vers `AdditionsPosees.html`, `_EN` et `_IT`, pas vers les versions `_2`. C'est à l'utilisateur de décider.
-- **Publication :** les fichiers ajoutés depuis la fusion n°10 ne sont pas encore sur `main` (CSS du cadre élargi, additions `_2`, ce fichier).
-- **Italie :** la fiche d'information est à créer, et le consentement italien à faire relire.
+- **Addition :** le .qsf pointe encore vers `AdditionsPosees.html`, `_EN` et `_IT`, pas vers les versions `_2` (publiées sur `main`). C'est à l'utilisateur de décider.
+- **Fiches d'information :** les versions EN et IT existent ; le .qsf des branches IE, UK et IT renvoie encore à l'ancienne fiche de Limerick. À faire pointer vers `fiche_information_EN.html` et `fiche_information_IT.html` si l'utilisateur le souhaite.
+- **Italie :** le consentement italien est à faire relire.
 - **Recontact :** la question n'est précisée que pour la France (focus groups en Île-de-France).
 - **Branche France :** les images d'origine viennent encore de la bibliothèque Qualtrics. Des versions refaites existent dans `images/originaux/FR/`.
