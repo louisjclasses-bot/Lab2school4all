@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Esercizio di prova</title>
+<style>
+/* Reproduction du gabarit Malin (variante _Tel) */
+html,body{margin:0;height:100%;touch-action:manipulation;-webkit-touch-callout:none;-webkit-text-size-adjust:100%}
+*{box-sizing:border-box}
+.root{--control-width:12px;height:100dvh;display:grid;grid-template-columns:var(--control-width) 1fr var(--control-width)}
+.control{background:#d3d3d3;font-size:calc(.9 * var(--control-width));line-height:0;font-family:Arial,sans-serif;cursor:pointer;user-select:none;-webkit-user-select:none;display:flex;flex-direction:column;justify-content:center}
+.control .arrow{height:calc(2 * var(--control-width));width:100%;background:gray;display:flex;flex-direction:column;justify-content:center;color:#000;border-top-left-radius:var(--control-width);border-bottom-left-radius:var(--control-width)}
+.control .arrow::before{content:"\2B95";text-align:center}
+.control .arrowLeft{transform:scaleX(-1)}
+.control.disabled{cursor:not-allowed}
+.control.disabled .arrow{color:#d3d3d3}
+
+.container{
+  --vertical-space-between-top-and-instruction:.35em;
+  --vertical-space-between-instruction-lines:2em;
+  --vertical-space-between-instruction-and-statement:3em;
+  --vertical-space-between-statement-lines:3.6em;
+  --vertical-space-between-border-and-choices:1.15em;
+  --vertical-space-between-choices-lines:3.05em;
+  font-family:Arial,sans-serif;font-size:32px;word-spacing:.26em;
+  overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;height:100%;position:relative}
+.container p{margin:0;padding:0}
+.page{display:none}
+.page.active{display:block}
+.instruction{text-align:center;padding:0 2px;margin-top:calc(var(--vertical-space-between-top-and-instruction) - (var(--vertical-space-between-instruction-lines) - 1em) / 2);line-height:var(--vertical-space-between-instruction-lines)}
+.statement{position:relative;padding:0 2px;margin-top:calc(var(--vertical-space-between-instruction-and-statement) - (var(--vertical-space-between-instruction-lines) - 1em + var(--vertical-space-between-statement-lines) - 1em) / 2);line-height:var(--vertical-space-between-statement-lines)}
+p.next{text-align:center;line-height:normal}
+p.next img{cursor:pointer;padding:.5em}
+
+/* Zone de saisie libre (vide ou pré-remplie) */
+.free{line-height:1em;padding:4px;border:2px outset black;outline:0}
+.free.empty{padding-left:1ch;padding-right:1ch}
+.free:focus{background-color:#fffdd4}
+
+/* Cases à échanger */
+.swap{cursor:pointer;user-select:none;-webkit-user-select:none;border:2px solid #aaf;padding:9px 3.2px}
+.swap + .swap{margin-left:10px}
+.swap.selected{background-color:#fffdd4}
+
+/* Menu de choix */
+.mc-wrap{display:inline-block;vertical-align:top;user-select:none;-webkit-user-select:none}
+.mc-input{cursor:pointer;display:inline;border:2px outset #888}
+.mc-input.open{background-color:#fffdd4}
+.mc-list{position:absolute;z-index:5;display:none;border:1px dashed green;background:#fff;padding:0 10px;line-height:var(--vertical-space-between-choices-lines);white-space:nowrap}
+.mc-list.open{display:block}
+.mc-list p:first-child{margin-top:calc(var(--vertical-space-between-border-and-choices) - (var(--vertical-space-between-choices-lines) - 1em) / 2)}
+.mc-list p:last-child{margin-bottom:calc(var(--vertical-space-between-border-and-choices) - (var(--vertical-space-between-choices-lines) - 1em) / 2)}
+.mc-choice{cursor:pointer;border:1px solid black;padding:1px 4px}
+
+/* Mots cliquables */
+.sel{cursor:pointer;user-select:none;-webkit-user-select:none}
+.sel:hover{outline:1px dashed green}
+.sel.on{background-color:#ff0}
+
+/* Page de fin */
+.endPage{padding:0 6px;margin:1em 0 !important;line-height:normal}
+.endPage button{font:inherit}
+
+/* Bulles d'aide : propres à l'exercice d'entraînement, volontairement distinctes de l'exercice */
+.help{position:relative;display:flex;gap:10px;align-items:flex-start;
+  margin:14px 2px 0;padding:10px 12px;
+  font-family:Arial,sans-serif;font-size:20px;line-height:1.4;word-spacing:normal;text-align:left;
+  color:#2a1f45;background:#efe9fb;border:2px solid #6b4fb8;border-radius:10px;
+  user-select:none;-webkit-user-select:none}
+.help::before,.help::after{content:"";position:absolute;left:var(--tip,28px);border:solid transparent}
+.help::before{bottom:100%;border-width:0 11px 13px;border-bottom-color:#6b4fb8;transform:translateX(-50%)}
+.help::after{bottom:calc(100% - 3px);border-width:0 8px 10px;border-bottom-color:#efe9fb;transform:translateX(-50%)}
+.help.center{--tip:50%}
+.help.no-tip::before,.help.no-tip::after{display:none}
+.help .i{flex:none;width:26px;height:26px;margin-top:1px;border-radius:50%;background:#6b4fb8;color:#fff;
+  font:bold 18px/26px Georgia,serif;text-align:center}
+.help strong{font-weight:bold}
+.statement .help{margin-top:-14px}
+p.next + .help{margin-top:0}
+/* Bandeau tutoriel */
+.tuto-banner{position:sticky;top:0;z-index:10;margin:0;padding:4px 6px;background:#6b4fb8;color:#fff;font:bold 18px/1.4 Arial,sans-serif;word-spacing:normal;text-align:center;user-select:none;-webkit-user-select:none}
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="control disabled" id="ctl-prev"><div class="arrow arrowLeft"></div></div>
+  <div class="container" spellcheck="false">
+    <div class="tuto-banner">Tutorial</div>
+
+    <!-- Page 1 : zone vide -->
+    <div class="page active">
+      <p class="instruction">Qui vedrà la consegna.</p>
+      <div class="statement">
+        <p><span class="tc">a.</span> <span class="tc">Prima</span> <span class="tc">domanda</span></p>
+        <p><span class="tc">&rarr;</span> <span class="free empty" contenteditable="true" data-initial=""></span></p>
+        <div class="help" data-for=".free"><span class="i">i</span><span>Questo è uno <strong>spazio per la risposta</strong>. Clicchi al suo interno per scrivere la risposta.</span></div>
+      </div>
+      <p class="next"><img src="data:image/png;base64,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" alt="Pagina successiva" data-next></p>
+      <div class="help center"><span class="i">i</span><span>Clicchi sulla <strong>freccia gialla</strong> per passare alla pagina successiva.</span></div>
+    </div>
+
+    <!-- Page 2 : texte déjà écrit à modifier -->
+    <div class="page">
+      <p class="instruction">Qui vedrà la consegna.</p>
+      <div class="statement">
+        <p><span class="tc">b.</span> <span class="tc">Seconda</span> <span class="tc">domanda</span></p>
+        <p><span class="tc">&rarr;</span> <span class="free" contenteditable="true" data-initial="1"><span class="tc">Del</span> <span class="tc">testo</span></span></p>
+        <div class="help" data-for=".free"><span class="i">i</span><span>Questo spazio per la risposta <strong>contiene già del testo</strong>. Clicchi al suo interno per modificarlo.</span></div>
+      </div>
+      <p class="next"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIEAAAAgCAYAAAA14BsbAAAG8ElEQVR4Xu2ZW4hd1RnHf/tyTm4mBJVGaaW0WE0wpg+2pD4k0gpCa5/Mi7axL0X7IPSptE9C7FOfkhRDtUQQL8FL0hmVSWkmmoyJ6KS56Nxy0ThJpji5zH1OJnMue69lpmstPmZvNvvEmVFo9x8+vrU3nDkH/r/1fd9a46mPMfIkz0GFvIznRPbvwVN97J6ucqD1XV7d/CemAKV60WiMtA3kWXLOOvEuS/6PIMz6kTCvUBRAeDbJu1BrVi9dwqbHHubPP9/Iix1H2OGvZRCIVA8aD5EWL1Lv0muRlw+Dp7oyiZ2rConx6XdrWFLr5kS5xGpnkFJUJ6+y53Q/2+7/Fb0WBtXUztc3WhmkEniqW0yfPwAKedkV1UGwfPoTji1exF1iDGjbAqameW/wMlvv/iXvARGgVDd6HmGQdiAAJMidmwp5ue99LQVfALBatoQHf/BdHpw+Ts+VEXY8sYVd/jqqDga8nJZAXpuQ51AAAO/rqQQFFNolPHQCgEReVObeO27n73uf45nRcf72z0Ps9NcxDMR5MEjO59WrfcKvy2Ve+XoBKCQANF/GlaIycZVdnV1se/gpzgHRDAyZn83+2zITAP5YJ79ZuYIXc0uZpikVyp3Os83XNKu4MsU7FwbZvm4TR4AGoFUXOmF+dhYIKH2+j99+7zs8lzcL6HmDoFDuXUDzswbTNTovD7Ht+7/gHQuDUh+js/++eBn82EBQ7nubJ9fcybOI5rUKFJrbJN9sm67X6R+ZYMfOPby05XkmgVgdFxi0C4GA8noDwaKuFn537138FS/rx84NiGIIvHEY8kHIhimOGR2b5IX2D3l289NcBqL6EbRSznw5BS6+H8KcnpGxLvSVq6bOhSFbujkIPM3NK2/ij4/8jN9f+gm7T/WzvbzeXD5VDqMcAL4PIBBI5JC6QCog0TcOmNagtMlxbNZKSdaaxWHA42vv5PELe2m/OMzW5RvocJdPk4fQAgGAQqRzq0OeCnlzBSPdw5VKGO+elVkLAAKHk+/z0B2reOh8Gz0zc8MftrNrxUaqgEpUgoTp8mXEMWgMYc2rkOfZSD578pw2XkJMlRzHLst7AQE06d7v2/J/rcrSC4PceuYcK4ExoCYQqNnGR7FEPBNCYZMq5CVM9132wcNmgQExP9v0WLksawFEKgPM/t7PBjj/5n4OXo+PgAvAcmAKqIcAWgHa5EZkIgFBmrJ8FRUAMV12o+TAF6MgG4DImh5FNgsMxngLBFgABCp1tI/+l9voOnGGL4CRdKOSmYAoEgBSIESzaLshFRCI8UEAAoDJ0ipm937Z8YkN6SLZArR08mqV+vsnOP3yXrovDjMKTNrSfwW4DFwCxoE6oEMHQL1hojGzFhCERPmy5lRAIAC4HBkQggQETjqjAogPoJRkqc5GYxNU2o/Q90Y7J6emmQQm7O4ftgAMW/MrwDWg4QZD4thCYGFwEcUGBPPFUq7yVEjO4IHvYLAAKKQSWFCclFSBlOlRJFAoCQAGLnGl7QN62g7zGXDVmW+NH7LrcTsDTLsj4shB9C0/hRCM0Q6AWh2pBBYEGUyaOyEWJ0MxPmImmwgVRIm2IPNAYhBUyZnMhIrdiQ3d+zkDrR30/LuXAaBijR4GhiwAoxaIKaBmzdeD+9Cl0EAI4CpBeiZoIAS6AUQiW0UbEAi0gSJAqmjgz2QLgEoeC2X3p04BkTG/FhFdN/3s6+10nR/kijV/TEo+Q/Z5wpb8OhCdfdsYHwYmTDsSCPQDT9IC9AJrgW8Dy1hoFfLatvPoqlu4We4B0uYrC0XlGtUDx+jbvZ/esQrjwKQt80M2hq35FWDamh+faRXzJdxsgkAA1Gwp+cKuF7PQKlTyPRpm1rLGJ+8FIrg0zNi/OulrOcDJKJZ+LyWfERn2qLphb8b8wIdSKKaHiaFUIIDY9oyLlqClQMhCq9CyUok6IDeCWtZnzjP4VgfdB45yzg5749nDHjVrvp4xP73jTbi1nFjSlWDMwhAAHgutQivKJRoYuWFPHe2l/7V9dPec5WJGvzfnfjE/PrkH9V/T3a73bRbTEfPT9xPhxCF0FBNH0fWIqaZ6UuK6uPmhsLgjgORFkJwCfvgocRigfA+uNai+f5xPd7amLneGXNjnSRn2iE/9Ay07HgEgNDl5Mynmm+wU+p6dWIPZ/2wITG+SH980BAUAaYHW6bv9KGag4xgf/uUl/lOZYhEw1czlzukWtDE8ufuzd33afFmHvj2yhO7sKrdQqCABAM2pUHYF0Lj7FtQDT/AUcDfwLfuRUWt++nJHhj2Z8kOQfi+mN2v+N69CS+xx/D5gA7AeWA3cBiwHyoD/vz2fFSpZs1cBtwO3AjcBpf8v44uOEdodX/omT2VfAm/j1qxMfQ29AAAAAElFTkSuQmCC" alt="Pagina successiva" data-next></p>
+    </div>
+
+    <!-- Page 3 : cases à déplacer -->
+    <div class="page">
+      <p class="instruction">Qui vedrà la consegna.</p>
+      <div class="statement">
+        <p><span class="tc">c.</span> <span class="tc">Terza</span> <span class="tc">domanda</span></p>
+        <p class="swap-row"><span class="swap"><span class="tc">C</span></span><span class="swap"><span class="tc">A</span></span><span class="swap"><span class="tc">D</span></span><span class="swap"><span class="tc">B</span></span></p>
+        <div class="help" data-for=".swap-row"><span class="i">i</span><span>Queste <strong>caselle si possono spostare</strong>. Clicchi su una casella, poi su un’altra: si scambiano di posto.</span></div>
+      </div>
+      <p class="next"><img src="data:image/png;base64,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" alt="Pagina successiva" data-next></p>
+    </div>
+
+    <!-- Page 4 : menu de choix -->
+    <div class="page">
+      <p class="instruction">Qui vedrà la consegna.</p>
+      <div class="statement">
+        <p><span class="tc">d.</span> <span class="tc">Quarta</span> <span class="tc">domanda</span></p>
+        <p><span class="tc">&rarr;</span> <span class="mc-wrap"><span class="mc-input"><span class="tc">....</span></span></span></p>
+        <div class="mc-list">
+          <p><span class="mc-choice">scelta 1</span></p>
+          <p><span class="mc-choice">scelta 2</span></p>
+          <p><span class="mc-choice">scelta 3</span></p>
+        </div>
+        <div class="help" data-for=".mc-input"><span class="i">i</span><span>Clicchi sulla <strong>casella con i puntini</strong> per vedere le scelte, poi clicchi su una scelta per selezionarla.</span></div>
+      </div>
+      <p class="next"><img src="data:image/png;base64,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" alt="Pagina successiva" data-next></p>
+    </div>
+
+    <!-- Page 5 : mots à cliquer -->
+    <div class="page">
+      <p class="instruction">Qui vedrà la consegna.</p>
+      <div class="statement">
+        <p><span class="tc">e.</span> <span class="sel-row"><span class="sel"><span class="tc">Quinta</span></span> <span class="sel"><span class="tc">domanda</span></span></span></p>
+        <div class="help" data-for=".sel-row"><span class="i">i</span><span>Può <strong>cliccare su queste parole</strong> per colorarle. Clicchi di nuovo su una parola per togliere il colore.</span></div>
+      </div>
+      <p class="next"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIEAAAAgCAYAAAA14BsbAAAG8ElEQVR4Xu2ZW4hd1RnHf/tyTm4mBJVGaaW0WE0wpg+2pD4k0gpCa5/Mi7axL0X7IPSptE9C7FOfkhRDtUQQL8FL0hmVSWkmmoyJ6KS56Nxy0ThJpji5zH1OJnMue69lpmstPmZvNvvEmVFo9x8+vrU3nDkH/r/1fd9a46mPMfIkz0GFvIznRPbvwVN97J6ucqD1XV7d/CemAKV60WiMtA3kWXLOOvEuS/6PIMz6kTCvUBRAeDbJu1BrVi9dwqbHHubPP9/Iix1H2OGvZRCIVA8aD5EWL1Lv0muRlw+Dp7oyiZ2rConx6XdrWFLr5kS5xGpnkFJUJ6+y53Q/2+7/Fb0WBtXUztc3WhmkEniqW0yfPwAKedkV1UGwfPoTji1exF1iDGjbAqameW/wMlvv/iXvARGgVDd6HmGQdiAAJMidmwp5ue99LQVfALBatoQHf/BdHpw+Ts+VEXY8sYVd/jqqDga8nJZAXpuQ51AAAO/rqQQFFNolPHQCgEReVObeO27n73uf45nRcf72z0Ps9NcxDMR5MEjO59WrfcKvy2Ve+XoBKCQANF/GlaIycZVdnV1se/gpzgHRDAyZn83+2zITAP5YJ79ZuYIXc0uZpikVyp3Os83XNKu4MsU7FwbZvm4TR4AGoFUXOmF+dhYIKH2+j99+7zs8lzcL6HmDoFDuXUDzswbTNTovD7Ht+7/gHQuDUh+js/++eBn82EBQ7nubJ9fcybOI5rUKFJrbJN9sm67X6R+ZYMfOPby05XkmgVgdFxi0C4GA8noDwaKuFn537138FS/rx84NiGIIvHEY8kHIhimOGR2b5IX2D3l289NcBqL6EbRSznw5BS6+H8KcnpGxLvSVq6bOhSFbujkIPM3NK2/ij4/8jN9f+gm7T/WzvbzeXD5VDqMcAL4PIBBI5JC6QCog0TcOmNagtMlxbNZKSdaaxWHA42vv5PELe2m/OMzW5RvocJdPk4fQAgGAQqRzq0OeCnlzBSPdw5VKGO+elVkLAAKHk+/z0B2reOh8Gz0zc8MftrNrxUaqgEpUgoTp8mXEMWgMYc2rkOfZSD578pw2XkJMlRzHLst7AQE06d7v2/J/rcrSC4PceuYcK4ExoCYQqNnGR7FEPBNCYZMq5CVM9132wcNmgQExP9v0WLksawFEKgPM/t7PBjj/5n4OXo+PgAvAcmAKqIcAWgHa5EZkIgFBmrJ8FRUAMV12o+TAF6MgG4DImh5FNgsMxngLBFgABCp1tI/+l9voOnGGL4CRdKOSmYAoEgBSIESzaLshFRCI8UEAAoDJ0ipm937Z8YkN6SLZArR08mqV+vsnOP3yXrovDjMKTNrSfwW4DFwCxoE6oEMHQL1hojGzFhCERPmy5lRAIAC4HBkQggQETjqjAogPoJRkqc5GYxNU2o/Q90Y7J6emmQQm7O4ftgAMW/MrwDWg4QZD4thCYGFwEcUGBPPFUq7yVEjO4IHvYLAAKKQSWFCclFSBlOlRJFAoCQAGLnGl7QN62g7zGXDVmW+NH7LrcTsDTLsj4shB9C0/hRCM0Q6AWh2pBBYEGUyaOyEWJ0MxPmImmwgVRIm2IPNAYhBUyZnMhIrdiQ3d+zkDrR30/LuXAaBijR4GhiwAoxaIKaBmzdeD+9Cl0EAI4CpBeiZoIAS6AUQiW0UbEAi0gSJAqmjgz2QLgEoeC2X3p04BkTG/FhFdN/3s6+10nR/kijV/TEo+Q/Z5wpb8OhCdfdsYHwYmTDsSCPQDT9IC9AJrgW8Dy1hoFfLatvPoqlu4We4B0uYrC0XlGtUDx+jbvZ/esQrjwKQt80M2hq35FWDamh+faRXzJdxsgkAA1Gwp+cKuF7PQKlTyPRpm1rLGJ+8FIrg0zNi/OulrOcDJKJZ+LyWfERn2qLphb8b8wIdSKKaHiaFUIIDY9oyLlqClQMhCq9CyUok6IDeCWtZnzjP4VgfdB45yzg5749nDHjVrvp4xP73jTbi1nFjSlWDMwhAAHgutQivKJRoYuWFPHe2l/7V9dPec5WJGvzfnfjE/PrkH9V/T3a73bRbTEfPT9xPhxCF0FBNH0fWIqaZ6UuK6uPmhsLgjgORFkJwCfvgocRigfA+uNai+f5xPd7amLneGXNjnSRn2iE/9Ay07HgEgNDl5Mynmm+wU+p6dWIPZ/2wITG+SH980BAUAaYHW6bv9KGag4xgf/uUl/lOZYhEw1czlzukWtDE8ufuzd33afFmHvj2yhO7sKrdQqCABAM2pUHYF0Lj7FtQDT/AUcDfwLfuRUWt++nJHhj2Z8kOQfi+mN2v+N69CS+xx/D5gA7AeWA3cBiwHyoD/vz2fFSpZs1cBtwO3AjcBpf8v44uOEdodX/omT2VfAm/j1qxMfQ29AAAAAElFTkSuQmCC" alt="Pagina successiva" data-next></p>
+    </div>
+
+    <!-- Page de fin -->
+    <div class="page page-end">
+      <p class="endPage"><button disabled>Esci dall’esercizio</button></p>
+      <p class="endPage"><button data-restart>Torna all’inizio dell’esercizio</button></p>
+      <p class="endPage"><button data-reset>Cancella le mie risposte</button></p>
+      <div class="help no-tip"><span class="i">i</span><span>Quando vede questa pagina, ha raggiunto <strong>la fine dell’esercizio</strong>. Con i pulsanti qui sopra può tornare all’inizio dell’esercizio o cancellare le risposte. Se l’esercizio La soddisfa, clicchi sul pulsante <strong>Avanti</strong> qui sotto per continuare.</span></div>
+    </div>
+
+  </div>
+  <div class="control" id="ctl-next"><div class="arrow"></div></div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var COLORS=['rgb(0, 0, 255)','rgb(255, 0, 0)','rgb(0, 204, 0)'];
+  var CHOICE_COLORS=['rgb(255, 0, 0)','rgb(0, 204, 0)','rgb(0, 0, 255)'];
+  var pages=document.querySelectorAll('.page');
+  var current=0;
+  var prev=document.getElementById('ctl-prev'), next=document.getElementById('ctl-next');
+
+  // Mémorise le contenu initial des zones pré-remplies et des cases
+  document.querySelectorAll('.free').forEach(function(f){ f.dataset.html=f.innerHTML; });
+  document.querySelectorAll('.swap-row').forEach(function(r){ r.dataset.html=r.innerHTML; });
+  document.querySelectorAll('.mc-input').forEach(function(m){ m.dataset.html=m.innerHTML; });
+
+  // Coloration par ligne visuelle (bleu, rouge, vert), comme dans Malin
+  function recolor(){
+    var page=pages[current];
+    var items=page.querySelectorAll('.statement .tc');
+    var line=-1, lastTop=null;
+    items.forEach(function(el){
+      var r=el.getBoundingClientRect(), mid=(r.top+r.bottom)/2;
+      if(lastTop===null || Math.abs(mid-lastTop)>r.height/2){ line++; lastTop=mid; }
+      el.style.color=COLORS[line%3];
+    });
+    page.querySelectorAll('.mc-list').forEach(function(l){
+      l.querySelectorAll('.mc-choice').forEach(function(c,i){ c.style.color=CHOICE_COLORS[i%3]; });
+    });
+    placeTips();
+  }
+
+  // Place la pointe de chaque bulle sous l'élément qu'elle décrit
+  function placeTips(){
+    pages[current].querySelectorAll('.help[data-for]').forEach(function(h){
+      var t=h.parentNode.querySelector(h.dataset.for);
+      if(!t) return;
+      var tr=t.getBoundingClientRect(), hr=h.getBoundingClientRect();
+      var x=(tr.left+tr.right)/2-hr.left;
+      h.style.setProperty('--tip',Math.max(20,Math.min(hr.width-20,x))+'px');
+    });
+  }
+
+  function closeLists(){
+    document.querySelectorAll('.mc-list.open').forEach(function(l){ l.classList.remove('open'); l.parentNode.style.paddingBottom=''; });
+    document.querySelectorAll('.mc-input.open').forEach(function(m){ m.classList.remove('open'); });
+  }
+
+  function show(i){
+    closeLists();
+    current=Math.max(0,Math.min(pages.length-1,i));
+    pages.forEach(function(p,k){ p.classList.toggle('active',k===current); });
+    prev.classList.toggle('disabled',current===0);
+    next.classList.toggle('disabled',current===pages.length-1);
+    document.querySelector('.container').scrollTop=0;
+    recolor();
+  }
+
+  function reset(){
+    document.querySelectorAll('.free').forEach(function(f){ f.innerHTML=f.dataset.html; f.classList.toggle('empty',!f.textContent); });
+    document.querySelectorAll('.swap-row').forEach(function(r){ r.innerHTML=r.dataset.html; });
+    document.querySelectorAll('.mc-input').forEach(function(m){ m.innerHTML=m.dataset.html; });
+    document.querySelectorAll('.sel.on').forEach(function(s){ s.classList.remove('on'); });
+    selected=null;
+    show(0);
+  }
+
+  prev.addEventListener('click',function(){ if(current>0) show(current-1); });
+  next.addEventListener('click',function(){ if(current<pages.length-1) show(current+1); });
+  document.querySelectorAll('[data-next]').forEach(function(a){ a.addEventListener('click',function(){ show(current+1); }); });
+  document.querySelector('[data-restart]').addEventListener('click',function(){ show(0); });
+  document.querySelector('[data-reset]').addEventListener('click',reset);
+
+  // Zones de saisie
+  document.querySelectorAll('.free').forEach(function(f){
+    f.addEventListener('input',function(){ f.classList.toggle('empty',!f.textContent); });
+  });
+
+  // Cases à échanger
+  var selected=null;
+  document.querySelector('.container').addEventListener('click',function(e){
+    var box=e.target.closest('.swap');
+    if(!box) return;
+    if(selected===box){ box.classList.remove('selected'); selected=null; return; }
+    if(!selected){ selected=box; box.classList.add('selected'); return; }
+    var tmp=selected.innerHTML; selected.innerHTML=box.innerHTML; box.innerHTML=tmp;
+    selected.classList.remove('selected'); selected=null;
+    recolor();
+  });
+
+  // Menu de choix
+  document.querySelectorAll('.mc-input').forEach(function(input){
+    var statement=input.closest('.statement');
+    var list=statement.querySelector('.mc-list');
+    input.addEventListener('click',function(){
+      if(list.classList.contains('open')){ closeLists(); return; }
+      closeLists();
+      input.classList.add('open'); list.classList.add('open');
+      var sr=statement.getBoundingClientRect(), ir=input.getBoundingClientRect();
+      var left=ir.left-sr.left;
+      list.style.left='0px'; list.style.top=(ir.bottom-sr.top+6)+'px';
+      var maxLeft=statement.clientWidth-list.offsetWidth-4;
+      list.style.left=Math.max(2,Math.min(left,maxLeft))+'px';
+      var needed=(ir.bottom-sr.top+6+list.offsetHeight)-statement.offsetHeight;
+      statement.style.paddingBottom=needed>0?(needed+16)+'px':'';
+    });
+    list.querySelectorAll('.mc-choice').forEach(function(c){
+      c.addEventListener('click',function(){
+        input.innerHTML='<span>'+c.textContent+'</span>';
+        input.firstChild.style.color=c.style.color;
+        closeLists();
+      });
+    });
+  });
+
+  // Mots cliquables
+  document.querySelectorAll('.sel').forEach(function(s){
+    s.addEventListener('click',function(){ s.classList.toggle('on'); });
+  });
+
+  window.addEventListener('resize',recolor);
+  show(0);
+})();
+</script>
+</body>
+</html>
