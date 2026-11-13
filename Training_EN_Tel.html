@@ -21,8 +21,8 @@ html,body{margin:0;height:100%;touch-action:manipulation;-webkit-touch-callout:n
   --vertical-space-between-instruction-lines:2em;
   --vertical-space-between-instruction-and-statement:3em;
   --vertical-space-between-statement-lines:3.6em;
-  --vertical-space-between-border-and-choices:1.15em;
-  --vertical-space-between-choices-lines:3.05em;
+  --vertical-space-between-border-and-choices:.5em;
+  --vertical-space-between-choices-lines:1.8em;
   font-family:Arial,sans-serif;font-size:32px;word-spacing:.26em;
   overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;height:100%;position:relative}
 .container p{margin:0;padding:0}
@@ -261,7 +261,10 @@ p.next + .help{margin-top:0}
       list.style.left='0px'; list.style.top=(ir.bottom-sr.top+6)+'px';
       var maxLeft=statement.clientWidth-list.offsetWidth-4;
       list.style.left=Math.max(2,Math.min(left,maxLeft))+'px';
-      var needed=(ir.bottom-sr.top+6+list.offsetHeight)-statement.offsetHeight;
+      // Comme dans Malin, la liste recouvre le contenu sans le pousser,
+      // sauf si elle dépasse le bas de la page
+      var pr=statement.closest('.page').getBoundingClientRect();
+      var needed=list.getBoundingClientRect().bottom-pr.bottom;
       statement.style.paddingBottom=needed>0?(needed+16)+'px':'';
     });
     list.querySelectorAll('.mc-choice').forEach(function(c){
