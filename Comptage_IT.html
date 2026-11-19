@@ -1,4 +1,21 @@
-<!DOCTYPE html><html lang="it"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><title>10_Esercizio 7</title> <script src="communs/jquery.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="communs/classe_cahier.css" />		<script type="text/javascript" language="javascript">
+<!DOCTYPE html><html lang="it"><head>
+<!-- ===================== DEBUT : EFFACEMENT DES REPONSES PRECEDENTES ===================== -->
+<!-- TRUE  : à chaque ouverture, l'exercice repart de zéro (aucune réponse d'un participant précédent). -->
+<!-- FALSE : les réponses restent enregistrées dans le navigateur et réapparaissent à la réouverture. -->
+<!-- Ce bloc doit rester tout en haut du <head>, avant tout autre script.                           -->
+<script type="text/javascript">
+  (function () {
+    var TRUE = true, FALSE = false;
+
+    var EFFACER_REPONSES_PRECEDENTES = TRUE;   // <== mettre TRUE ou FALSE
+
+    if (EFFACER_REPONSES_PRECEDENTES) {
+      try { Object.keys(localStorage).forEach(function (key) { localStorage.removeItem(key); }); } catch (e) {}
+    }
+  })();
+</script>
+<!-- ===================== FIN : EFFACEMENT DES REPONSES PRECEDENTES ======================= -->
+<meta http-equiv="content-type" content="text/html; charset=utf-8"><title>10_Esercizio 7</title> <script src="communs/jquery.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="communs/classe_cahier.css" />		<script type="text/javascript" language="javascript">
 		var id_cahier = "ice4b379b74147ff1eedcd8e0ed5022d9b";
 		</script>
 		<script src="communs/jquery.textnodes.js" type="text/javascript" language="javascript"></script>

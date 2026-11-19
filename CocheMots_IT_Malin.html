@@ -1,6 +1,23 @@
 <!doctype html>
 <html lang="it">
   <head>
+<!-- ===================== DEBUT : EFFACEMENT DES REPONSES PRECEDENTES ===================== -->
+<!-- TRUE  : à chaque ouverture, l'exercice repart de zéro (aucune réponse d'un participant précédent). -->
+<!-- FALSE : les réponses restent enregistrées dans le navigateur et réapparaissent à la réouverture. -->
+<!-- Ce bloc doit rester tout en haut du <head>, avant tout autre script.                           -->
+<script type="text/javascript">
+  (function () {
+    var TRUE = true, FALSE = false;
+
+    var EFFACER_REPONSES_PRECEDENTES = TRUE;   // <== mettre TRUE ou FALSE
+
+    if (EFFACER_REPONSES_PRECEDENTES) {
+      try { Object.keys(localStorage).forEach(function (key) { localStorage.removeItem(key); }); } catch (e) {}
+    }
+  })();
+</script>
+<!-- ===================== FIN : EFFACEMENT DES REPONSES PRECEDENTES ======================= -->
+
 
     <!-- ============================================================================
          ZONE DE MODIFICATION (vous pouvez modifier ce bloc librement)
