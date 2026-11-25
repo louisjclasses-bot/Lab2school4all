@@ -1,0 +1,54 @@
+{
+ "fg_id": "TRAINING-EN",
+ "country": "UK",
+ "language": "en",
+ "population": "teachers_mainstream",
+ "guide_version": "0.1",
+ "order_seed": "entrainement",
+ "entrainement": true,
+ "total_work_min": 22,
+ "phases": [
+  {
+   "id": "accueil",
+   "module": "plain",
+   "planned_min": 1
+  },
+  {
+   "id": "tutoriel",
+   "module": "tutoriel",
+   "planned_min": 3
+  },
+  {
+   "id": "tri",
+   "module": "tri",
+   "planned_min": 7
+  },
+  {
+   "id": "discussion",
+   "module": "discussion",
+   "planned_min": 4
+  },
+  {
+   "id": "jugement",
+   "module": "jugement",
+   "planned_min": 5
+  },
+  {
+   "id": "cloture",
+   "module": "plain",
+   "planned_min": 2
+  }
+ ],
+ "cards": [
+  "15_ex06",
+  "14_ex31",
+  "CocheLettres",
+  "CocheMots_Malin"
+ ],
+ "order": [
+  "15_ex06",
+  "14_ex31",
+  "CocheLettres",
+  "CocheMots_Malin"
+ ]
+}

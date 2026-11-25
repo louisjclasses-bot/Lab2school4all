@@ -1,0 +1,7 @@
+{
+ "note": "Plan des FG pour la génération des séquences d'ordre (dev/make_sequences.py). Les codes de population sont neutres (identiques dans les trois pays) ; remplacer pop2 à pop4 par les codes définitifs puis relancer le générateur.",
+ "design_seed": "lab2school4all-2027",
+ "countries": ["FR", "UK", "IE"],
+ "populations": ["enseignants_ordinaires", "pop2", "pop3", "pop4"],
+ "fg_per_cell": 2
+}

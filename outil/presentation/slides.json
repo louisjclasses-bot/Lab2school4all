@@ -1,0 +1,101 @@
+{
+ "_meta": {
+  "generateur": "dev/make_presentation.py",
+  "textes": "i18n, clés pres.<étape>.t et pres.<étape>.b"
+ },
+ "slides": [
+  {
+   "id": "01",
+   "imgs": [
+    "console",
+    "scene"
+   ]
+  },
+  {
+   "id": "02",
+   "imgs": [
+    "console"
+   ]
+  },
+  {
+   "id": "03",
+   "imgs": [
+    "console"
+   ]
+  },
+  {
+   "id": "04",
+   "imgs": [
+    "console",
+    "scene"
+   ]
+  },
+  {
+   "id": "05",
+   "imgs": [
+    "console",
+    "scene"
+   ]
+  },
+  {
+   "id": "06",
+   "imgs": [
+    "console",
+    "scene"
+   ]
+  },
+  {
+   "id": "07",
+   "imgs": [
+    "console",
+    "scene"
+   ]
+  },
+  {
+   "id": "08",
+   "imgs": [
+    "console"
+   ]
+  },
+  {
+   "id": "09",
+   "imgs": [
+    "console",
+    "scene"
+   ]
+  },
+  {
+   "id": "10",
+   "imgs": [
+    "console",
+    "scene"
+   ]
+  },
+  {
+   "id": "11",
+   "imgs": [
+    "console",
+    "scene"
+   ]
+  },
+  {
+   "id": "12",
+   "imgs": [
+    "console"
+   ]
+  },
+  {
+   "id": "13",
+   "imgs": [
+    "console",
+    "scene"
+   ]
+  },
+  {
+   "id": "14",
+   "imgs": [
+    "console"
+   ]
+  }
+ ]
+}

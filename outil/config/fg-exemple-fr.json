@@ -1,0 +1,42 @@
+{
+ "fg_id": "FG-FR-03",
+ "country": "FR",
+ "language": "fr",
+ "population": "enseignants_ordinaires",
+ "guide_version": "0.1",
+ "order_seed": "4821",
+ "order_sequence": "S01",
+ "phases": [
+  {
+   "id": "accueil",
+   "module": "plain",
+   "planned_min": 10
+  },
+  {
+   "id": "tutoriel",
+   "module": "tutoriel",
+   "planned_min": 5
+  },
+  {
+   "id": "tri",
+   "module": "tri",
+   "planned_min": 25
+  },
+  {
+   "id": "discussion",
+   "module": "discussion",
+   "planned_min": 35
+  },
+  {
+   "id": "jugement",
+   "module": "jugement",
+   "planned_min": 35
+  },
+  {
+   "id": "cloture",
+   "module": "plain",
+   "planned_min": 10
+  }
+ ],
+ "cards": "all"
+}

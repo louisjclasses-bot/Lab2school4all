@@ -1,0 +1,35 @@
+{
+ "tool_version": "0.4.1",
+ "cards_base": {
+  "dev": "/Lab2school4all-main/",
+  "prod": "https://louisjclasses-bot.github.io/Lab2school4all/"
+ },
+ "note_cards_base": "dev = copie locale servie par dev/serve.py ; prod = GitHub Pages. Forçage possible par ?cards=<adresse> dans l'URL.",
+ "manifest": "manifest/cartes.json",
+ "sequences": "config/sequences.json",
+ "fg_configs": [
+  "config/fg-exemple-fr.json",
+  "config/fg-exemple-en.json"
+ ],
+ "total_work_min": 120,
+ "alerts": {
+  "warn_ratio": 0.15
+ },
+ "backup": {
+  "snapshot_interval_s": 120,
+  "stale_after_s": 15
+ },
+ "participants": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6"
+ ],
+ "reference_profile": "dyspraxie_tcd_primaire",
+ "training_configs": {
+  "fr": "config/entrainement-fr.json",
+  "en": "config/entrainement-en.json"
+ }
+}

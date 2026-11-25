@@ -1,0 +1,193 @@
+{
+ "manifest_version": 1,
+ "note": "Chemins relatifs à la base des cartes (config/outil.json). Ajouter ou retirer une carte : modifier cette liste (actif: false pour retirer sans supprimer).",
+ "cards": [
+  {
+   "id": "01_ex12",
+   "actif": true,
+   "domaine": "francais",
+   "libelle": {
+    "fr": "Compléter une phrase avec un groupe nominal sujet",
+    "en": "Complete a sentence with a subject noun phrase"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_01_ex12.png",
+    "html": "RC.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_01_ex12.png",
+    "html": "RC_EN.html"
+   }
+  },
+  {
+   "id": "03_ex03",
+   "actif": true,
+   "domaine": "maths",
+   "libelle": {
+    "fr": "Écrire des nombres en chiffres",
+    "en": "Write numbers in digits"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_03_ex03.png",
+    "html": "EcritureNombres_Tel.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_03_ex03.png",
+    "html": "EcritureNombres_EN_Tel.html"
+   }
+  },
+  {
+   "id": "06_ex09",
+   "actif": true,
+   "domaine": "francais",
+   "libelle": {
+    "fr": "Associer un nom commun à un nom propre",
+    "en": "Match a common noun to a proper noun"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_06_ex09.png",
+    "html": "associe_Lab_FR.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_06_ex09.png",
+    "html": "associe_Lab_EN.html"
+   }
+  },
+  {
+   "id": "08_ex13",
+   "actif": true,
+   "domaine": "francais",
+   "libelle": {
+    "fr": "Cacher l'intrus dans chaque liste",
+    "en": "Hide the odd one out in each list"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_08_ex13.png",
+    "html": "CacheIntrus.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_08_ex13.png",
+    "html": "CacheIntrus_EN.html"
+   }
+  },
+  {
+   "id": "13_ex14",
+   "actif": true,
+   "domaine": "francais",
+   "libelle": {
+    "fr": "Ajouter la majuscule et le point",
+    "en": "Add the capital letter and the full stop"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_13_ex14.png",
+    "html": "EditPhrase.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_13_ex14.png",
+    "html": "EditPhrase_EN.html"
+   }
+  },
+  {
+   "id": "14_ex31",
+   "actif": true,
+   "domaine": "maths",
+   "libelle": {
+    "fr": "Ranger des nombres du plus petit au plus grand",
+    "en": "Order numbers from smallest to largest"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_14_ex31.png",
+    "html": "GroupeEchange_Tel.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_14_ex31.png",
+    "html": "GroupeEchange_EN_Tel.html"
+   }
+  },
+  {
+   "id": "15_ex06",
+   "actif": true,
+   "domaine": "maths",
+   "libelle": {
+    "fr": "Poser et effectuer une addition",
+    "en": "Set out and solve an addition"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_15_ex06.png",
+    "html": "AdditionsPosees_Tel.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_15_ex06.png",
+    "html": "AdditionsPosees_EN_Tel.html"
+   }
+  },
+  {
+   "id": "16_ex10",
+   "actif": true,
+   "domaine": "francais",
+   "libelle": {
+    "fr": "Cliquer les noms communs singuliers",
+    "en": "Click the singular common nouns"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_16_ex10.png",
+    "html": "CliqueEcrire_1_court.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_16_ex10.png",
+    "html": "CliqueEcrire_1_EN_court.html"
+   }
+  },
+  {
+   "id": "CocheMots_Malin",
+   "actif": true,
+   "domaine": "francais",
+   "libelle": {
+    "fr": "Cliquer le verbe de chaque phrase",
+    "en": "Click the verb in each sentence"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_CocheMots_Malin.png",
+    "html": "CocheMots_Malin.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_CocheMots_EN_Malin.png",
+    "html": "CocheMots_EN_Malin.html"
+   }
+  },
+  {
+   "id": "CocheLettres",
+   "actif": true,
+   "domaine": "francais",
+   "libelle": {
+    "fr": "Colorier radical et suffixe d'adjectifs",
+    "en": "Colour the stem and suffix of adjectives"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_CocheLettres.png",
+    "html": "cochelettres_FR_Tel.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_CocheLettres.png",
+    "html": "cochelettres_EN_Tel.html"
+   }
+  },
+  {
+   "id": "09_ex07",
+   "actif": true,
+   "domaine": "francais",
+   "libelle": {
+    "fr": "Colorier les groupes nominaux (singulier, pluriel)",
+    "en": "Colour the noun phrases (singular, plural)"
+   },
+   "fr": {
+    "png": "bandes_exercices_originaux/FR/FR_09_ex07.png",
+    "html": "Classe.html"
+   },
+   "en": {
+    "png": "bandes_exercices_originaux/EN/EN_09_ex07.png",
+    "html": "Classe_EN.html"
+   }
+  }
+ ]
+}

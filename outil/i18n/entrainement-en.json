@@ -1,0 +1,333 @@
+{
+ "_meta": {
+  "lang": "en",
+  "version": "0.4.0",
+  "format": "id -> {text, context, status, version}"
+ },
+ "strings": {
+  "acc.1": {
+   "text": "All six participants are connected. Welcome them and give the instructions from the facilitation guide, then move on to the tutorial.",
+   "context": "Conseil au modérateur, phase d'accueil",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tuto.1": {
+   "text": "Present the vocabulary, show a placement on the calibration card (Demonstration step), then take the survey.",
+   "context": "Conseil au modérateur, tutoriel",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "rel.1": {
+   "text": "Computer, medium screen. I can read down to line 6, no zoom needed.",
+   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "rel.2": {
+   "text": "Tablet, small screen. Line 5. A 150% zoom would help.",
+   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "rel.3": {
+   "text": "Computer, large screen, line 7.",
+   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "rel.4": {
+   "text": "Computer, medium screen, line 6.",
+   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "rel.5": {
+   "text": "I'm on my phone, small screen. I can read down to line 3, I'd need 200% zoom.",
+   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "rel.6": {
+   "text": "Computer, medium screen, line 6.",
+   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "rel.c": {
+   "text": "Enter each participant's answers in the table, then move on to sorting.",
+   "context": "Conseil au modérateur, relevé",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t1.1": {
+   "text": "Setting out an addition means lining up digits in columns. For a pupil with dyspraxia, that is very demanding.",
+   "context": "Carte d'entraînement 1 (addition posée), réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t1.2": {
+   "text": "And you have to copy the numbers before calculating. I'd say Difficult.",
+   "context": "Carte d'entraînement 1, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t1.3": {
+   "text": "Difficult too.",
+   "context": "Carte d'entraînement 1, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t1.4": {
+   "text": "Agree with everyone: Difficult.",
+   "context": "Carte d'entraînement 1, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t1.c": {
+   "text": "Everyone agrees: one thumbnail is enough. Then ask the ritual question.",
+   "context": "Conseil au modérateur, carte 1",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t2.1": {
+   "text": "Ordering numbers, there is hardly anything to write. Easy.",
+   "context": "Carte d'entraînement 2 (ranger des nombres), réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t2.2": {
+   "text": "You still have to copy all the numbers in order. Medium for me.",
+   "context": "Carte d'entraînement 2, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t2.3": {
+   "text": "I agree with P4: Medium.",
+   "context": "Carte d'entraînement 2, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t2.4": {
+   "text": "I'd stay with Easy.",
+   "context": "Carte d'entraînement 2, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t2.5": {
+   "text": "Medium.",
+   "context": "Carte d'entraînement 2, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t2.c": {
+   "text": "Disagreement: you need a second thumbnail and the counts. Count who said what, among those present.",
+   "context": "Conseil au modérateur, carte 2",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t3.1": {
+   "text": "Copying the words, then underlining the stem and circling the suffix: too many fine movements. Without adaptation, it's impossible.",
+   "context": "Carte d'entraînement 3 (colorier radical et suffixe), réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t3.2": {
+   "text": "Impossible, I agree.",
+   "context": "Carte d'entraînement 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t3.3": {
+   "text": "Impossible.",
+   "context": "Carte d'entraînement 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t3.4": {
+   "text": "Impossible too.",
+   "context": "Carte d'entraînement 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t3.5": {
+   "text": "Yes, Impossible.",
+   "context": "Carte d'entraînement 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t4.1": {
+   "text": "Copying six whole sentences is long and exhausting for a pupil with dyspraxia. Difficult.",
+   "context": "Carte d'entraînement 4 (recopier et entourer le verbe), réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t4.2": {
+   "text": "Same as the previous card, isn't it? Where did we put that one?",
+   "context": "Carte d'entraînement 4, réplique piège (rappel d'un jugement précédent)",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t4.c1": {
+   "text": "Do not recall previous judgements: each card is judged on its own.",
+   "context": "Conseil au modérateur, carte 4",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t4.3": {
+   "text": "And then you still have to circle the verb neatly. Difficult.",
+   "context": "Carte d'entraînement 4, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t4.4": {
+   "text": "Difficult for me too.",
+   "context": "Carte d'entraînement 4, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t4.5": {
+   "text": "Difficult.",
+   "context": "Carte d'entraînement 4, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "t4.6": {
+   "text": "Fine, Difficult.",
+   "context": "Carte d'entraînement 4, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "d.c": {
+   "text": "The tool shows the cards judged Impossible first, then Difficult. Ask the prompt shown, listen, then go to the next card (N).",
+   "context": "Conseil au modérateur, discussion",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "d3.1": {
+   "text": "With the version where you click on the letters, there is no fine movement left.",
+   "context": "Discussion de la carte 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "d3.2": {
+   "text": "I'd make the letters even bigger.",
+   "context": "Discussion de la carte 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "d3.3": {
+   "text": "And the stem could be shown already separated from the suffix.",
+   "context": "Discussion de la carte 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "d1.1": {
+   "text": "The columns should already be drawn.",
+   "context": "Discussion de la carte 1, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "d1.2": {
+   "text": "Or one box per digit, so you can't pick the wrong column.",
+   "context": "Discussion de la carte 1, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "d4.1": {
+   "text": "In the adapted version, you click on the verb: nothing left to copy.",
+   "context": "Discussion de la carte 4, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "d4.2": {
+   "text": "The sentences just need a bit more space between them.",
+   "context": "Discussion de la carte 4, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "dx.1": {
+   "text": "I don't have much to add on this one.",
+   "context": "Discussion d'une autre carte, réplique générique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "j.c": {
+   "text": "Listen to where the group places the adaptation, move its thumbnail (arrows or keys 1 to 4), then confirm with Enter.",
+   "context": "Conseil au modérateur, jugement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "j3.1": {
+   "text": "With the adaptation, I'd put it in Medium.",
+   "context": "Jugement de la carte 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "j3.2": {
+   "text": "Yes, Medium, and even towards the Easy side.",
+   "context": "Jugement de la carte 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "j3.3": {
+   "text": "Agreed: Medium, on the easier side.",
+   "context": "Jugement de la carte 3, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "j1.1": {
+   "text": "The adaptation helps a bit, but it's still Difficult.",
+   "context": "Jugement de la carte 1, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "j1.2": {
+   "text": "Difficult, but less than before: on the easier side.",
+   "context": "Jugement de la carte 1, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "j4.1": {
+   "text": "With nothing to copy, I'd put it in Easy.",
+   "context": "Jugement de la carte 4, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "j4.2": {
+   "text": "Easy, yes. In the centre.",
+   "context": "Jugement de la carte 4, réplique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "jx.1": {
+   "text": "I'd leave it where it is.",
+   "context": "Jugement d'une autre carte, réplique générique",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "clo.1": {
+   "text": "Thank the participants, then end the session to see your review.",
+   "context": "Conseil au modérateur, clôture",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "inc.depart": {
+   "text": "P5 has left the video call.",
+   "context": "Incident simulé : départ d'un participant",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "inc.scene": {
+   "text": "The stage window has just closed.",
+   "context": "Incident simulé : fermeture de la scène",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "inc.save": {
+   "text": "The backup file is no longer responding.",
+   "context": "Incident simulé : échec de la sauvegarde",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  }
+ }
+}

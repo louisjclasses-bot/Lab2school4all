@@ -1,0 +1,25 @@
+/* Aide-mémoire : lisible à l'écran, tient sur une page A4 à l'impression. */
+:root { --ink: #14171f; --muted: #4b5563; --line: #d8dce3; --navy: #1d3a66; --edge: #5b6475; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #f3f4f6; color: var(--ink); font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+.memo { max-width: 1000px; margin: 16px auto; background: #fff; padding: 24px 28px; border: 1px solid var(--line); border-radius: 14px; }
+header { display: flex; align-items: flex-start; gap: 16px; border-bottom: 3px solid var(--navy); padding-bottom: 10px; margin-bottom: 14px; }
+header > div { flex: 1; } h1 { margin: 0; font-size: 24px; color: var(--navy); } .sub { margin: 2px 0 0; color: var(--muted); }
+nav { display: flex; gap: 8px; }
+nav a, nav button { font: inherit; font-weight: 700; min-height: 44px; padding: 8px 14px; border-radius: 10px; border: 2px solid var(--edge); background: #fff; color: var(--navy); text-decoration: none; display: inline-flex; align-items: center; cursor: pointer; }
+nav a[aria-current=page], nav button { background: var(--navy); border-color: var(--navy); color: #fff; }
+:focus-visible { outline: 3px solid #1a56db; outline-offset: 2px; }
+main { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+h2 { font-size: 16px; margin: 14px 0 6px; color: var(--navy); text-transform: uppercase; letter-spacing: .04em; } section > h2:first-child { margin-top: 0; }
+h3 { font-size: 14px; margin: 0 0 4px; color: var(--muted); }
+ol, ul { margin: 0; padding-left: 20px; } li { margin: 3px 0; }
+.keycols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+table { border-collapse: collapse; width: 100%; } th, td { text-align: left; vertical-align: top; padding: 3px 4px; border-bottom: 1px solid #e5e7eb; }
+.keys th { white-space: nowrap; width: 1%; } kbd { font-family: inherit; font-weight: 600; font-size: 12px; line-height: 1.5; border: 1px solid #9aa1ad; border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: #f3f4f6; margin-right: 2px; }
+.inc th { width: 42%; font-weight: 700; }
+@media (max-width: 760px) { main, .keycols { grid-template-columns: 1fr; } header { flex-wrap: wrap; } }
+@page { size: A4 portrait; margin: 12mm; }
+@media print {
+  body { background: #fff; font-size: 10.5pt; } .memo { margin: 0; border: 0; padding: 0; max-width: none; } .noprint { display: none; }
+  main { grid-template-columns: 1fr 1fr; gap: 16px; } .keycols { grid-template-columns: 1fr 1fr; } h1 { font-size: 18pt; } h2 { font-size: 11pt; }
+}

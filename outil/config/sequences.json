@@ -1,0 +1,517 @@
+{
+ "_meta": {
+  "generateur": "dev/make_sequences.py",
+  "methode": "williams_paires_inverses",
+  "design_seed": "lab2school4all-2027",
+  "cartes_actives": [
+   "01_ex12",
+   "03_ex03",
+   "06_ex09",
+   "08_ex13",
+   "13_ex14",
+   "14_ex31",
+   "15_ex06",
+   "16_ex10",
+   "CocheMots_Malin",
+   "CocheLettres",
+   "09_ex07"
+  ],
+  "cartes_hash": "37f6a788b389a2bc378a2f62e99051020a97592aa3b6dcecfbba9838483a69b1",
+  "usage": "Dans la configuration d'un FG : \"order_sequence\": \"S01\". L'outil vérifie que la séquence couvre exactement les cartes actives."
+ },
+ "sequences": {
+  "S01": [
+   "CocheLettres",
+   "09_ex07",
+   "16_ex10",
+   "14_ex31",
+   "06_ex09",
+   "08_ex13",
+   "15_ex06",
+   "03_ex03",
+   "13_ex14",
+   "01_ex12",
+   "CocheMots_Malin"
+  ],
+  "S02": [
+   "CocheMots_Malin",
+   "01_ex12",
+   "13_ex14",
+   "03_ex03",
+   "15_ex06",
+   "08_ex13",
+   "06_ex09",
+   "14_ex31",
+   "16_ex10",
+   "09_ex07",
+   "CocheLettres"
+  ],
+  "S03": [
+   "15_ex06",
+   "01_ex12",
+   "CocheLettres",
+   "13_ex14",
+   "16_ex10",
+   "CocheMots_Malin",
+   "14_ex31",
+   "06_ex09",
+   "09_ex07",
+   "08_ex13",
+   "03_ex03"
+  ],
+  "S04": [
+   "03_ex03",
+   "08_ex13",
+   "09_ex07",
+   "06_ex09",
+   "14_ex31",
+   "CocheMots_Malin",
+   "16_ex10",
+   "13_ex14",
+   "CocheLettres",
+   "01_ex12",
+   "15_ex06"
+  ],
+  "S05": [
+   "CocheMots_Malin",
+   "13_ex14",
+   "06_ex09",
+   "01_ex12",
+   "08_ex13",
+   "15_ex06",
+   "03_ex03",
+   "CocheLettres",
+   "09_ex07",
+   "16_ex10",
+   "14_ex31"
+  ],
+  "S06": [
+   "14_ex31",
+   "16_ex10",
+   "09_ex07",
+   "CocheLettres",
+   "03_ex03",
+   "15_ex06",
+   "08_ex13",
+   "01_ex12",
+   "06_ex09",
+   "13_ex14",
+   "CocheMots_Malin"
+  ],
+  "S07": [
+   "08_ex13",
+   "03_ex03",
+   "06_ex09",
+   "09_ex07",
+   "CocheMots_Malin",
+   "14_ex31",
+   "13_ex14",
+   "16_ex10",
+   "01_ex12",
+   "CocheLettres",
+   "15_ex06"
+  ],
+  "S08": [
+   "15_ex06",
+   "CocheLettres",
+   "01_ex12",
+   "16_ex10",
+   "13_ex14",
+   "14_ex31",
+   "CocheMots_Malin",
+   "09_ex07",
+   "06_ex09",
+   "03_ex03",
+   "08_ex13"
+  ],
+  "S09": [
+   "01_ex12",
+   "13_ex14",
+   "15_ex06",
+   "CocheMots_Malin",
+   "CocheLettres",
+   "06_ex09",
+   "16_ex10",
+   "08_ex13",
+   "14_ex31",
+   "03_ex03",
+   "09_ex07"
+  ],
+  "S10": [
+   "09_ex07",
+   "03_ex03",
+   "14_ex31",
+   "08_ex13",
+   "16_ex10",
+   "06_ex09",
+   "CocheLettres",
+   "CocheMots_Malin",
+   "15_ex06",
+   "13_ex14",
+   "01_ex12"
+  ],
+  "S11": [
+   "16_ex10",
+   "14_ex31",
+   "CocheLettres",
+   "09_ex07",
+   "15_ex06",
+   "03_ex03",
+   "01_ex12",
+   "08_ex13",
+   "13_ex14",
+   "06_ex09",
+   "CocheMots_Malin"
+  ],
+  "S12": [
+   "CocheMots_Malin",
+   "06_ex09",
+   "13_ex14",
+   "08_ex13",
+   "01_ex12",
+   "03_ex03",
+   "15_ex06",
+   "09_ex07",
+   "CocheLettres",
+   "14_ex31",
+   "16_ex10"
+  ],
+  "S13": [
+   "16_ex10",
+   "CocheLettres",
+   "14_ex31",
+   "15_ex06",
+   "09_ex07",
+   "01_ex12",
+   "03_ex03",
+   "13_ex14",
+   "08_ex13",
+   "CocheMots_Malin",
+   "06_ex09"
+  ],
+  "S14": [
+   "06_ex09",
+   "CocheMots_Malin",
+   "08_ex13",
+   "13_ex14",
+   "03_ex03",
+   "01_ex12",
+   "09_ex07",
+   "15_ex06",
+   "14_ex31",
+   "CocheLettres",
+   "16_ex10"
+  ],
+  "S15": [
+   "13_ex14",
+   "CocheMots_Malin",
+   "01_ex12",
+   "06_ex09",
+   "15_ex06",
+   "08_ex13",
+   "CocheLettres",
+   "03_ex03",
+   "16_ex10",
+   "09_ex07",
+   "14_ex31"
+  ],
+  "S16": [
+   "14_ex31",
+   "09_ex07",
+   "16_ex10",
+   "03_ex03",
+   "CocheLettres",
+   "08_ex13",
+   "15_ex06",
+   "06_ex09",
+   "01_ex12",
+   "CocheMots_Malin",
+   "13_ex14"
+  ],
+  "S17": [
+   "CocheLettres",
+   "16_ex10",
+   "15_ex06",
+   "14_ex31",
+   "01_ex12",
+   "09_ex07",
+   "13_ex14",
+   "03_ex03",
+   "CocheMots_Malin",
+   "08_ex13",
+   "06_ex09"
+  ],
+  "S18": [
+   "06_ex09",
+   "08_ex13",
+   "CocheMots_Malin",
+   "03_ex03",
+   "13_ex14",
+   "09_ex07",
+   "01_ex12",
+   "14_ex31",
+   "15_ex06",
+   "16_ex10",
+   "CocheLettres"
+  ],
+  "S19": [
+   "09_ex07",
+   "14_ex31",
+   "03_ex03",
+   "16_ex10",
+   "08_ex13",
+   "CocheLettres",
+   "06_ex09",
+   "15_ex06",
+   "CocheMots_Malin",
+   "01_ex12",
+   "13_ex14"
+  ],
+  "S20": [
+   "13_ex14",
+   "01_ex12",
+   "CocheMots_Malin",
+   "15_ex06",
+   "06_ex09",
+   "CocheLettres",
+   "08_ex13",
+   "16_ex10",
+   "03_ex03",
+   "14_ex31",
+   "09_ex07"
+  ],
+  "S21": [
+   "01_ex12",
+   "15_ex06",
+   "13_ex14",
+   "CocheLettres",
+   "CocheMots_Malin",
+   "16_ex10",
+   "06_ex09",
+   "14_ex31",
+   "08_ex13",
+   "09_ex07",
+   "03_ex03"
+  ],
+  "S22": [
+   "03_ex03",
+   "09_ex07",
+   "08_ex13",
+   "14_ex31",
+   "06_ex09",
+   "16_ex10",
+   "CocheMots_Malin",
+   "CocheLettres",
+   "13_ex14",
+   "15_ex06",
+   "01_ex12"
+  ],
+  "S23": [
+   "08_ex13",
+   "06_ex09",
+   "03_ex03",
+   "CocheMots_Malin",
+   "09_ex07",
+   "13_ex14",
+   "14_ex31",
+   "01_ex12",
+   "16_ex10",
+   "15_ex06",
+   "CocheLettres"
+  ],
+  "S24": [
+   "CocheLettres",
+   "15_ex06",
+   "16_ex10",
+   "01_ex12",
+   "14_ex31",
+   "13_ex14",
+   "09_ex07",
+   "CocheMots_Malin",
+   "03_ex03",
+   "06_ex09",
+   "08_ex13"
+  ]
+ },
+ "affectation": [
+  {
+   "sequence": "S01",
+   "country": "FR",
+   "population": "enseignants_ordinaires",
+   "slot": "a"
+  },
+  {
+   "sequence": "S02",
+   "country": "FR",
+   "population": "enseignants_ordinaires",
+   "slot": "b"
+  },
+  {
+   "sequence": "S03",
+   "country": "FR",
+   "population": "pop2",
+   "slot": "a"
+  },
+  {
+   "sequence": "S04",
+   "country": "FR",
+   "population": "pop2",
+   "slot": "b"
+  },
+  {
+   "sequence": "S05",
+   "country": "FR",
+   "population": "pop3",
+   "slot": "a"
+  },
+  {
+   "sequence": "S06",
+   "country": "FR",
+   "population": "pop3",
+   "slot": "b"
+  },
+  {
+   "sequence": "S07",
+   "country": "FR",
+   "population": "pop4",
+   "slot": "a"
+  },
+  {
+   "sequence": "S08",
+   "country": "FR",
+   "population": "pop4",
+   "slot": "b"
+  },
+  {
+   "sequence": "S09",
+   "country": "UK",
+   "population": "enseignants_ordinaires",
+   "slot": "a"
+  },
+  {
+   "sequence": "S10",
+   "country": "UK",
+   "population": "enseignants_ordinaires",
+   "slot": "b"
+  },
+  {
+   "sequence": "S11",
+   "country": "UK",
+   "population": "pop2",
+   "slot": "a"
+  },
+  {
+   "sequence": "S12",
+   "country": "UK",
+   "population": "pop2",
+   "slot": "b"
+  },
+  {
+   "sequence": "S13",
+   "country": "UK",
+   "population": "pop3",
+   "slot": "a"
+  },
+  {
+   "sequence": "S14",
+   "country": "UK",
+   "population": "pop3",
+   "slot": "b"
+  },
+  {
+   "sequence": "S15",
+   "country": "UK",
+   "population": "pop4",
+   "slot": "a"
+  },
+  {
+   "sequence": "S16",
+   "country": "UK",
+   "population": "pop4",
+   "slot": "b"
+  },
+  {
+   "sequence": "S17",
+   "country": "IE",
+   "population": "enseignants_ordinaires",
+   "slot": "a"
+  },
+  {
+   "sequence": "S18",
+   "country": "IE",
+   "population": "enseignants_ordinaires",
+   "slot": "b"
+  },
+  {
+   "sequence": "S19",
+   "country": "IE",
+   "population": "pop2",
+   "slot": "a"
+  },
+  {
+   "sequence": "S20",
+   "country": "IE",
+   "population": "pop2",
+   "slot": "b"
+  },
+  {
+   "sequence": "S21",
+   "country": "IE",
+   "population": "pop3",
+   "slot": "a"
+  },
+  {
+   "sequence": "S22",
+   "country": "IE",
+   "population": "pop3",
+   "slot": "b"
+  },
+  {
+   "sequence": "S23",
+   "country": "IE",
+   "population": "pop4",
+   "slot": "a"
+  },
+  {
+   "sequence": "S24",
+   "country": "IE",
+   "population": "pop4",
+   "slot": "b"
+  }
+ ],
+ "bilan": {
+  "cartes": 11,
+  "sequences": 24,
+  "paires_tirees_au_sort": 1,
+  "position_par_carte_min_max": [
+   2,
+   4
+  ],
+  "enchainements_min_max": [
+   2,
+   3
+  ],
+  "enchainements_absents": 0,
+  "ecart_max_position_moyenne": {
+   "cellule FR x enseignants_ordinaires": 0.0,
+   "cellule FR x pop2": 0.0,
+   "cellule FR x pop3": 0.0,
+   "cellule FR x pop4": 0.0,
+   "cellule UK x enseignants_ordinaires": 0.0,
+   "cellule UK x pop2": 0.0,
+   "cellule UK x pop3": 0.0,
+   "cellule UK x pop4": 0.0,
+   "cellule IE x enseignants_ordinaires": 0.0,
+   "cellule IE x pop2": 0.0,
+   "cellule IE x pop3": 0.0,
+   "cellule IE x pop4": 0.0,
+   "pays FR": 0.0,
+   "pays UK": 0.0,
+   "pays IE": 0.0,
+   "population enseignants_ordinaires": 0.0,
+   "population pop2": 0.0,
+   "population pop3": 0.0,
+   "population pop4": 0.0
+  }
+ }
+}

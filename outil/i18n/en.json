@@ -1,0 +1,2644 @@
+{
+ "_meta": {
+  "lang": "en",
+  "version": "0.1.0",
+  "format": "id -> {text, context, status, version}",
+  "statuses": "source | draft_translation | reviewed | adjudicated | final"
+ },
+ "strings": {
+  "app.title.console": {
+   "text": "Moderator console (FG lab2school4all)",
+   "context": "Titre de l'onglet de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "app.title.scene": {
+   "text": "Stage (FG lab2school4all)",
+   "context": "Titre de l'onglet de la scène partagée",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.phase": {
+   "text": "Phase: {name}",
+   "context": "Barre du haut. {name} = nom de la phase en cours",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.card": {
+   "text": "Card {n} of {total}",
+   "context": "Compteur d'avancement dans la phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.progress": {
+   "text": "Progress",
+   "context": "Bouton ouvrant le tableau d'avancement (console seulement)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.pause": {
+   "text": "Pause",
+   "context": "Bouton de pause des compteurs (pauses de 15 minutes)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.resume": {
+   "text": "Resume",
+   "context": "Bouton de fin de pause",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.incident": {
+   "text": "Technical incident",
+   "context": "Bouton qui journalise un incident technique avec l'heure",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.incident.logged": {
+   "text": "Incident logged at {at}",
+   "context": "Message bref après le clic sur le bouton d'incident. {at} = heure hh:mm:ss",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.preview": {
+   "text": "Stage preview",
+   "context": "Titre du bloc qui reproduit la scène sur la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.preview.adaptation": {
+   "text": "Adapted exercise (shown on the stage)",
+   "context": "Texte de remplacement dans l'aperçu : l'exercice adapté n'est affiché que sur la scène",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.present": {
+   "text": "Present",
+   "context": "Titre du bloc de présence des participants P1 à P6",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.present.n": {
+   "text": "{n} of {total}",
+   "context": "Nombre de présents",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.notes": {
+   "text": "Short notes",
+   "context": "Titre du bloc de notes",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.note.warn": {
+   "text": "Never enter names",
+   "context": "Avertissement RGPD affiché à côté de la zone de notes",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.note.ph": {
+   "text": "E.g. consensus after prompting",
+   "context": "Texte d'exemple dans la zone de notes",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.note.add": {
+   "text": "Add note",
+   "context": "Bouton d'ajout d'une note",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.note.saved": {
+   "text": "Note saved",
+   "context": "Message bref",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.ended": {
+   "text": "Session finished. The final file has been saved.",
+   "context": "Panneau de fin de séance",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.export.restricted": {
+   "text": "Export a copy without the notes",
+   "context": "Bouton de fin de séance : export restreint (les notes libres peuvent contenir des noms)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "key.enter": {
+   "text": "Enter",
+   "context": "Nom de la touche Entrée sur un bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "key.del": {
+   "text": "Del",
+   "context": "Nom de la touche Suppr sur un bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.curcard": {
+   "text": "Current card",
+   "context": "Titre du bloc de la carte en cours",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.internal": {
+   "text": "Internal ID: {id}",
+   "context": "Identifiant interne de la carte, console seulement (jamais sur la scène)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.nextphase": {
+   "text": "Next phase: {name}",
+   "context": "Bouton de passage à la phase suivante. {name} = nom de la phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "console.finish": {
+   "text": "End the session",
+   "context": "Bouton affiché à la dernière phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "phase.end": {
+   "text": "End of session",
+   "context": "Nom de l'étape après la dernière phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "phase.accueil": {
+   "text": "Welcome and instructions",
+   "context": "Nom de phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "phase.tutoriel": {
+   "text": "Tutorial and calibration",
+   "context": "Nom de phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "phase.tri": {
+   "text": "Sorting",
+   "context": "Nom de phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "phase.discussion": {
+   "text": "Selective discussion",
+   "context": "Nom de phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "phase.jugement": {
+   "text": "Judging the adaptations",
+   "context": "Nom de phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "phase.cloture": {
+   "text": "Closing",
+   "context": "Nom de phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "plain.hint.accueil": {
+   "text": "Welcome the participants and give the instructions (see the guide).",
+   "context": "Aide console pendant la phase d'accueil",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "plain.hint.cloture": {
+   "text": "Thank the participants and close the session (see the guide).",
+   "context": "Aide console pendant la phase de clôture",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.title.wait": {
+   "text": "Waiting for the session to start",
+   "context": "Titre de la scène avant le Go",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.title.tri": {
+   "text": "Sorting",
+   "context": "Titre de la scène pendant le tri",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.title.discussion": {
+   "text": "Discussion",
+   "context": "Titre de la scène pendant la discussion",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.title.jugement": {
+   "text": "Judging the adaptation",
+   "context": "Titre de la scène pendant le jugement des adaptations",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.title.tutoriel": {
+   "text": "Tutorial and calibration",
+   "context": "Titre de la scène pendant le tutoriel",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.title.plain.accueil": {
+   "text": "Welcome",
+   "context": "Titre de la scène à l'accueil",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.title.plain.cloture": {
+   "text": "Thank you",
+   "context": "Titre de la scène à la clôture",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.title.plain.end": {
+   "text": "Thank you",
+   "context": "Titre de la scène après la fin de la séance",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.wait.text": {
+   "text": "The session will start soon",
+   "context": "Texte central de la scène avant le Go",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.plain.text.accueil": {
+   "text": "We are about to begin",
+   "context": "Texte central de la scène à l'accueil",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.plain.text.cloture": {
+   "text": "Thank you for taking part",
+   "context": "Texte central de la scène à la clôture",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.plain.text.end": {
+   "text": "Thank you for taking part",
+   "context": "Texte central de la scène à la fin",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.easier": {
+   "text": "easier",
+   "context": "Légende des zones au jugement (côté gauche)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.harder": {
+   "text": "harder",
+   "context": "Légende des zones au jugement (côté droit)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.badge": {
+   "text": "{i}/{n}",
+   "context": "Badge d'une miniature quand la carte a plusieurs placements. {i} = numéro, {n} = total",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.badge.x": {
+   "text": "x{n}",
+   "context": "Badge d'empilement : {n} miniatures dans la même zone",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.tok.adapted": {
+   "text": "Adapted",
+   "context": "Étiquette de la miniature de l'exercice adapté",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.tok.original": {
+   "text": "Original",
+   "context": "Étiquette de la miniature de l'exercice original",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.validated": {
+   "text": "Confirmed",
+   "context": "Marque d'un placement adapté validé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.zoom": {
+   "text": "Zoom {n}%",
+   "context": "Texte du mini-plan pendant le zoom",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.frame.title": {
+   "text": "Adapted exercise",
+   "context": "Titre accessible de l'iframe de l'exercice",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "stage.empty": {
+   "text": "No card to deal with in this phase",
+   "context": "Scène quand la sélection est vide",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "case.facile": {
+   "text": "Easy",
+   "context": "Nom de la case 1",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "case.moyen": {
+   "text": "Medium",
+   "context": "Nom de la case 2",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "case.difficile": {
+   "text": "Difficult",
+   "context": "Nom de la case 3",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "case.impossible": {
+   "text": "Impossible",
+   "context": "Nom de la case 4 (libellé provisoire, voir DECISIONS_A_VALIDER)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "calib.line": {
+   "text": "The little cat sleeps on the sofa. 0123456789",
+   "context": "Phrase de la carte de calibration, répétée en 8 tailles",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "calib.grid": {
+   "text": "Fine grid",
+   "context": "Légende de la grille de la carte de calibration",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.title": {
+   "text": "Vocabulary",
+   "context": "Titre du panneau de vocabulaire du tutoriel",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.cases": {
+   "text": "The 4 boxes: Easy, Medium, Difficult, Impossible",
+   "context": "Vocabulaire du tutoriel",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.critere": {
+   "text": "The criterion: how difficult it is for a primary school pupil with dyspraxia",
+   "context": "Formulation provisoire du critère (à fixer dans le guide)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.miniature": {
+   "text": "The thumbnail: the small picture of the card placed in a box",
+   "context": "Vocabulaire du tutoriel",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.grande": {
+   "text": "The large card: the exercise shown at the top of the screen",
+   "context": "Vocabulaire du tutoriel",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.step.vocab": {
+   "text": "Vocabulary",
+   "context": "Étape 1 du tutoriel (console)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.step.demo": {
+   "text": "Demonstration",
+   "context": "Étape 2 du tutoriel (console)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.step.releve": {
+   "text": "Survey of equipment",
+   "context": "Étape 3 du tutoriel (console)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.console.vocab": {
+   "text": "Present the 4 boxes, the criterion, the thumbnail and the large card (see the guide).",
+   "context": "Aide console, étape vocabulaire",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.console.demo": {
+   "text": "Show a placement and a zoom on the calibration card.",
+   "context": "Aide console, étape démonstration",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tuto.console.releve": {
+   "text": "Each participant says their device and the smallest line they can read. Enter the answers below.",
+   "context": "Aide console, étape relevé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.p": {
+   "text": "Participant",
+   "context": "En-tête du tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.appareil": {
+   "text": "Device",
+   "context": "En-tête du tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.taille": {
+   "text": "Screen size",
+   "context": "En-tête du tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne": {
+   "text": "Smallest readable line",
+   "context": "En-tête du tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.zoom": {
+   "text": "Needs zoom",
+   "context": "En-tête du tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.todo": {
+   "text": "to record",
+   "context": "Valeur par défaut d'une liste du relevé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.appareil.ordinateur": {
+   "text": "Computer",
+   "context": "Type d'appareil du participant",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.appareil.tablette": {
+   "text": "Tablet",
+   "context": "Type d'appareil du participant",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.appareil.telephone": {
+   "text": "Phone",
+   "context": "Type d'appareil du participant",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.appareil.autre": {
+   "text": "Other",
+   "context": "Type d'appareil du participant",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.taille.petit": {
+   "text": "Small (under 13 in)",
+   "context": "Classe de taille d'écran (valeurs provisoires)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.taille.moyen": {
+   "text": "Medium (13 to 16 in)",
+   "context": "Classe de taille d'écran (valeurs provisoires)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.taille.grand": {
+   "text": "Large (over 16 in)",
+   "context": "Classe de taille d'écran (valeurs provisoires)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.taille.inconnu": {
+   "text": "Unknown",
+   "context": "Classe de taille d'écran (valeurs provisoires)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne.1": {
+   "text": "line 1",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne.2": {
+   "text": "line 2",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne.3": {
+   "text": "line 3",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne.4": {
+   "text": "line 4",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne.5": {
+   "text": "line 5",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne.6": {
+   "text": "line 6",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne.7": {
+   "text": "line 7",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne.8": {
+   "text": "line 8",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.ligne.aucune": {
+   "text": "none",
+   "context": "Aucune ligne lisible",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.zoom.non": {
+   "text": "No",
+   "context": "Pas de besoin de zoom",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.zoom.150": {
+   "text": "150%",
+   "context": "Zoom nécessaire",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.zoom.200": {
+   "text": "200%",
+   "context": "Zoom nécessaire",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "releve.note": {
+   "text": "The tool does not control the participants' displays: it only records them.",
+   "context": "Note sous le tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.token": {
+   "text": "Thumbnail {i}: {etat}",
+   "context": "Bouton de sélection d'une miniature. {i} = numéro, {etat} = case ou « non placée »",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "tri.unplaced": {
+   "text": "not placed",
+   "context": "État d'une miniature sans case",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.second": {
+   "text": "Second thumbnail",
+   "context": "Bouton qui prépare le placement d'une deuxième miniature",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.remove": {
+   "text": "Remove thumbnail",
+   "context": "Bouton de retrait d'une miniature",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.counts": {
+   "text": "Counts per box",
+   "context": "Titre du bloc des effectifs",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.abstention": {
+   "text": "Abstentions",
+   "context": "Libellé de la colonne des abstentions",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.minus": {
+   "text": "Minus one",
+   "context": "Nom accessible du bouton -",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.plus": {
+   "text": "Plus one",
+   "context": "Nom accessible du bouton +",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.total.ok": {
+   "text": "Total entered: {total} of {n} present",
+   "context": "Contrôle des effectifs : total conforme au nombre de présents",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.total.diff": {
+   "text": "Total entered: {total} of {n} present (to check)",
+   "context": "Contrôle des effectifs : total différent du nombre de présents",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.question.text": {
+   "text": "Question to ask: \"Would anyone place it somewhere else?\"",
+   "context": "Question rituelle (formulation EN à valider)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.question.done": {
+   "text": "Question asked",
+   "context": "Bouton de confirmation de la question rituelle",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.question.pending": {
+   "text": "Question not asked yet: \"Next card\" stays disabled.",
+   "context": "État avant confirmation de la question",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.question.confirmed": {
+   "text": "Question confirmed at {at}",
+   "context": "État après confirmation",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.question.skipped": {
+   "text": "Skipped without the question at {at} ({motif})",
+   "context": "État après exception. {motif} = motif choisi",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.next": {
+   "text": "Next card",
+   "context": "Bouton de passage à la carte suivante",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.finish": {
+   "text": "End the phase",
+   "context": "Bouton affiché sur la dernière carte",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.skipq": {
+   "text": "Skip without the question…",
+   "context": "Exception avec motif obligatoire",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "tri.skipcard": {
+   "text": "Skip the card…",
+   "context": "Saute la carte (consignée comme sautée, avec motif)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "disc.none": {
+   "text": "No card to deal with.",
+   "context": "Panneau de discussion ou de jugement sans carte sélectionnée",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "disc.detail": {
+   "text": "Count in Impossible: {imp}. Count in Difficult: {diff}.",
+   "context": "Détail de la sévérité de la carte discutée",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "disc.relance": {
+   "text": "Prompt: \"What would you have done differently, more or less?\"",
+   "context": "Relance du guide (formulation à valider)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.token": {
+   "text": "Adaptation {i}: {etat}",
+   "context": "Bouton de sélection d'une miniature adaptée. {i} = numéro, {etat} = case, zone et mention « validé »",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "juge.zone.0": {
+   "text": "(left)",
+   "context": "Zone gauche de la case, la plus facile",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.zone.1": {
+   "text": "(centre)",
+   "context": "Zone centre de la case",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.zone.2": {
+   "text": "(right)",
+   "context": "Zone droite de la case, la plus difficile",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.valid": {
+   "text": "confirmed",
+   "context": "Placement adapté validé",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.start.default": {
+   "text": "Default start: the position of the original.",
+   "context": "Indication console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.start.moved": {
+   "text": "Moved from the position of the original.",
+   "context": "Indication console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.left": {
+   "text": "Easier",
+   "context": "Décale la miniature adaptée d'une zone vers la gauche",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.right": {
+   "text": "Harder",
+   "context": "Décale la miniature adaptée d'une zone vers la droite",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.validate": {
+   "text": "Placement confirmed",
+   "context": "Valide explicitement le placement, même sans mouvement",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.dup": {
+   "text": "Duplicate",
+   "context": "Crée une seconde miniature adaptée au même endroit",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.undup": {
+   "text": "Remove duplicate",
+   "context": "Retire une miniature dupliquée",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.ghost.show": {
+   "text": "Show the marker",
+   "context": "Montre le repère fantôme aux participants",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.ghost.hide": {
+   "text": "Hide the marker",
+   "context": "Masque le repère fantôme sur la scène",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.ghost.on": {
+   "text": "The marker is visible to the participants.",
+   "context": "État du repère fantôme",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "juge.ghost.off": {
+   "text": "The marker is only visible on the console.",
+   "context": "État du repère fantôme",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "zoom.title": {
+   "text": "Stage zoom",
+   "context": "Titre du bloc de zoom",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "zoom.grid": {
+   "text": "Region grid",
+   "context": "Nom accessible de la grille 3 x 3",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "zoom.region": {
+   "text": "Region {n}",
+   "context": "Nom accessible d'une cellule de la grille 3 x 3",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "time.elapsed": {
+   "text": "Elapsed since Go",
+   "context": "Indicateur de temps écoulé (hh:mm)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "time.step": {
+   "text": "Current step",
+   "context": "Compte à rebours de l'étape",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "time.global": {
+   "text": "Total time",
+   "context": "Compte à rebours global",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "time.overfmt": {
+   "text": "+ {t}",
+   "context": "Dépassement. {t} = mm:ss",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "time.paused": {
+   "text": "Paused",
+   "context": "État des compteurs pendant une pause",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "time.lvl.ok": {
+   "text": "On time",
+   "context": "État du compteur",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "time.lvl.warn": {
+   "text": "Nearly at the limit",
+   "context": "État du compteur",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "time.lvl.over": {
+   "text": "Over time",
+   "context": "État du compteur au-delà de la limite",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.next.title": {
+   "text": "Go to the next phase?",
+   "context": "Titre de la confirmation",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.next.body": {
+   "text": "{n} card(s) have not been dealt with. They will be logged as not dealt with.",
+   "context": "Confirmation de passage de phase",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.next.ok": {
+   "text": "Next phase",
+   "context": "Bouton de confirmation",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.ok": {
+   "text": "OK",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.cancel": {
+   "text": "Cancel",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.confirm": {
+   "text": "Confirm",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.close": {
+   "text": "Close",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.motif": {
+   "text": "Reason:",
+   "context": "Invite du choix du motif",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.skipq": {
+   "text": "Skip without the question",
+   "context": "Titre de la boîte de dialogue",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "dlg.skipcard": {
+   "text": "Skip the card",
+   "context": "Titre de la boîte de dialogue",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "motif.temps": {
+   "text": "Lack of time",
+   "context": "Motif",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "motif.incident": {
+   "text": "Technical incident",
+   "context": "Motif",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "motif.autre": {
+   "text": "Other",
+   "context": "Motif",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.title": {
+   "text": "Sorting progress",
+   "context": "Titre du tableau d'avancement",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.h.n": {
+   "text": "Rank",
+   "context": "En-tête",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.h.card": {
+   "text": "Card",
+   "context": "En-tête",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.h.status": {
+   "text": "Status",
+   "context": "En-tête",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.h.placements": {
+   "text": "Placements",
+   "context": "En-tête",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.h.time": {
+   "text": "Time",
+   "context": "En-tête",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.st.todo": {
+   "text": "To do",
+   "context": "Statut d'une carte",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.st.current": {
+   "text": "In progress",
+   "context": "Statut d'une carte",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.st.done": {
+   "text": "Done",
+   "context": "Statut d'une carte",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "progress.st.skipped": {
+   "text": "Skipped",
+   "context": "Statut d'une carte",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "save.ok": {
+   "text": "Last save: {at}",
+   "context": "Indicateur de sauvegarde. {at} = hh:mm:ss",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "save.none": {
+   "text": "Nothing saved yet",
+   "context": "Indicateur de sauvegarde",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "save.error": {
+   "text": "ALERT: write failed ({msg})",
+   "context": "Alerte de sauvegarde (couleur et texte)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "save.stale": {
+   "text": "ALERT: nothing has been written for too long",
+   "context": "Alerte de sauvegarde en retard (couleur et texte)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "save.off": {
+   "text": "No backup file",
+   "context": "Indicateur de sauvegarde",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "save.mode.continu": {
+   "text": "continuous file",
+   "context": "Mode de sauvegarde",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "save.mode.degrade": {
+   "text": "degraded mode, snapshots",
+   "context": "Mode de sauvegarde",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "save.rechoose": {
+   "text": "Choose a new file",
+   "context": "Bouton à côté de l'indicateur de sauvegarde, en cours de séance, quand rien ne s'écrit (échec, autorisation refusée après une reprise). Le nouveau fichier reçoit tout le journal.",
+   "status": "draft_translation",
+   "version": "0.2.0"
+  },
+  "setup.steps": {
+   "text": "Before Go, in this order",
+   "context": "Titre de la partie des vérifications que le modérateur doit faire lui-même",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "setup.auto": {
+   "text": "Automatic checks",
+   "context": "Titre de la partie des vérifications faites par l'outil",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "check.link.share": {
+   "text": "Then share this window, and only this window, in the video call.",
+   "context": "Rappel sous l'étape d'ouverture de la scène",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "console.keys.title": {
+   "text": "Keys",
+   "context": "Titre du rappel des raccourcis clavier de la phase en cours",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.range": {
+   "text": "1 to 4",
+   "context": "Touche affichée : les chiffres 1 à 4",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.place": {
+   "text": "place",
+   "context": "Rappel des touches : action",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.second": {
+   "text": "second thumbnail",
+   "context": "Rappel des touches : action",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.cycle": {
+   "text": "next thumbnail",
+   "context": "Rappel des touches : action",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.remove": {
+   "text": "remove",
+   "context": "Rappel des touches : action",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.question": {
+   "text": "question asked",
+   "context": "Rappel des touches : action",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.next": {
+   "text": "next card",
+   "context": "Rappel des touches : action",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.zoom": {
+   "text": "zoom",
+   "context": "Rappel des touches : action",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.shift": {
+   "text": "shift",
+   "context": "Rappel des touches : action (flèches gauche et droite)",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.validate": {
+   "text": "validate",
+   "context": "Rappel des touches : action",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.dup": {
+   "text": "duplicate",
+   "context": "Rappel des touches : action",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "keyhelp.ghost": {
+   "text": "marker",
+   "context": "Rappel des touches : action (repère de l'original)",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "tri.total.none": {
+   "text": "Nothing entered: each box used will count as 1 participant.",
+   "context": "Effectifs : aucune saisie (règle des effectifs implicites)",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "console.nextphase.hint": {
+   "text": "When the phase is over:",
+   "context": "Texte devant le bouton de passage à la phase suivante",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "alert.scene": {
+   "text": "The stage is not connected: participants no longer see changes.",
+   "context": "Bandeau d'alerte en cours de séance",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "alert.save.hint": {
+   "text": "Nothing is lost: the log is still kept in this browser.",
+   "context": "Bandeau d'alerte de sauvegarde, sous le message d'échec",
+   "status": "draft_translation",
+   "version": "0.3.0"
+  },
+  "learn.title": {
+   "text": "Getting started",
+   "context": "Titre du bloc de l'écran de démarrage qui regroupe entraînement, présentation et aide-mémoire",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "learn.hint": {
+   "text": "Practise with a simulated focus group, without recording anything for the study.",
+   "context": "Texte sous le titre Prise en main",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "learn.train.fr": {
+   "text": "Practise in French",
+   "context": "Bouton qui lance l'entraînement en français",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "learn.train.en": {
+   "text": "Practise in English",
+   "context": "Bouton qui lance l'entraînement en anglais",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "learn.pres": {
+   "text": "Tool overview",
+   "context": "Lien vers la présentation animée (nouvel onglet)",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "learn.memo": {
+   "text": "Printable quick reference",
+   "context": "Lien vers l'aide-mémoire d'une page (nouvel onglet)",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.banner": {
+   "text": "TRAINING: simulated focus group, nothing is recorded for the study.",
+   "context": "Bandeau permanent en haut de la console pendant l'entraînement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.tour": {
+   "text": "Replay the tour",
+   "context": "Bouton du bandeau d'entraînement : relance la visite guidée de l'écran en cours",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.quit": {
+   "text": "Leave training",
+   "context": "Bouton du bandeau d'entraînement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.backup": {
+   "text": "training: nothing is written to disk",
+   "context": "Détail de la ligne Fichier de sauvegarde pendant l'entraînement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.panel": {
+   "text": "Simulated participants",
+   "context": "Titre du panneau des répliques des participants simulés",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.panel.empty": {
+   "text": "Lines will appear here as the session goes on.",
+   "context": "Panneau des participants simulés, vide",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.panel.more": {
+   "text": "More lines are coming…",
+   "context": "Panneau des participants simulés : il reste des répliques à afficher",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.tts": {
+   "text": "Read aloud",
+   "context": "Case à cocher : lecture vocale des répliques par le navigateur",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.coach": {
+   "text": "Tip",
+   "context": "Étiquette des conseils au modérateur dans le panneau des répliques",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.sys": {
+   "text": "System",
+   "context": "Étiquette des incidents simulés dans le panneau des répliques",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.bilan": {
+   "text": "Training review",
+   "context": "Titre du bilan affiché à la fin de l'entraînement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.bilan.score": {
+   "text": "{n} of {total} points achieved",
+   "context": "Résumé du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.restart": {
+   "text": "Start training again",
+   "context": "Bouton du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.ok": {
+   "text": "Achieved",
+   "context": "Texte d'état d'un point du bilan (accompagne une coche)",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.ko": {
+   "text": "To review",
+   "context": "Texte d'état d'un point du bilan (accompagne une croix)",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.info": {
+   "text": "For information",
+   "context": "Texte d'état d'un point d'information du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.releve": {
+   "text": "Equipment survey entered for {n} of {total} participants.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.tip.releve": {
+   "text": "In the tutorial, at the \"Survey of equipment\" step, enter at least each participant's device.",
+   "context": "Conseil du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.question": {
+   "text": "Ritual question confirmed for {n} of {total} cards.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.tip.question": {
+   "text": "Ask the question for every card, then \"Question asked\" (Q), before \"Next card\".",
+   "context": "Conseil du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.placements": {
+   "text": "Placements matching what the group said: {n} of {total} cards.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.mismatch": {
+   "text": "\"{card}\": {got} instead of {exp}.",
+   "context": "Détail d'un écart dans le bilan. {card} = nom de la carte",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.counts.ok": {
+   "text": "Disagreement counts entered correctly (\"{card}\").",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.counts.diff": {
+   "text": "Disagreement counts entered, but different from the views expressed (\"{card}\").",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.counts.none": {
+   "text": "Disagreement counts not entered (\"{card}\").",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.tip.counts": {
+   "text": "Expected, among those present: {exp}.",
+   "context": "Conseil du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.absent.ok": {
+   "text": "{p} leaving recorded in {s} s.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.absent.ko": {
+   "text": "{p} leaving not recorded in Present.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.tip.absent": {
+   "text": "When a participant leaves, click their name in Present: the counts depend on it.",
+   "context": "Conseil du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.scene.ok": {
+   "text": "Stage reopened in {s} s.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.scene.ko": {
+   "text": "Stage closed and never reopened.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.scene.never": {
+   "text": "The stage was not opened during training.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.tip.scene": {
+   "text": "Open the stage before Go; if it closes, the orange banner offers \"Open the stage\".",
+   "context": "Conseil du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.save.ok": {
+   "text": "Backup repaired in {s} s.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.save.ko": {
+   "text": "Backup alert left unanswered.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.tip.save": {
+   "text": "When the red banner appears, click \"Choose a new file\" (or \"Degraded mode\").",
+   "context": "Conseil du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.jugement": {
+   "text": "Adaptations placed where the group said: {n} of {total}.",
+   "context": "Point du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.time.ok": {
+   "text": "No phase went over time.",
+   "context": "Point d'information du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "train.b.time.over": {
+   "text": "Overruns: {list}. Overruns block nothing, but they shorten what follows.",
+   "context": "Point d'information du bilan",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "stage.training": {
+   "text": "TRAINING",
+   "context": "Étiquette en coin de la scène pendant l'entraînement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.progress": {
+   "text": "Guided tour · {n} of {total}",
+   "context": "En-tête de la bulle de visite guidée",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.prev": {
+   "text": "Previous",
+   "context": "Bouton de la visite guidée",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.next": {
+   "text": "Next",
+   "context": "Bouton de la visite guidée",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.done": {
+   "text": "Finish",
+   "context": "Bouton de la dernière étape de la visite guidée",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.close": {
+   "text": "Close the tour",
+   "context": "Bouton de fermeture de la visite guidée (aussi touche Échap)",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.setup.1": {
+   "text": "You are in training: participants are simulated and nothing is recorded for the study.",
+   "context": "Visite guidée, démarrage",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.setup.2": {
+   "text": "Step 1: open the stage. In a real session, then share this window, and only this window, in the video call.",
+   "context": "Visite guidée, démarrage",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.setup.3": {
+   "text": "Step 2: in a real session, choose the backup file here. For training, this is already done.",
+   "context": "Visite guidée, démarrage",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.setup.4": {
+   "text": "Step 3: start the audio recording, then set the sync mark.",
+   "context": "Visite guidée, démarrage",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.setup.5": {
+   "text": "When the steps are done, Go starts the session clock.",
+   "context": "Visite guidée, démarrage",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.run.1": {
+   "text": "Times are only shown on the console: elapsed since Go, current step, total time. An overrun is shown but blocks nothing.",
+   "context": "Visite guidée, séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.run.2": {
+   "text": "This is where the simulated participants' words appear, with a few tips. Read, then act in the console.",
+   "context": "Visite guidée, séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.run.3": {
+   "text": "Click a participant who leaves or comes back: the counts depend on it.",
+   "context": "Visite guidée, séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.run.4": {
+   "text": "Pause freezes the countdowns. Technical incident logs the time of an incident in one click.",
+   "context": "Visite guidée, séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.run.5": {
+   "text": "When the phase is over, move to the next one here.",
+   "context": "Visite guidée, séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.tuto.1": {
+   "text": "The tutorial has three steps: vocabulary, a placement demonstration, and each participant's equipment survey.",
+   "context": "Visite guidée, tutoriel",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.tuto.2": {
+   "text": "The preview shows what participants see on the shared stage.",
+   "context": "Visite guidée, tutoriel",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.tri.1": {
+   "text": "Place the thumbnail in the box the group names: keys 1 to 4, a click on a button or on a box in the preview.",
+   "context": "Visite guidée, tri",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.tri.2": {
+   "text": "If there is disagreement, add a second thumbnail (S), then enter the counts per box.",
+   "context": "Visite guidée, tri",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.tri.3": {
+   "text": "Ask the ritual question, then \"Question asked\" (Q). \"Next card\" (N) only unlocks after that.",
+   "context": "Visite guidée, tri",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.tri.4": {
+   "text": "If a participant cannot read well, zoom the large card and pick the region to enlarge.",
+   "context": "Visite guidée, tri",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.tri.5": {
+   "text": "The keys useful in this phase are listed here.",
+   "context": "Visite guidée, tri",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.disc.1": {
+   "text": "Cards to discuss come in order of severity: Impossible first, then Difficult.",
+   "context": "Visite guidée, discussion",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.disc.2": {
+   "text": "After the discussion, go to the next card (N).",
+   "context": "Visite guidée, discussion",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.jug.1": {
+   "text": "Each adapted thumbnail starts from the original's position.",
+   "context": "Visite guidée, jugement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.jug.2": {
+   "text": "Move it: left and right arrows for one zone, keys 1 to 4 for a box, or drag in the preview.",
+   "context": "Visite guidée, jugement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.jug.3": {
+   "text": "Confirm each adapted thumbnail (Enter). \"Next card\" unlocks when everything is confirmed.",
+   "context": "Visite guidée, jugement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.jug.4": {
+   "text": "The original's marker is visible on the console; R also shows it to participants.",
+   "context": "Visite guidée, jugement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.alert.1": {
+   "text": "A banner flags a problem during the session. The banner's button fixes it; nothing is lost in the meantime.",
+   "context": "Visite guidée, alerte",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "tour.fin.1": {
+   "text": "Your review: each point to review comes with a tip. You can start again as many times as you need.",
+   "context": "Visite guidée, fin",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.title": {
+   "text": "Tool overview",
+   "context": "Titre de la page de présentation animée",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.sub": {
+   "text": "Card handling tool, lab2school4all focus groups",
+   "context": "Sous-titre de la page de présentation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.prev": {
+   "text": "Previous",
+   "context": "Bouton de la présentation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.next": {
+   "text": "Next",
+   "context": "Bouton de la présentation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.play": {
+   "text": "Play",
+   "context": "Bouton de lecture automatique de la présentation (état arrêté)",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.pause": {
+   "text": "Pause",
+   "context": "Bouton de lecture automatique de la présentation (état en lecture)",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.step": {
+   "text": "Step {n} of {total}",
+   "context": "Compteur de la présentation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.goto": {
+   "text": "Go to step {n}: {title}",
+   "context": "Nom accessible des pastilles de navigation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.kb": {
+   "text": "Left and right arrows: previous or next step. Space: play or pause.",
+   "context": "Aide clavier sous la présentation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.video": {
+   "text": "Video (WebM)",
+   "context": "Lien de téléchargement de la vidéo de la présentation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.alt.console": {
+   "text": "Screenshot of the moderator console",
+   "context": "Texte de remplacement des captures de la console",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.alt.scene": {
+   "text": "Screenshot of the shared stage",
+   "context": "Texte de remplacement des captures de la scène",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.cap.console": {
+   "text": "Console (moderator)",
+   "context": "Légende sous une capture de la console",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.cap.scene": {
+   "text": "Stage (shared with participants)",
+   "context": "Légende sous une capture de la scène",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.01.t": {
+   "text": "Two windows",
+   "context": "Titre de l'étape 1 de la présentation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.01.b": {
+   "text": "The console stays with the moderator: it controls everything. The stage is the only window shared in the video call: participants only see the card and the four boxes.",
+   "context": "Présentation, texte de l'étape 1",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.02.t": {
+   "text": "Choose the focus group",
+   "context": "Titre de l'étape 2",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.02.b": {
+   "text": "At start, choose the day's FG. The tool loads the cards in the right language and runs its own checks: cards, presentation order, font, window.",
+   "context": "Présentation, texte de l'étape 2",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.03.t": {
+   "text": "Three steps before Go",
+   "context": "Titre de l'étape 3",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.03.b": {
+   "text": "1. Open the stage and share it. 2. Choose the backup file: the log is written to it continuously. 3. Start the audio recording and set the mark. Then Go.",
+   "context": "Présentation, texte de l'étape 3",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.04.t": {
+   "text": "Time, on the console only",
+   "context": "Titre de l'étape 4",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.04.b": {
+   "text": "After Go: elapsed time, step countdown and total time. An overrun is shown as \"+ mm:ss\" but blocks nothing. Pause freezes the countdowns.",
+   "context": "Présentation, texte de l'étape 4",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.05.t": {
+   "text": "Tutorial and calibration",
+   "context": "Titre de l'étape 5",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.05.b": {
+   "text": "Present the vocabulary, show a placement on the calibration card, then record each participant's device and smallest readable line.",
+   "context": "Présentation, texte de l'étape 5",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.06.t": {
+   "text": "Place the thumbnail",
+   "context": "Titre de l'étape 6",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.06.b": {
+   "text": "The group says which box the card goes in. Place the thumbnail: keys 1 to 4, a click, or drag in the preview. The four boxes are empty for every new card.",
+   "context": "Présentation, texte de l'étape 6",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.07.t": {
+   "text": "If there is disagreement",
+   "context": "Titre de l'étape 7",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.07.b": {
+   "text": "Add a second thumbnail (S) in the other box, then enter how many participants chose each box.",
+   "context": "Présentation, texte de l'étape 7",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.08.t": {
+   "text": "Ritual question, then next card",
+   "context": "Titre de l'étape 8",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.08.b": {
+   "text": "Ask \"Would anyone place it somewhere else?\", then \"Question asked\" (Q). \"Next card\" (N) only unlocks after that. There is no going back.",
+   "context": "Présentation, texte de l'étape 8",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.09.t": {
+   "text": "Zoom",
+   "context": "Titre de l'étape 9",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.09.b": {
+   "text": "If someone cannot read well, zoom the large card to 150 or 200% and choose the region. A mini-map shows participants which part is enlarged.",
+   "context": "Présentation, texte de l'étape 9",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.10.t": {
+   "text": "Selective discussion",
+   "context": "Titre de l'étape 10",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.10.b": {
+   "text": "Only cards placed in Difficult or Impossible are discussed, from most to least severe. The stage shows the adapted version of the exercise.",
+   "context": "Présentation, texte de l'étape 10",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.11.t": {
+   "text": "Judging the adaptations",
+   "context": "Titre de l'étape 11",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.11.b": {
+   "text": "The adaptation starts from the original's position. Move it as the group says (arrows for one zone, 1 to 4 for a box), then confirm with Enter.",
+   "context": "Présentation, texte de l'étape 11",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.12.t": {
+   "text": "Alerts and recovery",
+   "context": "Titre de l'étape 12",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.12.b": {
+   "text": "If the backup fails or the stage closes, a banner appears with the button that fixes it. After a crash, reopen the console: \"Resume\" carries on without losing anything.",
+   "context": "Présentation, texte de l'étape 12",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.13.t": {
+   "text": "End of session",
+   "context": "Titre de l'étape 13",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.13.b": {
+   "text": "\"End the session\" writes the final file. A copy without the notes can be exported for sharing.",
+   "context": "Présentation, texte de l'étape 13",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.14.t": {
+   "text": "Practise before the day",
+   "context": "Titre de l'étape 14",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "pres.14.b": {
+   "text": "From the start screen, \"Practise\" runs a simulated focus group: participants who speak, staged incidents, a guided tour and a review at the end. Nothing is recorded for the study.",
+   "context": "Présentation, texte de l'étape 14",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.title": {
+   "text": "Moderator quick reference",
+   "context": "Titre de l'aide-mémoire imprimable",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.sub": {
+   "text": "Card handling tool, version {v}",
+   "context": "Sous-titre de l'aide-mémoire",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.print": {
+   "text": "Print",
+   "context": "Bouton d'impression de l'aide-mémoire (masqué à l'impression)",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.before": {
+   "text": "Before Go",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.before.1": {
+   "text": "Choose the FG; check \"Cards loaded: 11 of 11\".",
+   "context": "Aide-mémoire, avant le Go",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.before.2": {
+   "text": "Open the stage, then share it alone in Zoom or Teams (never the console).",
+   "context": "Aide-mémoire, avant le Go",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.before.3": {
+   "text": "Choose the backup file (otherwise \"Degraded mode\").",
+   "context": "Aide-mémoire, avant le Go",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.before.4": {
+   "text": "Start the audio recording, then \"Set the mark\". Then Go.",
+   "context": "Aide-mémoire, avant le Go",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.keys": {
+   "text": "Keys",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.during": {
+   "text": "During the session",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.during.1": {
+   "text": "One card: place, then \"Question asked\" (Q), then \"Next card\" (N).",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.during.2": {
+   "text": "Disagreement: second thumbnail (S) and counts; the total equals those present.",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.during.3": {
+   "text": "Someone leaves or comes back: click the participant in Present.",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.during.4": {
+   "text": "Never recall previous judgements; never any name in the notes.",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.during.5": {
+   "text": "Times are only on the console; an overrun blocks nothing.",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.incidents": {
+   "text": "If something goes wrong",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.inc.scene": {
+   "text": "Orange banner, stage not connected",
+   "context": "Aide-mémoire : situation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.inc.scene.do": {
+   "text": "\"Open the stage\", then share the window again.",
+   "context": "Aide-mémoire : action",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.inc.save": {
+   "text": "Red backup ALERT banner",
+   "context": "Aide-mémoire : situation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.inc.save.do": {
+   "text": "\"Choose a new file\" (or \"Degraded mode\"). Nothing is lost.",
+   "context": "Aide-mémoire : action",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.inc.crash": {
+   "text": "The browser crashed",
+   "context": "Aide-mémoire : situation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.inc.crash.do": {
+   "text": "Reopen the console, \"Resume\", accept the permission, reopen the stage.",
+   "context": "Aide-mémoire : action",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.inc.tech": {
+   "text": "Drop-out, sound, sharing",
+   "context": "Aide-mémoire : situation",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.inc.tech.do": {
+   "text": "\"Technical incident\" logs the time; \"Pause\" if needed.",
+   "context": "Aide-mémoire : action",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.after": {
+   "text": "After the session",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.after.1": {
+   "text": "File the final file (and the copy without notes) in the FG folder.",
+   "context": "Aide-mémoire, après la séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.after.2": {
+   "text": "Report any warning seen at start to the team.",
+   "context": "Aide-mémoire, après la séance",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.phase.tri": {
+   "text": "Sorting",
+   "context": "Aide-mémoire : en-tête de colonne du tableau des touches",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "memo.phase.jug": {
+   "text": "Judging",
+   "context": "Aide-mémoire : en-tête de colonne du tableau des touches",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "save.mode.memoire": {
+   "text": "training, nothing is written",
+   "context": "Mode de sauvegarde affiché à côté de l'indicateur pendant l'entraînement",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "learn.sim.info": {
+   "text": "Simulated focus group: 4 cards, about 20 minutes, six simulated participants.",
+   "context": "Démarrage d'un entraînement : remplace le choix du focus group",
+   "status": "draft_translation",
+   "version": "0.4.0"
+  },
+  "scene.on": {
+   "text": "Stage connected",
+   "context": "Indicateur de liaison",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "scene.off": {
+   "text": "Stage not connected",
+   "context": "Indicateur de liaison",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "scene.reopen": {
+   "text": "Open the stage",
+   "context": "Bouton à côté de l'indicateur de liaison, en cours de séance, quand la scène n'est pas connectée (fenêtre fermée, reprise après plantage)",
+   "status": "draft_translation",
+   "version": "0.2.0"
+  },
+  "setup.title": {
+   "text": "Starting the session",
+   "context": "Titre du panneau de démarrage",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.nofg": {
+   "text": "No focus group",
+   "context": "Barre du haut avant le choix",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.fg": {
+   "text": "Focus group",
+   "context": "Étiquette de la liste",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.choose": {
+   "text": "Choose a focus group",
+   "context": "Option par défaut de la liste",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.loadfile": {
+   "text": "Load a configuration file",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.lang": {
+   "text": "Language of the stage and the console",
+   "context": "Étiquette",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.order": {
+   "text": "Card order",
+   "context": "Ligne du tableau de vérifications avant le Go",
+   "status": "draft_translation",
+   "version": "0.2.0"
+  },
+  "check.order.seq": {
+   "text": "Sequence {id} of the balanced plan",
+   "context": "Ordre pris dans config/sequences.json. {id} = identifiant de séquence, ex. S05",
+   "status": "draft_translation",
+   "version": "0.2.0"
+  },
+  "check.order.config": {
+   "text": "Order set in the FG configuration",
+   "context": "Ordre donné explicitement dans le fichier de configuration",
+   "status": "draft_translation",
+   "version": "0.2.0"
+  },
+  "check.order.seed": {
+   "text": "Shuffle from seed {seed}",
+   "context": "Ordre calculé à partir de la graine de la configuration",
+   "status": "draft_translation",
+   "version": "0.2.0"
+  },
+  "check.order.sequence_cartes_differentes": {
+   "text": "Sequence {id} does not match the active cards exactly: shuffle from seed {seed} used instead. Regenerate the sequences.",
+   "context": "Avertissement : le manifeste a changé depuis la génération des séquences",
+   "status": "draft_translation",
+   "version": "0.2.0"
+  },
+  "check.order.sequence_introuvable": {
+   "text": "Sequence {id} not found: shuffle from seed {seed} used instead.",
+   "context": "Avertissement : identifiant de séquence absent de config/sequences.json",
+   "status": "draft_translation",
+   "version": "0.2.0"
+  },
+  "check.order.ordre_cartes_differentes": {
+   "text": "The configured order does not match the active cards exactly: shuffle from seed {seed} used instead.",
+   "context": "Avertissement : ordre explicite incomplet ou en trop",
+   "status": "draft_translation",
+   "version": "0.2.0"
+  },
+  "setup.versions": {
+   "text": "Tool {tool} · Guide {guide}",
+   "context": "Versions affichées au démarrage",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.present": {
+   "text": "Present",
+   "context": "Étiquette",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.checks": {
+   "text": "Checks before the session",
+   "context": "Titre du panneau",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.miss.fg": {
+   "text": "choose a focus group",
+   "context": "Élément manquant avant le Go",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.miss.cards": {
+   "text": "load the cards",
+   "context": "Élément manquant avant le Go",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.miss.backup": {
+   "text": "choose the backup file",
+   "context": "Élément manquant avant le Go",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.blocked": {
+   "text": "Before Go: {what}.",
+   "context": "Message de blocage. {what} = liste des éléments manquants",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.ready": {
+   "text": "Everything is ready. You can press Go.",
+   "context": "Message de prêt",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.ready.noscene": {
+   "text": "Ready, but the stage is not open. Open it before Go.",
+   "context": "Message de prêt sans scène",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "setup.go": {
+   "text": "Go",
+   "context": "Bouton de début de séance",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.st.ok": {
+   "text": "OK",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.st.ko": {
+   "text": "Failed",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.st.todo": {
+   "text": "To do",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.st.warn": {
+   "text": "To check",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.st.wait": {
+   "text": "In progress",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.cards": {
+   "text": "Cards loaded",
+   "context": "Vérification",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.cards.loading": {
+   "text": "loading {n} of {total}",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.cards.none": {
+   "text": "no focus group chosen",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.cards.err": {
+   "text": "{n} card(s) failed: {ids}",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.cards.ok": {
+   "text": "{n} of {total}, versions recorded",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.arial": {
+   "text": "Arial font",
+   "context": "Vérification",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.arial.ok": {
+   "text": "available",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.arial.ko": {
+   "text": "not confirmed on this computer",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.display": {
+   "text": "Window and display",
+   "context": "Vérification",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.display.detail": {
+   "text": "{w} x {h}, pixel ratio {r}",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.store": {
+   "text": "Recovery save",
+   "context": "Vérification",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.store.ok": {
+   "text": "browser storage available, no interrupted session",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.store.resume": {
+   "text": "an unfinished session exists (see above)",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.backup": {
+   "text": "Backup file",
+   "context": "Vérification obligatoire avant le Go",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.backup.continu": {
+   "text": "continuous writing: {name}",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.backup.degrade.on": {
+   "text": "degraded mode: snapshots downloaded",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.backup.todo": {
+   "text": "required before Go",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.backup.choose": {
+   "text": "Choose the file",
+   "context": "Bouton (Chrome et Edge)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.backup.degrade": {
+   "text": "Degraded mode",
+   "context": "Bouton de choix explicite du mode dégradé (journalisé)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.backup.opfs": {
+   "text": "Test storage",
+   "context": "Bouton réservé au développement",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.sync": {
+   "text": "Audio sync mark",
+   "context": "Vérification",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.sync.done": {
+   "text": "set at {at}",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.sync.todo": {
+   "text": "to set when the recording starts",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.sync.btn": {
+   "text": "Set the mark",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.link": {
+   "text": "Stage and console link",
+   "context": "Vérification",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.link.ok": {
+   "text": "stage connected, same cards",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.link.diff": {
+   "text": "stage connected, cards differ",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.link.todo": {
+   "text": "open the stage",
+   "context": "Détail",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "check.link.open": {
+   "text": "Open the stage",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "resume.title": {
+   "text": "Unfinished session",
+   "context": "Titre du panneau de reprise",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "resume.info": {
+   "text": "{fg}: last record at {at}",
+   "context": "Ligne de reprise",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "resume.resume": {
+   "text": "Resume",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "resume.export": {
+   "text": "Export",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "resume.ignore": {
+   "text": "Ignore",
+   "context": "Bouton",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.deja_demarre": {
+   "text": "The session has already started",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.sauvegarde_requise": {
+   "text": "Choose the backup file first",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.pas_en_cours": {
+   "text": "The session is not running",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.pas_en_pause": {
+   "text": "The session is not paused",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.note_vide": {
+   "text": "The note is empty",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.question_requise": {
+   "text": "Confirm \"Question asked\" first",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.validation_requise": {
+   "text": "Confirm all the adapted placements first",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.motif_requis": {
+   "text": "A reason is required",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.pas_de_carte": {
+   "text": "No card in progress",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.pas_de_tri": {
+   "text": "Not available in this phase",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.case_inconnue": {
+   "text": "Unknown box",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.case_occupee": {
+   "text": "This box already holds a thumbnail of the card",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.trop_de_miniatures": {
+   "text": "Too many thumbnails",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.miniature_inconnue": {
+   "text": "Unknown thumbnail",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.effectifs_apres_deux": {
+   "text": "Counts are entered from two placements",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.placement_requis": {
+   "text": "Place the thumbnail first",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.question_deja": {
+   "text": "The question is already confirmed",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.zoom_invalide": {
+   "text": "Invalid zoom",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.pas_de_jugement": {
+   "text": "Not available in this phase",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.retrait_interdit": {
+   "text": "Only a duplicate can be removed",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.sauvegarde_fichier": {
+   "text": "Backup file not chosen",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "err.sauvegarde_reprise": {
+   "text": "Write permission refused: choose a new file",
+   "context": "Message d'erreur bref de la console",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "pop.enseignants_ordinaires": {
+   "text": "Mainstream teachers",
+   "context": "Population du FG (code de la configuration)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  },
+  "pop.teachers_mainstream": {
+   "text": "Mainstream teachers",
+   "context": "Population du FG (code de la configuration)",
+   "status": "draft_translation",
+   "version": "0.1.0"
+  }
+ }
+}

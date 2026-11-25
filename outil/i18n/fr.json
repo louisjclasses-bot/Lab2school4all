@@ -1,0 +1,2644 @@
+{
+ "_meta": {
+  "lang": "fr",
+  "version": "0.1.0",
+  "format": "id -> {text, context, status, version}",
+  "statuses": "source | draft_translation | reviewed | adjudicated | final"
+ },
+ "strings": {
+  "app.title.console": {
+   "text": "Console du modérateur (FG lab2school4all)",
+   "context": "Titre de l'onglet de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "app.title.scene": {
+   "text": "Scène (FG lab2school4all)",
+   "context": "Titre de l'onglet de la scène partagée",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.phase": {
+   "text": "Phase : {name}",
+   "context": "Barre du haut. {name} = nom de la phase en cours",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.card": {
+   "text": "Carte {n} sur {total}",
+   "context": "Compteur d'avancement dans la phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.progress": {
+   "text": "Avancement",
+   "context": "Bouton ouvrant le tableau d'avancement (console seulement)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.pause": {
+   "text": "Pause",
+   "context": "Bouton de pause des compteurs (pauses de 15 minutes)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.resume": {
+   "text": "Reprendre",
+   "context": "Bouton de fin de pause",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.incident": {
+   "text": "Incident technique",
+   "context": "Bouton qui journalise un incident technique avec l'heure",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.incident.logged": {
+   "text": "Incident enregistré à {at}",
+   "context": "Message bref après le clic sur le bouton d'incident. {at} = heure hh:mm:ss",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.preview": {
+   "text": "Aperçu de la scène",
+   "context": "Titre du bloc qui reproduit la scène sur la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.preview.adaptation": {
+   "text": "Adaptation (affichée sur la scène)",
+   "context": "Texte de remplacement dans l'aperçu : l'exercice adapté n'est affiché que sur la scène",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.present": {
+   "text": "Présents",
+   "context": "Titre du bloc de présence des participants P1 à P6",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.present.n": {
+   "text": "{n} sur {total}",
+   "context": "Nombre de présents",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.notes": {
+   "text": "Notes brèves",
+   "context": "Titre du bloc de notes",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.note.warn": {
+   "text": "Ne jamais saisir de noms",
+   "context": "Avertissement RGPD affiché à côté de la zone de notes",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.note.ph": {
+   "text": "Ex. : consensus après relance",
+   "context": "Texte d'exemple dans la zone de notes",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.note.add": {
+   "text": "Ajouter la note",
+   "context": "Bouton d'ajout d'une note",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.note.saved": {
+   "text": "Note enregistrée",
+   "context": "Message bref",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.ended": {
+   "text": "Séance terminée. Le fichier final a été enregistré.",
+   "context": "Panneau de fin de séance",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.export.restricted": {
+   "text": "Exporter une copie sans les notes",
+   "context": "Bouton de fin de séance : export restreint (les notes libres peuvent contenir des noms)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "key.enter": {
+   "text": "Entrée",
+   "context": "Nom de la touche Entrée sur un bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "key.del": {
+   "text": "Suppr",
+   "context": "Nom de la touche Suppr sur un bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.curcard": {
+   "text": "Carte courante",
+   "context": "Titre du bloc de la carte en cours",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.internal": {
+   "text": "ID interne : {id}",
+   "context": "Identifiant interne de la carte, console seulement (jamais sur la scène)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.nextphase": {
+   "text": "Phase suivante : {name}",
+   "context": "Bouton de passage à la phase suivante. {name} = nom de la phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "console.finish": {
+   "text": "Terminer la séance",
+   "context": "Bouton affiché à la dernière phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "phase.end": {
+   "text": "Fin de séance",
+   "context": "Nom de l'étape après la dernière phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "phase.accueil": {
+   "text": "Accueil et consignes",
+   "context": "Nom de phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "phase.tutoriel": {
+   "text": "Tutoriel et calibration",
+   "context": "Nom de phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "phase.tri": {
+   "text": "Tri",
+   "context": "Nom de phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "phase.discussion": {
+   "text": "Discussion sélective",
+   "context": "Nom de phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "phase.jugement": {
+   "text": "Jugement des adaptations",
+   "context": "Nom de phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "phase.cloture": {
+   "text": "Clôture",
+   "context": "Nom de phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "plain.hint.accueil": {
+   "text": "Accueillir les participants et donner les consignes (voir le guide).",
+   "context": "Aide console pendant la phase d'accueil",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "plain.hint.cloture": {
+   "text": "Remercier les participants et clore la séance (voir le guide).",
+   "context": "Aide console pendant la phase de clôture",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.title.wait": {
+   "text": "En attente du début de la séance",
+   "context": "Titre de la scène avant le Go",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.title.tri": {
+   "text": "Tri",
+   "context": "Titre de la scène pendant le tri",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.title.discussion": {
+   "text": "Discussion",
+   "context": "Titre de la scène pendant la discussion",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.title.jugement": {
+   "text": "Jugement de l'adaptation",
+   "context": "Titre de la scène pendant le jugement des adaptations",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.title.tutoriel": {
+   "text": "Tutoriel et calibration",
+   "context": "Titre de la scène pendant le tutoriel",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.title.plain.accueil": {
+   "text": "Bienvenue",
+   "context": "Titre de la scène à l'accueil",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.title.plain.cloture": {
+   "text": "Merci",
+   "context": "Titre de la scène à la clôture",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.title.plain.end": {
+   "text": "Merci",
+   "context": "Titre de la scène après la fin de la séance",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.wait.text": {
+   "text": "La séance va bientôt commencer",
+   "context": "Texte central de la scène avant le Go",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.plain.text.accueil": {
+   "text": "Nous allons commencer",
+   "context": "Texte central de la scène à l'accueil",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.plain.text.cloture": {
+   "text": "Merci de votre participation",
+   "context": "Texte central de la scène à la clôture",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.plain.text.end": {
+   "text": "Merci de votre participation",
+   "context": "Texte central de la scène à la fin",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.easier": {
+   "text": "plus facile",
+   "context": "Légende des zones au jugement (côté gauche)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.harder": {
+   "text": "plus difficile",
+   "context": "Légende des zones au jugement (côté droit)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.badge": {
+   "text": "{i}/{n}",
+   "context": "Badge d'une miniature quand la carte a plusieurs placements. {i} = numéro, {n} = total",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.badge.x": {
+   "text": "x{n}",
+   "context": "Badge d'empilement : {n} miniatures dans la même zone",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.tok.adapted": {
+   "text": "Adapté",
+   "context": "Étiquette de la miniature de l'exercice adapté",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.tok.original": {
+   "text": "Original",
+   "context": "Étiquette de la miniature de l'exercice original",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.validated": {
+   "text": "Validé",
+   "context": "Marque d'un placement adapté validé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.zoom": {
+   "text": "Zoom {n} %",
+   "context": "Texte du mini-plan pendant le zoom",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.frame.title": {
+   "text": "Exercice adapté",
+   "context": "Titre accessible de l'iframe de l'exercice",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "stage.empty": {
+   "text": "Aucune carte à traiter dans cette phase",
+   "context": "Scène quand la sélection est vide",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "case.facile": {
+   "text": "Facile",
+   "context": "Nom de la case 1",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "case.moyen": {
+   "text": "Moyen",
+   "context": "Nom de la case 2",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "case.difficile": {
+   "text": "Difficile",
+   "context": "Nom de la case 3",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "case.impossible": {
+   "text": "Impossible",
+   "context": "Nom de la case 4 (libellé provisoire, voir DECISIONS_A_VALIDER)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "calib.line": {
+   "text": "Le petit chat dort sur le canapé. 0123456789",
+   "context": "Phrase de la carte de calibration, répétée en 8 tailles",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "calib.grid": {
+   "text": "Grille fine",
+   "context": "Légende de la grille de la carte de calibration",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.title": {
+   "text": "Vocabulaire",
+   "context": "Titre du panneau de vocabulaire du tutoriel",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.cases": {
+   "text": "Les 4 cases : Facile, Moyen, Difficile, Impossible",
+   "context": "Vocabulaire du tutoriel",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.critere": {
+   "text": "Le critère : la difficulté pour un élève dyspraxique de primaire",
+   "context": "Formulation provisoire du critère (à fixer dans le guide)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.miniature": {
+   "text": "La miniature : la petite image de la carte que l'on place dans une case",
+   "context": "Vocabulaire du tutoriel",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.vocab.grande": {
+   "text": "La grande carte : l'exercice affiché en haut de l'écran",
+   "context": "Vocabulaire du tutoriel",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.step.vocab": {
+   "text": "Vocabulaire",
+   "context": "Étape 1 du tutoriel (console)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.step.demo": {
+   "text": "Démonstration",
+   "context": "Étape 2 du tutoriel (console)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.step.releve": {
+   "text": "Relevé",
+   "context": "Étape 3 du tutoriel (console)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.console.vocab": {
+   "text": "Présenter les 4 cases, le critère, la miniature et la grande carte (voir le guide).",
+   "context": "Aide console, étape vocabulaire",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.console.demo": {
+   "text": "Montrer un placement et un zoom sur la carte de calibration.",
+   "context": "Aide console, étape démonstration",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tuto.console.releve": {
+   "text": "Chaque participant dit son appareil et la plus petite ligne lisible. Saisir le relevé ci-dessous.",
+   "context": "Aide console, étape relevé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.p": {
+   "text": "Participant",
+   "context": "En-tête du tableau de relevé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.appareil": {
+   "text": "Appareil",
+   "context": "En-tête du tableau de relevé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.taille": {
+   "text": "Taille d'écran",
+   "context": "En-tête du tableau de relevé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne": {
+   "text": "Plus petite ligne lisible",
+   "context": "En-tête du tableau de relevé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.zoom": {
+   "text": "Besoin de zoom",
+   "context": "En-tête du tableau de relevé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.todo": {
+   "text": "à relever",
+   "context": "Valeur par défaut d'une liste du relevé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.appareil.ordinateur": {
+   "text": "Ordinateur",
+   "context": "Type d'appareil du participant",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.appareil.tablette": {
+   "text": "Tablette",
+   "context": "Type d'appareil du participant",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.appareil.telephone": {
+   "text": "Téléphone",
+   "context": "Type d'appareil du participant",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.appareil.autre": {
+   "text": "Autre",
+   "context": "Type d'appareil du participant",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.taille.petit": {
+   "text": "Petit (sous 13 po)",
+   "context": "Classe de taille d'écran (valeurs provisoires)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.taille.moyen": {
+   "text": "Moyen (13 à 16 po)",
+   "context": "Classe de taille d'écran (valeurs provisoires)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.taille.grand": {
+   "text": "Grand (plus de 16 po)",
+   "context": "Classe de taille d'écran (valeurs provisoires)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.taille.inconnu": {
+   "text": "Inconnu",
+   "context": "Classe de taille d'écran (valeurs provisoires)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne.1": {
+   "text": "ligne 1",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne.2": {
+   "text": "ligne 2",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne.3": {
+   "text": "ligne 3",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne.4": {
+   "text": "ligne 4",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne.5": {
+   "text": "ligne 5",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne.6": {
+   "text": "ligne 6",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne.7": {
+   "text": "ligne 7",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne.8": {
+   "text": "ligne 8",
+   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.ligne.aucune": {
+   "text": "aucune",
+   "context": "Aucune ligne lisible",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.zoom.non": {
+   "text": "Non",
+   "context": "Pas de besoin de zoom",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.zoom.150": {
+   "text": "150 %",
+   "context": "Zoom nécessaire",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.zoom.200": {
+   "text": "200 %",
+   "context": "Zoom nécessaire",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "releve.note": {
+   "text": "L'outil ne contrôle pas l'affichage des participants : il le renseigne.",
+   "context": "Note sous le tableau de relevé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.token": {
+   "text": "Miniature {i} : {etat}",
+   "context": "Bouton de sélection d'une miniature. {i} = numéro, {etat} = case ou « non placée »",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "tri.unplaced": {
+   "text": "non placée",
+   "context": "État d'une miniature sans case",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.second": {
+   "text": "Seconde miniature",
+   "context": "Bouton qui prépare le placement d'une deuxième miniature",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.remove": {
+   "text": "Retirer la miniature",
+   "context": "Bouton de retrait d'une miniature",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.counts": {
+   "text": "Effectifs par case",
+   "context": "Titre du bloc des effectifs",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.abstention": {
+   "text": "Abstentions",
+   "context": "Libellé de la colonne des abstentions",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.minus": {
+   "text": "Moins un",
+   "context": "Nom accessible du bouton -",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.plus": {
+   "text": "Plus un",
+   "context": "Nom accessible du bouton +",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.total.ok": {
+   "text": "Total saisi : {total} sur {n} présents",
+   "context": "Contrôle des effectifs : total conforme au nombre de présents",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.total.diff": {
+   "text": "Total saisi : {total} sur {n} présents (à vérifier)",
+   "context": "Contrôle des effectifs : total différent du nombre de présents",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.question.text": {
+   "text": "Question à poser : « Quelqu'un la placerait-il ailleurs ? »",
+   "context": "Question rituelle (formulation EN à valider)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.question.done": {
+   "text": "Question posée",
+   "context": "Bouton de confirmation de la question rituelle",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.question.pending": {
+   "text": "Question pas encore posée : « Carte suivante » reste désactivé.",
+   "context": "État avant confirmation de la question",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.question.confirmed": {
+   "text": "Question confirmée à {at}",
+   "context": "État après confirmation",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.question.skipped": {
+   "text": "Passée sans la question à {at} ({motif})",
+   "context": "État après exception. {motif} = motif choisi",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.next": {
+   "text": "Carte suivante",
+   "context": "Bouton de passage à la carte suivante",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.finish": {
+   "text": "Terminer la phase",
+   "context": "Bouton affiché sur la dernière carte",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.skipq": {
+   "text": "Passer sans la question…",
+   "context": "Exception avec motif obligatoire",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "tri.skipcard": {
+   "text": "Sauter la carte…",
+   "context": "Saute la carte (consignée comme sautée, avec motif)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "disc.none": {
+   "text": "Aucune carte à traiter.",
+   "context": "Panneau de discussion ou de jugement sans carte sélectionnée",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "disc.detail": {
+   "text": "Effectif en Impossible : {imp}. Effectif en Difficile : {diff}.",
+   "context": "Détail de la sévérité de la carte discutée",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "disc.relance": {
+   "text": "Relance : « Qu'auriez-vous fait différemment, davantage ou moins ? »",
+   "context": "Relance du guide (formulation à valider)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.token": {
+   "text": "Adaptation {i} : {etat}",
+   "context": "Bouton de sélection d'une miniature adaptée. {i} = numéro, {etat} = case, zone et mention « validé »",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "juge.zone.0": {
+   "text": "(gauche)",
+   "context": "Zone gauche de la case, la plus facile",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.zone.1": {
+   "text": "(centre)",
+   "context": "Zone centre de la case",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.zone.2": {
+   "text": "(droite)",
+   "context": "Zone droite de la case, la plus difficile",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.valid": {
+   "text": "validé",
+   "context": "Placement adapté validé",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.start.default": {
+   "text": "Départ par défaut : la position de l'original.",
+   "context": "Indication console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.start.moved": {
+   "text": "Déplacée depuis la position de l'original.",
+   "context": "Indication console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.left": {
+   "text": "Plus facile",
+   "context": "Décale la miniature adaptée d'une zone vers la gauche",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.right": {
+   "text": "Plus difficile",
+   "context": "Décale la miniature adaptée d'une zone vers la droite",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.validate": {
+   "text": "Placement validé",
+   "context": "Valide explicitement le placement, même sans mouvement",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.dup": {
+   "text": "Dupliquer",
+   "context": "Crée une seconde miniature adaptée au même endroit",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.undup": {
+   "text": "Retirer le doublon",
+   "context": "Retire une miniature dupliquée",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.ghost.show": {
+   "text": "Montrer le repère",
+   "context": "Montre le repère fantôme aux participants",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.ghost.hide": {
+   "text": "Masquer le repère",
+   "context": "Masque le repère fantôme sur la scène",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.ghost.on": {
+   "text": "Le repère est visible des participants.",
+   "context": "État du repère fantôme",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "juge.ghost.off": {
+   "text": "Le repère n'est visible que sur la console.",
+   "context": "État du repère fantôme",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "zoom.title": {
+   "text": "Zoom de la scène",
+   "context": "Titre du bloc de zoom",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "zoom.grid": {
+   "text": "Grille de régions",
+   "context": "Nom accessible de la grille 3 x 3",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "zoom.region": {
+   "text": "Région {n}",
+   "context": "Nom accessible d'une cellule de la grille 3 x 3",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "time.elapsed": {
+   "text": "Écoulé depuis le Go",
+   "context": "Indicateur de temps écoulé (hh:mm)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "time.step": {
+   "text": "Étape en cours",
+   "context": "Compte à rebours de l'étape",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "time.global": {
+   "text": "Temps global",
+   "context": "Compte à rebours global",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "time.overfmt": {
+   "text": "+ {t}",
+   "context": "Dépassement. {t} = mm:ss",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "time.paused": {
+   "text": "En pause",
+   "context": "État des compteurs pendant une pause",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "time.lvl.ok": {
+   "text": "Dans les temps",
+   "context": "État du compteur",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "time.lvl.warn": {
+   "text": "Bientôt la limite",
+   "context": "État du compteur",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "time.lvl.over": {
+   "text": "Dépassement",
+   "context": "État du compteur au-delà de la limite",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.next.title": {
+   "text": "Passer à la phase suivante ?",
+   "context": "Titre de la confirmation",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.next.body": {
+   "text": "{n} carte(s) ne sont pas traitées. Elles seront consignées comme non traitées.",
+   "context": "Confirmation de passage de phase",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.next.ok": {
+   "text": "Phase suivante",
+   "context": "Bouton de confirmation",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.ok": {
+   "text": "OK",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.cancel": {
+   "text": "Annuler",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.confirm": {
+   "text": "Confirmer",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.close": {
+   "text": "Fermer",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.motif": {
+   "text": "Motif :",
+   "context": "Invite du choix du motif",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.skipq": {
+   "text": "Passer sans la question",
+   "context": "Titre de la boîte de dialogue",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "dlg.skipcard": {
+   "text": "Sauter la carte",
+   "context": "Titre de la boîte de dialogue",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "motif.temps": {
+   "text": "Manque de temps",
+   "context": "Motif",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "motif.incident": {
+   "text": "Incident technique",
+   "context": "Motif",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "motif.autre": {
+   "text": "Autre",
+   "context": "Motif",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.title": {
+   "text": "Avancement du tri",
+   "context": "Titre du tableau d'avancement",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.h.n": {
+   "text": "Rang",
+   "context": "En-tête",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.h.card": {
+   "text": "Carte",
+   "context": "En-tête",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.h.status": {
+   "text": "Statut",
+   "context": "En-tête",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.h.placements": {
+   "text": "Placements",
+   "context": "En-tête",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.h.time": {
+   "text": "Durée",
+   "context": "En-tête",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.st.todo": {
+   "text": "À faire",
+   "context": "Statut d'une carte",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.st.current": {
+   "text": "En cours",
+   "context": "Statut d'une carte",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.st.done": {
+   "text": "Traitée",
+   "context": "Statut d'une carte",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "progress.st.skipped": {
+   "text": "Sautée",
+   "context": "Statut d'une carte",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "save.ok": {
+   "text": "Dernière sauvegarde : {at}",
+   "context": "Indicateur de sauvegarde. {at} = hh:mm:ss",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "save.none": {
+   "text": "Aucune sauvegarde écrite pour l'instant",
+   "context": "Indicateur de sauvegarde",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "save.error": {
+   "text": "ALERTE : échec d'écriture ({msg})",
+   "context": "Alerte de sauvegarde (couleur et texte)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "save.stale": {
+   "text": "ALERTE : rien n'a été écrit depuis trop longtemps",
+   "context": "Alerte de sauvegarde en retard (couleur et texte)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "save.off": {
+   "text": "Pas de fichier de sauvegarde",
+   "context": "Indicateur de sauvegarde",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "save.mode.continu": {
+   "text": "fichier continu",
+   "context": "Mode de sauvegarde",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "save.mode.degrade": {
+   "text": "mode dégradé, instantanés",
+   "context": "Mode de sauvegarde",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "save.rechoose": {
+   "text": "Choisir un nouveau fichier",
+   "context": "Bouton à côté de l'indicateur de sauvegarde, en cours de séance, quand rien ne s'écrit (échec, autorisation refusée après une reprise). Le nouveau fichier reçoit tout le journal.",
+   "status": "source",
+   "version": "0.2.0"
+  },
+  "setup.steps": {
+   "text": "Avant le Go, dans cet ordre",
+   "context": "Titre de la partie des vérifications que le modérateur doit faire lui-même",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "setup.auto": {
+   "text": "Contrôles automatiques",
+   "context": "Titre de la partie des vérifications faites par l'outil",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "check.link.share": {
+   "text": "Partager ensuite cette fenêtre, et seulement elle, dans la visioconférence.",
+   "context": "Rappel sous l'étape d'ouverture de la scène",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "console.keys.title": {
+   "text": "Touches",
+   "context": "Titre du rappel des raccourcis clavier de la phase en cours",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.range": {
+   "text": "1 à 4",
+   "context": "Touche affichée : les chiffres 1 à 4",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.place": {
+   "text": "placer",
+   "context": "Rappel des touches : action",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.second": {
+   "text": "seconde miniature",
+   "context": "Rappel des touches : action",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.cycle": {
+   "text": "miniature suivante",
+   "context": "Rappel des touches : action",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.remove": {
+   "text": "retirer",
+   "context": "Rappel des touches : action",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.question": {
+   "text": "question posée",
+   "context": "Rappel des touches : action",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.next": {
+   "text": "carte suivante",
+   "context": "Rappel des touches : action",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.zoom": {
+   "text": "zoom",
+   "context": "Rappel des touches : action",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.shift": {
+   "text": "décaler",
+   "context": "Rappel des touches : action (flèches gauche et droite)",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.validate": {
+   "text": "valider",
+   "context": "Rappel des touches : action",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.dup": {
+   "text": "dupliquer",
+   "context": "Rappel des touches : action",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "keyhelp.ghost": {
+   "text": "repère",
+   "context": "Rappel des touches : action (repère de l'original)",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "tri.total.none": {
+   "text": "Rien de saisi : chaque case placée comptera 1 participant.",
+   "context": "Effectifs : aucune saisie (règle des effectifs implicites)",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "console.nextphase.hint": {
+   "text": "Quand la phase est terminée :",
+   "context": "Texte devant le bouton de passage à la phase suivante",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "alert.scene": {
+   "text": "La scène n'est pas connectée : les participants ne voient plus les changements.",
+   "context": "Bandeau d'alerte en cours de séance",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "alert.save.hint": {
+   "text": "Rien n'est perdu : le journal reste gardé dans ce navigateur.",
+   "context": "Bandeau d'alerte de sauvegarde, sous le message d'échec",
+   "status": "source",
+   "version": "0.3.0"
+  },
+  "learn.title": {
+   "text": "Prise en main",
+   "context": "Titre du bloc de l'écran de démarrage qui regroupe entraînement, présentation et aide-mémoire",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "learn.hint": {
+   "text": "S'entraîner avec un focus group simulé, sans rien enregistrer pour l'étude.",
+   "context": "Texte sous le titre Prise en main",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "learn.train.fr": {
+   "text": "S'entraîner en français",
+   "context": "Bouton qui lance l'entraînement en français",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "learn.train.en": {
+   "text": "S'entraîner en anglais",
+   "context": "Bouton qui lance l'entraînement en anglais",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "learn.pres": {
+   "text": "Présentation de l'outil",
+   "context": "Lien vers la présentation animée (nouvel onglet)",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "learn.memo": {
+   "text": "Aide-mémoire à imprimer",
+   "context": "Lien vers l'aide-mémoire d'une page (nouvel onglet)",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.banner": {
+   "text": "ENTRAÎNEMENT : focus group simulé, rien n'est enregistré pour l'étude.",
+   "context": "Bandeau permanent en haut de la console pendant l'entraînement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.tour": {
+   "text": "Revoir la visite",
+   "context": "Bouton du bandeau d'entraînement : relance la visite guidée de l'écran en cours",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.quit": {
+   "text": "Quitter l'entraînement",
+   "context": "Bouton du bandeau d'entraînement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.backup": {
+   "text": "entraînement : rien n'est écrit sur le disque",
+   "context": "Détail de la ligne Fichier de sauvegarde pendant l'entraînement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.panel": {
+   "text": "Participants simulés",
+   "context": "Titre du panneau des répliques des participants simulés",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.panel.empty": {
+   "text": "Les répliques apparaîtront ici au fil de la séance.",
+   "context": "Panneau des participants simulés, vide",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.panel.more": {
+   "text": "D'autres répliques arrivent…",
+   "context": "Panneau des participants simulés : il reste des répliques à afficher",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.tts": {
+   "text": "Lire à voix haute",
+   "context": "Case à cocher : lecture vocale des répliques par le navigateur",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.coach": {
+   "text": "Conseil",
+   "context": "Étiquette des conseils au modérateur dans le panneau des répliques",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.sys": {
+   "text": "Système",
+   "context": "Étiquette des incidents simulés dans le panneau des répliques",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.bilan": {
+   "text": "Bilan de l'entraînement",
+   "context": "Titre du bilan affiché à la fin de l'entraînement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.bilan.score": {
+   "text": "{n} points réussis sur {total}",
+   "context": "Résumé du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.restart": {
+   "text": "Recommencer l'entraînement",
+   "context": "Bouton du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.ok": {
+   "text": "Réussi",
+   "context": "Texte d'état d'un point du bilan (accompagne une coche)",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.ko": {
+   "text": "À revoir",
+   "context": "Texte d'état d'un point du bilan (accompagne une croix)",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.info": {
+   "text": "Pour information",
+   "context": "Texte d'état d'un point d'information du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.releve": {
+   "text": "Relevé du matériel saisi pour {n} participants sur {total}.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.tip.releve": {
+   "text": "Au tutoriel, à l'étape « Relevé », saisissez au moins l'appareil de chaque participant.",
+   "context": "Conseil du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.question": {
+   "text": "Question rituelle confirmée pour {n} cartes sur {total}.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.tip.question": {
+   "text": "Posez la question à chaque carte, puis « Question posée » (Q), avant « Carte suivante ».",
+   "context": "Conseil du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.placements": {
+   "text": "Placements fidèles à ce qu'a dit le groupe : {n} cartes sur {total}.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.mismatch": {
+   "text": "« {card} » : {got} au lieu de {exp}.",
+   "context": "Détail d'un écart dans le bilan. {card} = nom de la carte",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.counts.ok": {
+   "text": "Effectifs du désaccord saisis correctement (« {card} »).",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.counts.diff": {
+   "text": "Effectifs du désaccord saisis, mais différents des avis exprimés (« {card} »).",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.counts.none": {
+   "text": "Effectifs du désaccord non saisis (« {card} »).",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.tip.counts": {
+   "text": "Attendu, parmi les présents : {exp}.",
+   "context": "Conseil du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.absent.ok": {
+   "text": "Départ de {p} noté en {s} s.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.absent.ko": {
+   "text": "Départ de {p} non noté dans Présents.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.tip.absent": {
+   "text": "Quand un participant part, cliquez sur son nom dans Présents : les effectifs en dépendent.",
+   "context": "Conseil du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.scene.ok": {
+   "text": "Scène rouverte en {s} s.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.scene.ko": {
+   "text": "Scène fermée et jamais rouverte.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.scene.never": {
+   "text": "La scène n'a pas été ouverte pendant l'entraînement.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.tip.scene": {
+   "text": "Ouvrez la scène avant le Go ; si elle se ferme, le bandeau orange propose « Ouvrir la scène ».",
+   "context": "Conseil du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.save.ok": {
+   "text": "Sauvegarde réparée en {s} s.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.save.ko": {
+   "text": "Alerte de sauvegarde restée sans réponse.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.tip.save": {
+   "text": "Quand le bandeau rouge apparaît, cliquez sur « Choisir un nouveau fichier » (ou « Mode dégradé »).",
+   "context": "Conseil du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.jugement": {
+   "text": "Adaptations placées là où le groupe l'a dit : {n} sur {total}.",
+   "context": "Point du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.time.ok": {
+   "text": "Aucune phase n'a dépassé son temps.",
+   "context": "Point d'information du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "train.b.time.over": {
+   "text": "Dépassements : {list}. Les dépassements ne bloquent rien, mais ils raccourcissent la suite.",
+   "context": "Point d'information du bilan",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "stage.training": {
+   "text": "ENTRAÎNEMENT",
+   "context": "Étiquette en coin de la scène pendant l'entraînement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.progress": {
+   "text": "Visite guidée · {n} sur {total}",
+   "context": "En-tête de la bulle de visite guidée",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.prev": {
+   "text": "Précédent",
+   "context": "Bouton de la visite guidée",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.next": {
+   "text": "Suivant",
+   "context": "Bouton de la visite guidée",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.done": {
+   "text": "Terminer",
+   "context": "Bouton de la dernière étape de la visite guidée",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.close": {
+   "text": "Fermer la visite",
+   "context": "Bouton de fermeture de la visite guidée (aussi touche Échap)",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.setup.1": {
+   "text": "Vous êtes en entraînement : les participants sont simulés et rien n'est enregistré pour l'étude.",
+   "context": "Visite guidée, démarrage",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.setup.2": {
+   "text": "Étape 1 : ouvrez la scène. En séance réelle, partagez ensuite cette fenêtre, et seulement elle, dans la visioconférence.",
+   "context": "Visite guidée, démarrage",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.setup.3": {
+   "text": "Étape 2 : en séance réelle, choisissez ici le fichier de sauvegarde. Pour l'entraînement, c'est déjà fait.",
+   "context": "Visite guidée, démarrage",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.setup.4": {
+   "text": "Étape 3 : lancez l'enregistrement audio, puis posez la marque de synchronisation.",
+   "context": "Visite guidée, démarrage",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.setup.5": {
+   "text": "Quand les étapes sont faites, Go démarre l'horloge de la séance.",
+   "context": "Visite guidée, démarrage",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.run.1": {
+   "text": "Les temps ne sont visibles que sur la console : écoulé depuis le Go, étape en cours, temps global. Un dépassement s'affiche mais ne bloque rien.",
+   "context": "Visite guidée, séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.run.2": {
+   "text": "Ici s'affichent ce que disent les participants simulés, et quelques conseils. Lisez, puis agissez dans la console.",
+   "context": "Visite guidée, séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.run.3": {
+   "text": "Cliquez sur un participant qui part ou revient : les effectifs en dépendent.",
+   "context": "Visite guidée, séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.run.4": {
+   "text": "Pause fige les comptes à rebours. Incident technique note l'heure d'un incident en un clic.",
+   "context": "Visite guidée, séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.run.5": {
+   "text": "Quand la phase est terminée, passez à la suivante ici.",
+   "context": "Visite guidée, séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.tuto.1": {
+   "text": "Le tutoriel a trois étapes : vocabulaire, démonstration d'un placement, relevé du matériel de chaque participant.",
+   "context": "Visite guidée, tutoriel",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.tuto.2": {
+   "text": "L'aperçu reproduit ce que voient les participants sur la scène partagée.",
+   "context": "Visite guidée, tutoriel",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.tri.1": {
+   "text": "Placez la miniature dans la case dite par le groupe : touches 1 à 4, clic sur un bouton ou sur une case de l'aperçu.",
+   "context": "Visite guidée, tri",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.tri.2": {
+   "text": "En cas de désaccord, ajoutez une seconde miniature (S), puis saisissez les effectifs par case.",
+   "context": "Visite guidée, tri",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.tri.3": {
+   "text": "Posez la question rituelle, puis « Question posée » (Q). « Carte suivante » (N) ne se débloque qu'ensuite.",
+   "context": "Visite guidée, tri",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.tri.4": {
+   "text": "Si un participant lit mal, zoomez la grande carte et choisissez la région à agrandir.",
+   "context": "Visite guidée, tri",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.tri.5": {
+   "text": "Les touches utiles dans la phase sont rappelées ici.",
+   "context": "Visite guidée, tri",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.disc.1": {
+   "text": "Les cartes à discuter arrivent dans l'ordre de sévérité : d'abord Impossible, puis Difficile.",
+   "context": "Visite guidée, discussion",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.disc.2": {
+   "text": "Après la discussion, passez à la carte suivante (N).",
+   "context": "Visite guidée, discussion",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.jug.1": {
+   "text": "Chaque miniature adaptée part de la position de l'original.",
+   "context": "Visite guidée, jugement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.jug.2": {
+   "text": "Déplacez-la : flèches gauche et droite pour une zone, touches 1 à 4 pour une case, ou glisser dans l'aperçu.",
+   "context": "Visite guidée, jugement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.jug.3": {
+   "text": "Validez chaque miniature adaptée (Entrée). « Carte suivante » se débloque quand tout est validé.",
+   "context": "Visite guidée, jugement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.jug.4": {
+   "text": "Le repère de l'original est visible sur la console ; R le montre aussi aux participants.",
+   "context": "Visite guidée, jugement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.alert.1": {
+   "text": "Un bandeau signale un problème en cours de séance. Le bouton du bandeau le répare ; rien n'est perdu entre-temps.",
+   "context": "Visite guidée, alerte",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "tour.fin.1": {
+   "text": "Votre bilan : chaque point à revoir est accompagné d'un conseil. Vous pouvez recommencer autant de fois que nécessaire.",
+   "context": "Visite guidée, fin",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.title": {
+   "text": "Présentation de l'outil",
+   "context": "Titre de la page de présentation animée",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.sub": {
+   "text": "Outil de manipulation des cartes, focus groups lab2school4all",
+   "context": "Sous-titre de la page de présentation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.prev": {
+   "text": "Précédent",
+   "context": "Bouton de la présentation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.next": {
+   "text": "Suivant",
+   "context": "Bouton de la présentation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.play": {
+   "text": "Lecture",
+   "context": "Bouton de lecture automatique de la présentation (état arrêté)",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.pause": {
+   "text": "Pause",
+   "context": "Bouton de lecture automatique de la présentation (état en lecture)",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.step": {
+   "text": "Étape {n} sur {total}",
+   "context": "Compteur de la présentation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.goto": {
+   "text": "Aller à l'étape {n} : {title}",
+   "context": "Nom accessible des pastilles de navigation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.kb": {
+   "text": "Flèches gauche et droite : étape précédente ou suivante. Espace : lecture ou pause.",
+   "context": "Aide clavier sous la présentation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.video": {
+   "text": "Vidéo (WebM)",
+   "context": "Lien de téléchargement de la vidéo de la présentation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.alt.console": {
+   "text": "Capture de la console du modérateur",
+   "context": "Texte de remplacement des captures de la console",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.alt.scene": {
+   "text": "Capture de la scène partagée",
+   "context": "Texte de remplacement des captures de la scène",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.cap.console": {
+   "text": "Console (modérateur)",
+   "context": "Légende sous une capture de la console",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.cap.scene": {
+   "text": "Scène (partagée aux participants)",
+   "context": "Légende sous une capture de la scène",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.01.t": {
+   "text": "Deux fenêtres",
+   "context": "Titre de l'étape 1 de la présentation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.01.b": {
+   "text": "La console reste chez le modérateur : elle sert à tout piloter. La scène est la seule fenêtre partagée dans la visioconférence : les participants n'y voient que la carte et les quatre cases.",
+   "context": "Présentation, texte de l'étape 1",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.02.t": {
+   "text": "Choisir le focus group",
+   "context": "Titre de l'étape 2",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.02.b": {
+   "text": "Au démarrage, choisissez le FG du jour. L'outil charge les cartes dans la bonne langue et fait seul ses contrôles : cartes, ordre de présentation, police, fenêtre.",
+   "context": "Présentation, texte de l'étape 2",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.03.t": {
+   "text": "Trois étapes avant le Go",
+   "context": "Titre de l'étape 3",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.03.b": {
+   "text": "1. Ouvrir la scène et la partager. 2. Choisir le fichier de sauvegarde : le journal y est écrit en continu. 3. Lancer l'enregistrement audio et poser la marque. Puis Go.",
+   "context": "Présentation, texte de l'étape 3",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.04.t": {
+   "text": "Le temps, sur la console seulement",
+   "context": "Titre de l'étape 4",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.04.b": {
+   "text": "Après le Go : temps écoulé, compte à rebours de l'étape et temps global. Un dépassement s'affiche en « + mm:ss » mais ne bloque rien. Pause fige les comptes à rebours.",
+   "context": "Présentation, texte de l'étape 4",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.05.t": {
+   "text": "Tutoriel et calibration",
+   "context": "Titre de l'étape 5",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.05.b": {
+   "text": "Présentez le vocabulaire, montrez un placement sur la carte de calibration, puis relevez l'appareil et la plus petite ligne lisible de chaque participant.",
+   "context": "Présentation, texte de l'étape 5",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.06.t": {
+   "text": "Placer la miniature",
+   "context": "Titre de l'étape 6",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.06.b": {
+   "text": "Le groupe dit dans quelle case va la carte. Placez la miniature : touches 1 à 4, clic, ou glisser dans l'aperçu. Les quatre cases sont vides à chaque nouvelle carte.",
+   "context": "Présentation, texte de l'étape 6",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.07.t": {
+   "text": "En cas de désaccord",
+   "context": "Titre de l'étape 7",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.07.b": {
+   "text": "Ajoutez une seconde miniature (S) dans l'autre case, puis saisissez combien de participants ont choisi chaque case.",
+   "context": "Présentation, texte de l'étape 7",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.08.t": {
+   "text": "Question rituelle, puis carte suivante",
+   "context": "Titre de l'étape 8",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.08.b": {
+   "text": "Posez la question « Quelqu'un la placerait-il ailleurs ? », puis « Question posée » (Q). « Carte suivante » (N) ne se débloque qu'après. Pas de retour en arrière.",
+   "context": "Présentation, texte de l'étape 8",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.09.t": {
+   "text": "Zoom",
+   "context": "Titre de l'étape 9",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.09.b": {
+   "text": "Si quelqu'un lit mal, zoomez la grande carte à 150 ou 200 % et choisissez la région. Un mini-plan indique aux participants la partie agrandie.",
+   "context": "Présentation, texte de l'étape 9",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.10.t": {
+   "text": "Discussion sélective",
+   "context": "Titre de l'étape 10",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.10.b": {
+   "text": "Seules les cartes placées en Difficile ou Impossible sont discutées, des plus sévères aux moins sévères. La scène montre la version adaptée de l'exercice.",
+   "context": "Présentation, texte de l'étape 10",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.11.t": {
+   "text": "Jugement des adaptations",
+   "context": "Titre de l'étape 11",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.11.b": {
+   "text": "L'adaptation part de la position de l'original. Déplacez-la selon le groupe (flèches pour une zone, 1 à 4 pour une case), puis validez avec Entrée.",
+   "context": "Présentation, texte de l'étape 11",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.12.t": {
+   "text": "Alertes et reprise",
+   "context": "Titre de l'étape 12",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.12.b": {
+   "text": "Si la sauvegarde échoue ou si la scène se ferme, un bandeau apparaît avec le bouton qui répare. Après un plantage, rouvrez la console : « Reprendre » repart sans rien perdre.",
+   "context": "Présentation, texte de l'étape 12",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.13.t": {
+   "text": "Fin de séance",
+   "context": "Titre de l'étape 13",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.13.b": {
+   "text": "« Terminer la séance » écrit le fichier final. Une copie sans les notes peut être exportée pour être partagée.",
+   "context": "Présentation, texte de l'étape 13",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.14.t": {
+   "text": "S'entraîner avant le jour J",
+   "context": "Titre de l'étape 14",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "pres.14.b": {
+   "text": "Depuis l'écran de démarrage, « S'entraîner » lance un focus group simulé : participants qui parlent, incidents provoqués, visite guidée et bilan à la fin. Rien n'est enregistré pour l'étude.",
+   "context": "Présentation, texte de l'étape 14",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.title": {
+   "text": "Aide-mémoire du modérateur",
+   "context": "Titre de l'aide-mémoire imprimable",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.sub": {
+   "text": "Outil de manipulation des cartes, version {v}",
+   "context": "Sous-titre de l'aide-mémoire",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.print": {
+   "text": "Imprimer",
+   "context": "Bouton d'impression de l'aide-mémoire (masqué à l'impression)",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.before": {
+   "text": "Avant le Go",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.before.1": {
+   "text": "Choisir le FG ; vérifier « Cartes chargées : 11 sur 11 ».",
+   "context": "Aide-mémoire, avant le Go",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.before.2": {
+   "text": "Ouvrir la scène, puis la partager seule dans Zoom ou Teams (jamais la console).",
+   "context": "Aide-mémoire, avant le Go",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.before.3": {
+   "text": "Choisir le fichier de sauvegarde (sinon « Mode dégradé »).",
+   "context": "Aide-mémoire, avant le Go",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.before.4": {
+   "text": "Lancer l'enregistrement audio, puis « Poser la marque ». Enfin, Go.",
+   "context": "Aide-mémoire, avant le Go",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.keys": {
+   "text": "Touches",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.during": {
+   "text": "Pendant la séance",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.during.1": {
+   "text": "Une carte : placer, puis « Question posée » (Q), puis « Carte suivante » (N).",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.during.2": {
+   "text": "Désaccord : seconde miniature (S) et effectifs ; le total égale les présents.",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.during.3": {
+   "text": "Un départ ou un retour : cliquer sur le participant dans Présents.",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.during.4": {
+   "text": "Ne jamais rappeler les jugements précédents ; jamais de nom dans les notes.",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.during.5": {
+   "text": "Les temps ne sont que sur la console ; un dépassement ne bloque rien.",
+   "context": "Aide-mémoire, pendant la séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.incidents": {
+   "text": "En cas de problème",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.inc.scene": {
+   "text": "Bandeau orange, scène non connectée",
+   "context": "Aide-mémoire : situation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.inc.scene.do": {
+   "text": "« Ouvrir la scène », puis repartager la fenêtre.",
+   "context": "Aide-mémoire : action",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.inc.save": {
+   "text": "Bandeau rouge ALERTE de sauvegarde",
+   "context": "Aide-mémoire : situation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.inc.save.do": {
+   "text": "« Choisir un nouveau fichier » (ou « Mode dégradé »). Rien n'est perdu.",
+   "context": "Aide-mémoire : action",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.inc.crash": {
+   "text": "Le navigateur a planté",
+   "context": "Aide-mémoire : situation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.inc.crash.do": {
+   "text": "Rouvrir la console, « Reprendre », accepter l'autorisation, rouvrir la scène.",
+   "context": "Aide-mémoire : action",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.inc.tech": {
+   "text": "Coupure, son, partage",
+   "context": "Aide-mémoire : situation",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.inc.tech.do": {
+   "text": "« Incident technique » note l'heure ; « Pause » si besoin.",
+   "context": "Aide-mémoire : action",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.after": {
+   "text": "Après la séance",
+   "context": "Titre de section de l'aide-mémoire",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.after.1": {
+   "text": "Ranger le fichier final (et la copie sans notes) dans le dossier du FG.",
+   "context": "Aide-mémoire, après la séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.after.2": {
+   "text": "Signaler à l'équipe tout avertissement vu au démarrage.",
+   "context": "Aide-mémoire, après la séance",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.phase.tri": {
+   "text": "Tri",
+   "context": "Aide-mémoire : en-tête de colonne du tableau des touches",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "memo.phase.jug": {
+   "text": "Jugement",
+   "context": "Aide-mémoire : en-tête de colonne du tableau des touches",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "save.mode.memoire": {
+   "text": "entraînement, rien n'est écrit",
+   "context": "Mode de sauvegarde affiché à côté de l'indicateur pendant l'entraînement",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "learn.sim.info": {
+   "text": "Focus group simulé : 4 cartes, environ 20 minutes, six participants simulés.",
+   "context": "Démarrage d'un entraînement : remplace le choix du focus group",
+   "status": "source",
+   "version": "0.4.0"
+  },
+  "scene.on": {
+   "text": "Scène connectée",
+   "context": "Indicateur de liaison",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "scene.off": {
+   "text": "Scène non connectée",
+   "context": "Indicateur de liaison",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "scene.reopen": {
+   "text": "Ouvrir la scène",
+   "context": "Bouton à côté de l'indicateur de liaison, en cours de séance, quand la scène n'est pas connectée (fenêtre fermée, reprise après plantage)",
+   "status": "source",
+   "version": "0.2.0"
+  },
+  "setup.title": {
+   "text": "Démarrage de la séance",
+   "context": "Titre du panneau de démarrage",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.nofg": {
+   "text": "Aucun focus group",
+   "context": "Barre du haut avant le choix",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.fg": {
+   "text": "Focus group",
+   "context": "Étiquette de la liste",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.choose": {
+   "text": "Choisir un focus group",
+   "context": "Option par défaut de la liste",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.loadfile": {
+   "text": "Charger un fichier de configuration",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.lang": {
+   "text": "Langue de la scène et de la console",
+   "context": "Étiquette",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.order": {
+   "text": "Ordre des cartes",
+   "context": "Ligne du tableau de vérifications avant le Go",
+   "status": "source",
+   "version": "0.2.0"
+  },
+  "check.order.seq": {
+   "text": "Séquence {id} du plan équilibré",
+   "context": "Ordre pris dans config/sequences.json. {id} = identifiant de séquence, ex. S05",
+   "status": "source",
+   "version": "0.2.0"
+  },
+  "check.order.config": {
+   "text": "Ordre fixé dans la configuration du FG",
+   "context": "Ordre donné explicitement dans le fichier de configuration",
+   "status": "source",
+   "version": "0.2.0"
+  },
+  "check.order.seed": {
+   "text": "Mélange par la graine {seed}",
+   "context": "Ordre calculé à partir de la graine de la configuration",
+   "status": "source",
+   "version": "0.2.0"
+  },
+  "check.order.sequence_cartes_differentes": {
+   "text": "La séquence {id} ne couvre pas exactement les cartes actives : mélange par la graine {seed} à la place. Régénérer les séquences.",
+   "context": "Avertissement : le manifeste a changé depuis la génération des séquences",
+   "status": "source",
+   "version": "0.2.0"
+  },
+  "check.order.sequence_introuvable": {
+   "text": "Séquence {id} introuvable : mélange par la graine {seed} à la place.",
+   "context": "Avertissement : identifiant de séquence absent de config/sequences.json",
+   "status": "source",
+   "version": "0.2.0"
+  },
+  "check.order.ordre_cartes_differentes": {
+   "text": "L'ordre de la configuration ne couvre pas exactement les cartes actives : mélange par la graine {seed} à la place.",
+   "context": "Avertissement : ordre explicite incomplet ou en trop",
+   "status": "source",
+   "version": "0.2.0"
+  },
+  "setup.versions": {
+   "text": "Outil {tool} · Guide {guide}",
+   "context": "Versions affichées au démarrage",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.present": {
+   "text": "Présents",
+   "context": "Étiquette",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.checks": {
+   "text": "Vérifications avant la séance",
+   "context": "Titre du panneau",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.miss.fg": {
+   "text": "choisir un focus group",
+   "context": "Élément manquant avant le Go",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.miss.cards": {
+   "text": "charger les cartes",
+   "context": "Élément manquant avant le Go",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.miss.backup": {
+   "text": "choisir le fichier de sauvegarde",
+   "context": "Élément manquant avant le Go",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.blocked": {
+   "text": "Avant le Go : {what}.",
+   "context": "Message de blocage. {what} = liste des éléments manquants",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.ready": {
+   "text": "Tout est prêt. Vous pouvez lancer le Go.",
+   "context": "Message de prêt",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.ready.noscene": {
+   "text": "Prêt, mais la scène n'est pas ouverte. Ouvrez-la avant le Go.",
+   "context": "Message de prêt sans scène",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "setup.go": {
+   "text": "Go",
+   "context": "Bouton de début de séance",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.st.ok": {
+   "text": "OK",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.st.ko": {
+   "text": "Échec",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.st.todo": {
+   "text": "À faire",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.st.warn": {
+   "text": "À vérifier",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.st.wait": {
+   "text": "En cours",
+   "context": "Statut d'une vérification (icône et texte)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.cards": {
+   "text": "Cartes chargées",
+   "context": "Vérification",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.cards.loading": {
+   "text": "chargement {n} sur {total}",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.cards.none": {
+   "text": "aucun focus group choisi",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.cards.err": {
+   "text": "{n} carte(s) en échec : {ids}",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.cards.ok": {
+   "text": "{n} sur {total}, versions enregistrées",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.arial": {
+   "text": "Police Arial",
+   "context": "Vérification",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.arial.ok": {
+   "text": "disponible",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.arial.ko": {
+   "text": "non confirmée sur ce poste",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.display": {
+   "text": "Fenêtre et affichage",
+   "context": "Vérification",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.display.detail": {
+   "text": "{w} x {h}, ratio de pixels {r}",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.store": {
+   "text": "Sauvegarde de reprise",
+   "context": "Vérification",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.store.ok": {
+   "text": "stockage du navigateur disponible, aucune séance interrompue",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.store.resume": {
+   "text": "une séance non terminée existe (voir plus haut)",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.backup": {
+   "text": "Fichier de sauvegarde",
+   "context": "Vérification obligatoire avant le Go",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.backup.continu": {
+   "text": "écriture continue : {name}",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.backup.degrade.on": {
+   "text": "mode dégradé : instantanés téléchargés",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.backup.todo": {
+   "text": "obligatoire avant le Go",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.backup.choose": {
+   "text": "Choisir le fichier",
+   "context": "Bouton (Chrome et Edge)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.backup.degrade": {
+   "text": "Mode dégradé",
+   "context": "Bouton de choix explicite du mode dégradé (journalisé)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.backup.opfs": {
+   "text": "Stockage de test",
+   "context": "Bouton réservé au développement",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.sync": {
+   "text": "Marque de synchronisation audio",
+   "context": "Vérification",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.sync.done": {
+   "text": "posée à {at}",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.sync.todo": {
+   "text": "à poser au début de l'enregistrement",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.sync.btn": {
+   "text": "Poser la marque",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.link": {
+   "text": "Liaison scène et console",
+   "context": "Vérification",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.link.ok": {
+   "text": "scène connectée, cartes identiques",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.link.diff": {
+   "text": "scène connectée, cartes différentes",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.link.todo": {
+   "text": "ouvrir la scène",
+   "context": "Détail",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "check.link.open": {
+   "text": "Ouvrir la scène",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "resume.title": {
+   "text": "Séance non terminée",
+   "context": "Titre du panneau de reprise",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "resume.info": {
+   "text": "{fg} : dernier enregistrement à {at}",
+   "context": "Ligne de reprise",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "resume.resume": {
+   "text": "Reprendre",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "resume.export": {
+   "text": "Exporter",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "resume.ignore": {
+   "text": "Ignorer",
+   "context": "Bouton",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.deja_demarre": {
+   "text": "La séance a déjà démarré",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.sauvegarde_requise": {
+   "text": "Choisir d'abord le fichier de sauvegarde",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.pas_en_cours": {
+   "text": "La séance n'est pas en cours",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.pas_en_pause": {
+   "text": "La séance n'est pas en pause",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.note_vide": {
+   "text": "La note est vide",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.question_requise": {
+   "text": "Confirmer d'abord « Question posée »",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.validation_requise": {
+   "text": "Valider d'abord tous les placements adaptés",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.motif_requis": {
+   "text": "Un motif est obligatoire",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.pas_de_carte": {
+   "text": "Pas de carte en cours",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.pas_de_tri": {
+   "text": "Indisponible dans cette phase",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.case_inconnue": {
+   "text": "Case inconnue",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.case_occupee": {
+   "text": "Cette case contient déjà une miniature de la carte",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.trop_de_miniatures": {
+   "text": "Trop de miniatures",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.miniature_inconnue": {
+   "text": "Miniature inconnue",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.effectifs_apres_deux": {
+   "text": "Les effectifs se saisissent à partir de deux placements",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.placement_requis": {
+   "text": "Placer d'abord la miniature",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.question_deja": {
+   "text": "La question est déjà confirmée",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.zoom_invalide": {
+   "text": "Zoom invalide",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.pas_de_jugement": {
+   "text": "Indisponible dans cette phase",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.retrait_interdit": {
+   "text": "Seul un doublon peut être retiré",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.sauvegarde_fichier": {
+   "text": "Fichier de sauvegarde non choisi",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "err.sauvegarde_reprise": {
+   "text": "Autorisation d'écriture refusée : choisir un nouveau fichier",
+   "context": "Message d'erreur bref de la console",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "pop.enseignants_ordinaires": {
+   "text": "Enseignants ordinaires",
+   "context": "Population du FG (code de la configuration)",
+   "status": "source",
+   "version": "0.1.0"
+  },
+  "pop.teachers_mainstream": {
+   "text": "Enseignants ordinaires",
+   "context": "Population du FG (code de la configuration)",
+   "status": "source",
+   "version": "0.1.0"
+  }
+ }
+}
