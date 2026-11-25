@@ -7,10 +7,10 @@ import { t } from "./i18n.js";
 export const TOURS = {
   setup: [[".training-banner", "tour.setup.1"], ["[data-check=link]", "tour.setup.2"], ["[data-check=backup]", "tour.setup.3"], ["[data-check=sync]", "tour.setup.4"], ["[data-act=go]", "tour.setup.5"]],
   run: [[".timebar", "tour.run.1"], [".sim-card", "tour.run.2"], [".presents-card", "tour.run.3"], ["[data-act=incident]", "tour.run.4"], [".phase-next", "tour.run.5"]],
-  tutoriel: [[".seg.steps", "tour.tuto.1"], [".preview-box", "tour.tuto.2"]],
+  tutoriel: [[".releve-wrap", "tour.tuto.1"], [".preview-box", "tour.tuto.2"]],
   tri: [[".casebtns", "tour.tri.1"], ["[data-act=second]", "tour.tri.2"], ["[data-act=question]", "tour.tri.3"], [".zoom-card", "tour.tri.4"], [".keys", "tour.tri.5"]],
   discussion: [[".seldetail", "tour.disc.1"], [".phase-card [data-act=next]", "tour.disc.2"]],
-  jugement: [[".phase-card .toklist", "tour.jug.1"], ["[data-act=left]", "tour.jug.2"], ["[data-act=validate]", "tour.jug.3"], ["[data-act=ghost]", "tour.jug.4"]],
+  jugement: [[".phase-card .toklist", "tour.jug.1"], ["[data-act=left]", "tour.jug.2"], ["[data-act=validate]", "tour.jug.3"]],
   alerte: [[".alerts .alert", "tour.alert.1"]],
   fin: [[".bilan", "tour.fin.1"]]
 };
@@ -54,7 +54,9 @@ export class Tour {
     const corners = [[W - b.width - m, H - b.height - m], [m, H - b.height - m], [W - b.width - m, m + 60], [m, m + 60]];
     const free = ([x, y]) => x + b.width + 8 < r.left || x - 8 > r.right || y + b.height + 8 < r.top || y - 8 > r.bottom;
     const [x, y] = corners.find(free) || corners[0];
-    this.bubble.style.left = Math.round(x) + "px"; this.bubble.style.top = Math.round(y) + "px";
+    const L = Math.round(x) + "px", T = Math.round(y) + "px";
+    if (this.bubble.style.left !== L) this.bubble.style.left = L;
+    if (this.bubble.style.top !== T) this.bubble.style.top = T;
   }
   end() {
     this.bubble?.remove(); this.bubble = null;

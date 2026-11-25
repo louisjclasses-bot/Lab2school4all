@@ -12,49 +12,49 @@
    "version": "0.4.0"
   },
   "tuto.1": {
-   "text": "Present the vocabulary, show a placement on the calibration card (Demonstration step), then take the survey.",
-   "context": "Conseil au modérateur, tutoriel",
+   "text": "Participants see a single text. Ask: \"Can you read this text well?\", listen, then only click in the survey for an exception.",
+   "context": "Conseil au modérateur, calibration",
    "status": "draft_translation",
    "version": "0.4.0"
   },
   "rel.1": {
-   "text": "Computer, medium screen. I can read down to line 6, no zoom needed.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "I'm on a laptop, I can read it very well.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "draft_translation",
    "version": "0.4.0"
   },
   "rel.2": {
-   "text": "Tablet, small screen. Line 5. A 150% zoom would help.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "I'm on a tablet, a small screen. I read poorly, a zoom would help.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "draft_translation",
    "version": "0.4.0"
   },
   "rel.3": {
-   "text": "Computer, large screen, line 7.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "I have a large desktop screen, everything is easy to read.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "draft_translation",
    "version": "0.4.0"
   },
   "rel.4": {
-   "text": "Computer, medium screen, line 6.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "A laptop too, it's fine.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "draft_translation",
    "version": "0.4.0"
   },
   "rel.5": {
-   "text": "I'm on my phone, small screen. I can read down to line 3, I'd need 200% zoom.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "Tablet, small screen. I read with difficulty, I'd need zoom.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "draft_translation",
    "version": "0.4.0"
   },
   "rel.6": {
-   "text": "Computer, medium screen, line 6.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "A laptop, nothing to report.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "draft_translation",
    "version": "0.4.0"
   },
   "rel.c": {
-   "text": "Enter each participant's answers in the table, then move on to sorting.",
+   "text": "Three participants depart from the default. At least one needs zoom: choose the group zoom (100% or 150%), then move on to sorting.",
    "context": "Conseil au modérateur, relevé",
    "status": "draft_translation",
    "version": "0.4.0"

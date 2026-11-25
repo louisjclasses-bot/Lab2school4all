@@ -288,18 +288,6 @@
    "status": "source",
    "version": "0.1.0"
   },
-  "stage.easier": {
-   "text": "plus facile",
-   "context": "Légende des zones au jugement (côté gauche)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "stage.harder": {
-   "text": "plus difficile",
-   "context": "Légende des zones au jugement (côté droit)",
-   "status": "source",
-   "version": "0.1.0"
-  },
   "stage.badge": {
    "text": "{i}/{n}",
    "context": "Badge d'une miniature quand la carte a plusieurs placements. {i} = numéro, {n} = total",
@@ -312,24 +300,6 @@
    "status": "source",
    "version": "0.1.0"
   },
-  "stage.tok.adapted": {
-   "text": "Adapté",
-   "context": "Étiquette de la miniature de l'exercice adapté",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "stage.tok.original": {
-   "text": "Original",
-   "context": "Étiquette de la miniature de l'exercice original",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "stage.validated": {
-   "text": "Validé",
-   "context": "Marque d'un placement adapté validé",
-   "status": "source",
-   "version": "0.1.0"
-  },
   "stage.zoom": {
    "text": "Zoom {n} %",
    "context": "Texte du mini-plan pendant le zoom",
@@ -339,12 +309,6 @@
   "stage.frame.title": {
    "text": "Exercice adapté",
    "context": "Titre accessible de l'iframe de l'exercice",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "stage.empty": {
-   "text": "Aucune carte à traiter dans cette phase",
-   "context": "Scène quand la sélection est vide",
    "status": "source",
    "version": "0.1.0"
   },
@@ -369,246 +333,6 @@
   "case.impossible": {
    "text": "Impossible",
    "context": "Nom de la case 4 (libellé provisoire, voir DECISIONS_A_VALIDER)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "calib.line": {
-   "text": "Le petit chat dort sur le canapé. 0123456789",
-   "context": "Phrase de la carte de calibration, répétée en 8 tailles",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "calib.grid": {
-   "text": "Grille fine",
-   "context": "Légende de la grille de la carte de calibration",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.title": {
-   "text": "Vocabulaire",
-   "context": "Titre du panneau de vocabulaire du tutoriel",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.cases": {
-   "text": "Les 4 cases : Facile, Moyen, Difficile, Impossible",
-   "context": "Vocabulaire du tutoriel",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.critere": {
-   "text": "Le critère : la difficulté pour un élève dyspraxique de primaire",
-   "context": "Formulation provisoire du critère (à fixer dans le guide)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.miniature": {
-   "text": "La miniature : la petite image de la carte que l'on place dans une case",
-   "context": "Vocabulaire du tutoriel",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.grande": {
-   "text": "La grande carte : l'exercice affiché en haut de l'écran",
-   "context": "Vocabulaire du tutoriel",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.step.vocab": {
-   "text": "Vocabulaire",
-   "context": "Étape 1 du tutoriel (console)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.step.demo": {
-   "text": "Démonstration",
-   "context": "Étape 2 du tutoriel (console)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.step.releve": {
-   "text": "Relevé",
-   "context": "Étape 3 du tutoriel (console)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.console.vocab": {
-   "text": "Présenter les 4 cases, le critère, la miniature et la grande carte (voir le guide).",
-   "context": "Aide console, étape vocabulaire",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.console.demo": {
-   "text": "Montrer un placement et un zoom sur la carte de calibration.",
-   "context": "Aide console, étape démonstration",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "tuto.console.releve": {
-   "text": "Chaque participant dit son appareil et la plus petite ligne lisible. Saisir le relevé ci-dessous.",
-   "context": "Aide console, étape relevé",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.p": {
-   "text": "Participant",
-   "context": "En-tête du tableau de relevé",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.appareil": {
-   "text": "Appareil",
-   "context": "En-tête du tableau de relevé",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.taille": {
-   "text": "Taille d'écran",
-   "context": "En-tête du tableau de relevé",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne": {
-   "text": "Plus petite ligne lisible",
-   "context": "En-tête du tableau de relevé",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.zoom": {
-   "text": "Besoin de zoom",
-   "context": "En-tête du tableau de relevé",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.todo": {
-   "text": "à relever",
-   "context": "Valeur par défaut d'une liste du relevé",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.appareil.ordinateur": {
-   "text": "Ordinateur",
-   "context": "Type d'appareil du participant",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.appareil.tablette": {
-   "text": "Tablette",
-   "context": "Type d'appareil du participant",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.appareil.telephone": {
-   "text": "Téléphone",
-   "context": "Type d'appareil du participant",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.appareil.autre": {
-   "text": "Autre",
-   "context": "Type d'appareil du participant",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.taille.petit": {
-   "text": "Petit (sous 13 po)",
-   "context": "Classe de taille d'écran (valeurs provisoires)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.taille.moyen": {
-   "text": "Moyen (13 à 16 po)",
-   "context": "Classe de taille d'écran (valeurs provisoires)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.taille.grand": {
-   "text": "Grand (plus de 16 po)",
-   "context": "Classe de taille d'écran (valeurs provisoires)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.taille.inconnu": {
-   "text": "Inconnu",
-   "context": "Classe de taille d'écran (valeurs provisoires)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne.1": {
-   "text": "ligne 1",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne.2": {
-   "text": "ligne 2",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne.3": {
-   "text": "ligne 3",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne.4": {
-   "text": "ligne 4",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne.5": {
-   "text": "ligne 5",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne.6": {
-   "text": "ligne 6",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne.7": {
-   "text": "ligne 7",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne.8": {
-   "text": "ligne 8",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.ligne.aucune": {
-   "text": "aucune",
-   "context": "Aucune ligne lisible",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.zoom.non": {
-   "text": "Non",
-   "context": "Pas de besoin de zoom",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.zoom.150": {
-   "text": "150 %",
-   "context": "Zoom nécessaire",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.zoom.200": {
-   "text": "200 %",
-   "context": "Zoom nécessaire",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "releve.note": {
-   "text": "L'outil ne contrôle pas l'affichage des participants : il le renseigne.",
-   "context": "Note sous le tableau de relevé",
    "status": "source",
    "version": "0.1.0"
   },
@@ -813,30 +537,6 @@
   "juge.undup": {
    "text": "Retirer le doublon",
    "context": "Retire une miniature dupliquée",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "juge.ghost.show": {
-   "text": "Montrer le repère",
-   "context": "Montre le repère fantôme aux participants",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "juge.ghost.hide": {
-   "text": "Masquer le repère",
-   "context": "Masque le repère fantôme sur la scène",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "juge.ghost.on": {
-   "text": "Le repère est visible des participants.",
-   "context": "État du repère fantôme",
-   "status": "source",
-   "version": "0.1.0"
-  },
-  "juge.ghost.off": {
-   "text": "Le repère n'est visible que sur la console.",
-   "context": "État du repère fantôme",
    "status": "source",
    "version": "0.1.0"
   },
@@ -1182,12 +882,6 @@
    "status": "source",
    "version": "0.3.0"
   },
-  "keyhelp.ghost": {
-   "text": "repère",
-   "context": "Rappel des touches : action (repère de l'original)",
-   "status": "source",
-   "version": "0.3.0"
-  },
   "tri.total.none": {
    "text": "Rien de saisi : chaque case placée comptera 1 participant.",
    "context": "Effectifs : aucune saisie (règle des effectifs implicites)",
@@ -1341,18 +1035,6 @@
   "train.b.info": {
    "text": "Pour information",
    "context": "Texte d'état d'un point d'information du bilan",
-   "status": "source",
-   "version": "0.4.0"
-  },
-  "train.b.releve": {
-   "text": "Relevé du matériel saisi pour {n} participants sur {total}.",
-   "context": "Point du bilan",
-   "status": "source",
-   "version": "0.4.0"
-  },
-  "train.tip.releve": {
-   "text": "Au tutoriel, à l'étape « Relevé », saisissez au moins l'appareil de chaque participant.",
-   "context": "Conseil du bilan",
    "status": "source",
    "version": "0.4.0"
   },
@@ -1578,12 +1260,6 @@
    "status": "source",
    "version": "0.4.0"
   },
-  "tour.tuto.1": {
-   "text": "Le tutoriel a trois étapes : vocabulaire, démonstration d'un placement, relevé du matériel de chaque participant.",
-   "context": "Visite guidée, tutoriel",
-   "status": "source",
-   "version": "0.4.0"
-  },
   "tour.tuto.2": {
    "text": "L'aperçu reproduit ce que voient les participants sur la scène partagée.",
    "context": "Visite guidée, tutoriel",
@@ -1646,12 +1322,6 @@
   },
   "tour.jug.3": {
    "text": "Validez chaque miniature adaptée (Entrée). « Carte suivante » se débloque quand tout est validé.",
-   "context": "Visite guidée, jugement",
-   "status": "source",
-   "version": "0.4.0"
-  },
-  "tour.jug.4": {
-   "text": "Le repère de l'original est visible sur la console ; R le montre aussi aux participants.",
    "context": "Visite guidée, jugement",
    "status": "source",
    "version": "0.4.0"
@@ -1803,12 +1473,6 @@
   "pres.05.t": {
    "text": "Tutoriel et calibration",
    "context": "Titre de l'étape 5",
-   "status": "source",
-   "version": "0.4.0"
-  },
-  "pres.05.b": {
-   "text": "Présentez le vocabulaire, montrez un placement sur la carte de calibration, puis relevez l'appareil et la plus petite ligne lisible de chaque participant.",
-   "context": "Présentation, texte de l'étape 5",
    "status": "source",
    "version": "0.4.0"
   },
@@ -2106,11 +1770,569 @@
    "status": "source",
    "version": "0.4.0"
   },
+  "obs.card.title": {
+   "text": "Enregistrement de secours (OBS)",
+   "context": "Titre du bloc de l'écran de démarrage consacré à OBS",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.card.intro": {
+   "text": "OBS enregistre le micro et le son de la visio, en plus de Zoom ou Teams. Il démarre à la première ouverture de la scène.",
+   "context": "Enregistrement de secours (OBS), texte d'introduction",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.host": {
+   "text": "Adresse d'OBS",
+   "context": "Enregistrement de secours (OBS), champ de saisie",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.port": {
+   "text": "Port",
+   "context": "Enregistrement de secours (OBS), champ de saisie",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.password": {
+   "text": "Mot de passe du serveur WebSocket",
+   "context": "Enregistrement de secours (OBS), champ de saisie du mot de passe choisi dans OBS",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.password.hint": {
+   "text": "Le mot de passe reste en mémoire seulement : il n'est ni enregistré ni exporté, et il faudra le saisir de nouveau si la page est rechargée.",
+   "context": "Enregistrement de secours (OBS), explication sous le champ du mot de passe",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.connect": {
+   "text": "Se connecter à OBS",
+   "context": "Enregistrement de secours (OBS), bouton",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.connecting": {
+   "text": "Connexion à OBS en cours…",
+   "context": "Enregistrement de secours (OBS), état pendant la connexion",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.without": {
+   "text": "Continuer sans enregistrement de secours",
+   "context": "Enregistrement de secours (OBS), bouton, ouvre une confirmation",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.recheck": {
+   "text": "Revérifier",
+   "context": "Enregistrement de secours (OBS), bouton de nouvelle vérification",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.without.title": {
+   "text": "Continuer sans enregistrement de secours ?",
+   "context": "Enregistrement de secours (OBS), titre de la confirmation",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.without.body": {
+   "text": "Il n'y aura que l'enregistrement de Zoom ou Teams. Ce choix sera consigné dans le journal de la séance.",
+   "context": "Enregistrement de secours (OBS), texte de la confirmation",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.without.ok": {
+   "text": "Continuer sans",
+   "context": "Enregistrement de secours (OBS), bouton de confirmation",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.without.done": {
+   "text": "Choix noté : séance sans enregistrement de secours.",
+   "context": "Enregistrement de secours (OBS), état après le choix de continuer sans",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.go.title": {
+   "text": "Aucun enregistrement de secours",
+   "context": "Enregistrement de secours (OBS), titre de la confirmation au Go quand OBS n'enregistre pas",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.go.body": {
+   "text": "OBS n'enregistre pas cette séance. Continuer sans enregistrement de secours ? Ce choix sera consigné dans le journal.",
+   "context": "Enregistrement de secours (OBS), texte de la confirmation au Go",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.link": {
+   "text": "OBS joignable",
+   "context": "Vérification automatique : l'outil peut-il parler à OBS",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.link.todo": {
+   "text": "pas encore essayé : saisissez le mot de passe, puis « Se connecter à OBS »",
+   "context": "Vérification OBS : état initial",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.link.wait": {
+   "text": "connexion en cours",
+   "context": "Vérification OBS : en cours",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.link.ok": {
+   "text": "connecté (OBS {v})",
+   "context": "Vérification OBS : réussie. {v} = numéro de version d'OBS",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.link.ok.nov": {
+   "text": "connecté",
+   "context": "Vérification OBS : réussie, version inconnue",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.link.none": {
+   "text": "non utilisé : séance sans enregistrement de secours",
+   "context": "Vérification OBS : le modérateur a choisi de continuer sans",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.err.unreachable": {
+   "text": "OBS est injoignable. Vérifiez qu'OBS est lancé et que le serveur WebSocket est activé (Outils, Paramètres du serveur WebSocket), puis l'adresse et le port.",
+   "context": "Message d'échec de connexion à OBS",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.err.timeout": {
+   "text": "OBS ne répond pas. Vérifiez qu'OBS est lancé (version 28 ou plus) et que le serveur WebSocket est activé.",
+   "context": "Message d'échec de connexion à OBS (délai dépassé)",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.err.auth": {
+   "text": "OBS a refusé le mot de passe. Vérifiez le mot de passe du serveur WebSocket dans OBS.",
+   "context": "Message d'échec de connexion à OBS (mot de passe)",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.err.blocked": {
+   "text": "Ce navigateur bloque la connexion à OBS depuis une page en https. Utilisez Chrome ou Edge.",
+   "context": "Message d'échec de connexion à OBS (navigateur, par exemple Safari)",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.err.protocol": {
+   "text": "Cette adresse ne répond pas comme OBS. Vérifiez l'adresse et le port.",
+   "context": "Message d'échec de connexion à OBS (autre service)",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.idle": {
+   "text": "OBS n'enregistre pas déjà",
+   "context": "Vérification automatique : OBS ne doit pas déjà enregistrer",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.idle.todo": {
+   "text": "vérifié après la connexion",
+   "context": "Vérification OBS : état initial",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.idle.ok": {
+   "text": "OBS n'enregistre pas",
+   "context": "Vérification OBS : réussie",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.idle.started": {
+   "text": "enregistrement démarré par l'outil",
+   "context": "Vérification OBS : l'outil a lancé l'enregistrement",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "check.obs.idle.busy": {
+   "text": "OBS enregistre déjà. Arrêtez cet enregistrement dans OBS, puis cliquez sur « Revérifier » : il pourrait contenir autre chose que cette séance.",
+   "context": "Vérification OBS : avertissement, un enregistrement est déjà en cours",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.v.en_cours": {
+   "text": "Enregistrement de secours en cours",
+   "context": "Voyant d'état de l'enregistrement, toujours visible pendant la séance",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.v.arrete": {
+   "text": "Enregistrement de secours arrêté",
+   "context": "Voyant d'état de l'enregistrement",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.v.injoignable": {
+   "text": "OBS injoignable",
+   "context": "Voyant d'état de l'enregistrement",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.v.pas_demarre": {
+   "text": "Enregistrement de secours pas encore démarré",
+   "context": "Voyant d'état de l'enregistrement",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.v.sans": {
+   "text": "Sans enregistrement de secours",
+   "context": "Voyant d'état de l'enregistrement, choix du modérateur",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.v.termine": {
+   "text": "Enregistrement de secours terminé",
+   "context": "Voyant d'état de l'enregistrement, arrêté par le modérateur",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.alert.injoignable": {
+   "text": "OBS est injoignable : l'enregistrement de secours n'est plus surveillé. Reconnexion automatique en cours.",
+   "context": "Bandeau d'alerte en cours de séance",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.alert.injoignable.hint": {
+   "text": "L'enregistrement continue dans OBS tant qu'il n'a pas été arrêté. Rien n'est perdu côté séance.",
+   "context": "Bandeau d'alerte, sous le message",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.alert.auth": {
+   "text": "L'outil a besoin du mot de passe d'OBS pour reprendre la surveillance de l'enregistrement.",
+   "context": "Bandeau d'alerte : mot de passe à saisir de nouveau (après rechargement de la page)",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.alert.arrete": {
+   "text": "L'enregistrement de secours s'est arrêté.",
+   "context": "Bandeau d'alerte : arrêt inattendu",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.alert.arrete.hint": {
+   "text": "Relancer crée un nouveau fichier : la séance sera couverte par plusieurs fichiers, tous consignés.",
+   "context": "Bandeau d'alerte, sous le message",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.alert.pas_demarre": {
+   "text": "L'enregistrement de secours n'a pas démarré.",
+   "context": "Bandeau d'alerte : le démarrage a échoué ou n'a pas eu lieu",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.relaunch": {
+   "text": "Relancer l'enregistrement",
+   "context": "Bouton du bandeau d'alerte : démarre un nouveau fichier",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.reconnect": {
+   "text": "Se connecter",
+   "context": "Bouton du bandeau d'alerte : reconnexion avec le mot de passe saisi",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.alert.password": {
+   "text": "Mot de passe d'OBS",
+   "context": "Étiquette du champ de mot de passe dans le bandeau d'alerte",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.title": {
+   "text": "Enregistrement de secours",
+   "context": "Titre du bloc de fin de séance",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.running": {
+   "text": "L'enregistrement tourne encore dans OBS. Arrêtez-le ici une fois la visio fermée.",
+   "context": "Fin de séance : l'enregistrement n'est pas arrêté",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.stop": {
+   "text": "Arrêter l'enregistrement de secours",
+   "context": "Bouton de fin de séance, ouvre une confirmation",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.stop.title": {
+   "text": "Arrêter l'enregistrement dans OBS ?",
+   "context": "Titre de la confirmation d'arrêt",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.stop.body": {
+   "text": "À faire quand la séance est terminée et que la visio est fermée. Après l'arrêt, OBS finalise le fichier.",
+   "context": "Texte de la confirmation d'arrêt",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.stop.ok": {
+   "text": "Arrêter l'enregistrement",
+   "context": "Bouton de confirmation d'arrêt",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.stopped": {
+   "text": "Enregistrement arrêté.",
+   "context": "Fin de séance : l'arrêt a réussi",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.files": {
+   "text": "Fichiers (noms seulement) :",
+   "context": "Fin de séance : liste des fichiers d'enregistrement",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.nofile": {
+   "text": "nom de fichier non communiqué par OBS",
+   "context": "Fin de séance : un segment sans nom de fichier",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.none": {
+   "text": "Pas d'enregistrement de secours pour cette séance.",
+   "context": "Fin de séance : rien n'a été enregistré",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.end.failed": {
+   "text": "Arrêt impossible depuis l'outil : arrêtez l'enregistrement directement dans OBS.",
+   "context": "Fin de séance : l'arrêt a échoué",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "obs.seg": {
+   "text": "Segment {n}",
+   "context": "Fin de séance : numéro de segment d'enregistrement",
+   "status": "source",
+   "version": "0.5.0"
+  },
+  "alert.save.short": {
+   "text": "Sauvegarde en échec",
+   "context": "Bandeau d'alerte compact : le fichier de sauvegarde n'est plus écrit",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "alert.scene.short": {
+   "text": "Scène non connectée",
+   "context": "Bandeau d'alerte compact",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "obs.alert.injoignable.short": {
+   "text": "OBS injoignable",
+   "context": "Bandeau d'alerte compact, reconnexion automatique en cours",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "obs.alert.auth.short": {
+   "text": "Mot de passe d'OBS à saisir",
+   "context": "Bandeau d'alerte compact : mot de passe à saisir de nouveau",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "obs.alert.arrete.short": {
+   "text": "Enregistrement de secours arrêté",
+   "context": "Bandeau d'alerte compact : arrêt inattendu",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "obs.alert.pas_demarre.short": {
+   "text": "Enregistrement de secours non démarré",
+   "context": "Bandeau d'alerte compact : le démarrage a échoué ou n'a pas eu lieu",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "check.obs.short.unreachable": {
+   "text": "injoignable (détail dans le bloc OBS)",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "check.obs.short.timeout": {
+   "text": "ne répond pas (détail dans le bloc OBS)",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "check.obs.short.auth": {
+   "text": "mot de passe refusé",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "check.obs.short.blocked": {
+   "text": "navigateur bloquant : utiliser Chrome ou Edge",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "check.obs.short.protocol": {
+   "text": "adresse ou port incorrect",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "check.obs.idle.busy.short": {
+   "text": "OBS enregistre déjà (voir le bloc OBS)",
+   "context": "Vérification OBS, version courte de l'avertissement",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "calib.text": {
+   "text": "Le petit chat dort sur le canapé. Il fait beau aujourd'hui, et les enfants jouent dans le jardin avec leur ballon rouge.",
+   "context": "Texte unique de l'écran de calibration (sans chiffres), affiché sur la scène à taille normale",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "tuto.console.releve": {
+   "text": "Demandez à l'oral : « Lisez-vous bien ce texte ? ». Le relevé est pré-rempli : ne cliquez que pour une exception.",
+   "context": "Console, calibration : consigne au modérateur",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "releve.p": {
+   "text": "Participant",
+   "context": "En-tête du tableau de relevé",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "releve.appareil": {
+   "text": "Appareil",
+   "context": "En-tête du tableau de relevé",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "releve.taille": {
+   "text": "Taille d'écran",
+   "context": "En-tête du tableau de relevé",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "releve.zoom": {
+   "text": "Besoin de zoom",
+   "context": "En-tête du tableau de relevé",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "releve.tablette": {
+   "text": "Tablette",
+   "context": "Bouton d'exception du relevé (l'ordinateur est la valeur par défaut)",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "releve.petit": {
+   "text": "Petit (téléphone)",
+   "context": "Bouton d'exception du relevé : petit écran (la taille moyenne, portable, est la valeur par défaut)",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "releve.grand": {
+   "text": "Grand (écran de bureau)",
+   "context": "Bouton d'exception du relevé : grand écran",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "releve.zoom.oui": {
+   "text": "Oui",
+   "context": "Bouton d'exception du relevé : le participant a besoin de zoom (non est la valeur par défaut)",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "releve.legend": {
+   "text": "Par défaut : ordinateur, écran moyen (portable), pas de besoin de zoom. Les valeurs non modifiées sont marquées comme telles dans l'export.",
+   "context": "Légende sous le tableau de relevé",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "zoomg.title": {
+   "text": "Zoom retenu pour le groupe",
+   "context": "Choix du zoom du groupe, affiché si au moins un participant a besoin de zoom",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "zoomg.hint": {
+   "text": "Il s'applique à la carte partagée, donc à tout le groupe, et à chaque carte.",
+   "context": "Explication du zoom du groupe",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "zoomg.badge": {
+   "text": "Zoom du groupe : {n} %",
+   "context": "Rappel permanent dans l'en-tête de la console quand un zoom de groupe est retenu",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "tour.tuto.1": {
+   "text": "Calibration : les participants voient un seul texte. Demandez à l'oral s'ils le lisent bien, puis ne cliquez que pour une exception dans le relevé.",
+   "context": "Visite guidée, calibration",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "train.b.releve": {
+   "text": "Exceptions du relevé saisies comme annoncé : {n} participants sur {total}.",
+   "context": "Point du bilan d'entraînement",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "train.tip.releve": {
+   "text": "Au tutoriel, activez seulement ce qui s'écarte du défaut : tablette, petit ou grand écran, besoin de zoom.",
+   "context": "Conseil du bilan",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "train.b.zoomg": {
+   "text": "Zoom du groupe retenu : {n} %.",
+   "context": "Point du bilan d'entraînement",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "train.tip.zoomg": {
+   "text": "Quand au moins un participant a besoin de zoom, choisissez le zoom du groupe (100 % ou 150 %) : il s'applique à chaque carte.",
+   "context": "Conseil du bilan",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "pres.05.b": {
+   "text": "Un seul texte est montré aux participants. Demandez à l'oral s'ils le lisent bien ; le relevé est pré-rempli, on ne clique que pour une exception, et le zoom retenu pour le groupe s'applique à chaque carte.",
+   "context": "Présentation, texte de l'étape 5",
+   "status": "source",
+   "version": "0.6.0"
+  },
+  "desc.title": {
+   "text": "À lire à voix haute",
+   "context": "Titre du cadre de la description de l'exercice, sur la console, pendant le tri",
+   "status": "source",
+   "version": "0.6.0"
+  },
   "scene.on": {
    "text": "Scène connectée",
    "context": "Indicateur de liaison",
    "status": "source",
    "version": "0.1.0"
+  },
+  "scene.hidden": {
+   "text": "Scène recouverte : elle ne se met pas à jour",
+   "context": "Voyant de la scène quand la fenêtre de la scène est entièrement masquée par une autre fenêtre ou réduite (le navigateur arrête alors de la redessiner)",
+   "status": "source",
+   "version": "0.6.0"
   },
   "scene.off": {
    "text": "Scène non connectée",

@@ -2,7 +2,7 @@
 // Scénario : data/entrainement/scenario.json ; textes : i18n/entrainement-<langue>.json (procédure TRAPD).
 import { el, CASES } from "./util.js";
 import { t } from "./i18n.js";
-import { currentPhase, phaseCardId, placedTokens } from "./state.js";
+import { currentPhase, phaseCardId, placedTokens, RELEVE_DEFAUT, groupZoom } from "./state.js";
 
 export async function loadScenario(lang) {
   const get = async p => (await fetch(new URL("../" + p, import.meta.url), { cache: "no-cache" })).json();
@@ -24,7 +24,7 @@ export class Trainer {
     if (s.status === "ended" || !p) return { key: "fin", lines: [] };
     const L = this.sc.lines;
     if (p.module === "plain") return { key: p.id, lines: L[p.id] || [] };
-    if (p.module === "tutoriel") return s.tuto.etape === "releve" ? { key: "tutoriel:releve", lines: L["tutoriel:releve"] || [] } : { key: "tutoriel", lines: L.tutoriel || [] };
+    if (p.module === "tutoriel") return { key: "tutoriel", lines: L.tutoriel || [] };
     const id = phaseCardId(s, p.id); if (!id) return { key: p.id, lines: [] };
     const first = s.cursor[p.id] === 0 ? (L[p.id] || []) : [];
     return { key: p.id + ":" + id, rank: p.id + ":" + (s.cursor[p.id] + 1), lines: [...first, ...(L[p.id + ":" + id] || L[p.id + ":*"] || [])] };
@@ -92,9 +92,11 @@ export class Trainer {
     const after = (iso, pred) => ev.find(e => e.t >= iso && pred(e));
     const secs = (a, b) => Math.max(0, Math.round((Date.parse(b) - Date.parse(a)) / 1000));
     const name = id => this.label(id);
-    // relevé
-    const nRel = Object.values(s.releve).filter(r => r.appareil).length;
-    out.push({ ok: nRel >= X.releve_participants, text: t("train.b.releve", { n: nRel, total: X.releve_participants }), tip: t("train.tip.releve") });
+    // calibration : exceptions du relevé et zoom du groupe
+    const participants = Object.keys(s.releve);
+    const nRel = participants.filter(p => Object.keys(RELEVE_DEFAUT).every(k => s.releve[p][k].valeur === ((X.releve[p] || {})[k] ?? RELEVE_DEFAUT[k]))).length;
+    out.push({ ok: nRel === participants.length, text: t("train.b.releve", { n: nRel, total: participants.length }), tip: t("train.tip.releve") });
+    out.push({ ok: groupZoom(s) === X.zoom_groupe, text: t("train.b.zoomg", { n: groupZoom(s) }), tip: t("train.tip.zoomg") });
     // question rituelle
     const tri = s.seq.tri, posed = tri.filter(id => s.cards[id].question.statut === "posee").length;
     out.push({ ok: posed === tri.length, text: t("train.b.question", { n: posed, total: tri.length }), tip: t("train.tip.question") });

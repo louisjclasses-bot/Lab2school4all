@@ -3,16 +3,18 @@
 import { t } from "./i18n.js";
 import { CASES, el } from "./util.js";
 import { bord, fond, pasCentre } from "./palette.js";
-import { CALIB } from "./state.js";
 
-export const LW = 1920, LH = 1080;
-const FRAME_W = 1834, FRAME_H = 514;           // zone utile du cadre de 1840 x 520 (bordure 3 px)
-const FRAME_H_DISCUSSION = 960;
+// Largeur logique fixe (1920). La hauteur logique suit la forme de la fenêtre (de 760 à 2400) : le plateau n'est jamais coupé, et les 4 colonnes
+// et la carte occupent la place disponible. Pour une fenêtre 16:9, c'est exactement l'ancienne disposition 1920 x 1080.
+export const LW = 1920, LH = 1080, LH_MIN = 760, LH_MAX = 2400;
+const FRAME_W = 1834;                          // zone utile du cadre de 1840 de large (bordure 3 px)
+const TOP = 72, BOT = 24, GAP = 16;            // sous le titre ; marge basse ; espace entre la carte et les cases
+const SHARE_TRI = 0.537, SHARE_JUGEMENT = 0.75; // part de la hauteur donnée à la carte (le reste va à la rangée des cases)
 
 export class Stage {
   constructor(root, { cards, interactive = false, onAction = null, fit = "window" }) {
     this.root = root; this.cards = cards; this.interactive = interactive; this.onAction = onAction; this.fit = fit;
-    this.view = null; this.frameKey = null; this.drag = null;
+    this.view = null; this.frameKey = null; this.drag = null; this.lh = LH;
     this.stage = el("div", { class: "stage" });
     this.head = el("div", { class: "stage-head" });
     this.frame = el("div", { class: "frame" });
@@ -35,26 +37,35 @@ export class Stage {
   _scale() {
     const w = this.fit === "window" ? innerWidth : this.root.clientWidth, h = this.fit === "window" ? innerHeight : this.root.clientHeight;
     if (!w || !h) return;
-    const k = Math.min(w / LW, h / LH);
+    const lh = Math.max(LH_MIN, Math.min(LH_MAX, Math.round(LW * h / w)));
+    const k = Math.min(w / LW, h / lh);
     this.k = k;
-    this.stage.style.transform = `translate(${(w - LW * k) / 2}px, ${(h - LH * k) / 2}px) scale(${k})`;
+    if (lh !== this.lh) { this.lh = lh; if (this.view) this._frame(this.view); }
+    this.stage.style.height = lh + "px";
+    this.stage.style.transform = `translate(${(w - LW * k) / 2}px, ${(h - lh * k) / 2}px) scale(${k})`;
+  }
+  // Géométrie verticale selon l'écran : carte seule (pleine hauteur) ou carte au-dessus de la rangée des 4 cases.
+  _geometry(mode) {
+    const A = this.lh - TOP - BOT;
+    if (["discussion", "wait", "plain", "tutoriel"].includes(mode)) return { frameH: A, colsTop: 0, colsH: 0 };
+    const avail = A - GAP, frameH = Math.round(avail * (mode === "jugement" ? SHARE_JUGEMENT : SHARE_TRI));
+    return { frameH, colsTop: TOP + frameH + GAP, colsH: avail - frameH };
   }
   _buildCol(c, i) {
     const col = el("div", { class: "col", dataset: { case: c } });
     const label = el("div", { class: "col-label" }, t("case." + c));
-    const legend = el("div", { class: "col-legend" }, el("span", { class: "tri-left" }), el("span", {}, t("stage.easier")), el("span", { class: "sp" }), el("span", {}, t("stage.harder")), el("span", { class: "tri-right" }));
     const zones = el("div", { class: "zones" });
     for (let z = 0; z < 3; z++) {
       const pas = i * 3 + z + 1;
       const zone = el("div", { class: "zone", dataset: { zone: z, pas } });
       zone.style.setProperty("--bord", bord(pas)); zone.style.setProperty("--fond", fond(pas));
-      zone.append(el("div", { class: "zone-band" }), el("div", { class: "zone-mark mark-" + ["l", "c", "r"][z] }), el("div", { class: "zone-toks" }));
+      zone.append(el("div", { class: "zone-band" }), el("div", { class: "zone-toks" }));
       zones.append(zone);
     }
     const area = el("div", { class: "tri-toks" });
     const pc = pasCentre(i);
     col.style.setProperty("--bord", bord(pc)); col.style.setProperty("--fond", fond(pc));
-    col.append(el("div", { class: "col-band" }), label, legend, zones, area);
+    col.append(el("div", { class: "col-band" }), label, zones, area);
     return { col, area, zones, c };
   }
 
@@ -70,9 +81,13 @@ export class Stage {
 
   // ----- cadre de la carte -----
   _frame(v) {
-    const tall = v.mode === "discussion" || v.mode === "wait" || v.mode === "plain";   // pas de cases : le cadre occupe toute la hauteur
-    this.fw = FRAME_W; this.fh = tall ? FRAME_H_DISCUSSION : FRAME_H;
-    this.frame.style.height = (this.fh + 6) + "px"; this.inner.style.height = this.fh + "px";
+    const g = this._geometry(v.mode);
+    this.fw = FRAME_W; this.fh = g.frameH - 6;
+    this.frame.style.height = g.frameH + "px"; this.inner.style.height = this.fh + "px";
+    this.cols.style.top = g.colsTop + "px"; this.cols.style.height = g.colsH + "px";
+    // Rien à discuter ou à juger : la scène reste vide (le motif est affiché sur la console seulement).
+    const blank = (v.mode === "discussion" || v.mode === "jugement") && !v.card;
+    this.stage.classList.toggle("blank", blank);
     const showCards = ["tri", "discussion", "jugement", "tutoriel"].includes(v.mode);
     const kind = v.mode === "tri" ? "png" : (v.mode === "tutoriel" ? "calib" : (showCards ? "html" : "none"));
     const key = kind + ":" + v.card + ":" + v.lang + ":" + (kind === "html" && this.interactive ? "ph" : "");
@@ -87,30 +102,21 @@ export class Stage {
         else if (c) this.content.append(el("div", { class: "html-ph" }, t("console.preview.adaptation")));
         this.nat = { w: this.fw, h: this.fh };
       } else if (kind === "calib") {
-        this.content.append(this._calib()); this.nat = { w: FRAME_W, h: FRAME_H };
+        this.content.append(this._calib()); this.nat = { w: FRAME_W, h: this.fh };
       }
-      if (this.nat) { this.content.style.width = this.nat.w + "px"; this.content.style.height = this.nat.h + "px"; }
     }
-    this.note.hidden = true;
+    if (kind === "html" && this.nat) this.nat = { w: this.fw, h: this.fh };            // la hauteur de la carte suit celle de la fenêtre
+    if (kind === "calib" && this.nat) this.nat = { w: FRAME_W, h: this.fh };
+    if (this.nat) { this.content.style.width = this.nat.w + "px"; this.content.style.height = this.nat.h + "px"; }
+    this.note.hidden = true; this.note.className = "frame-note";
     if (v.mode === "wait" || v.mode === "plain") {
       this.content.replaceChildren(); this.frameKey = null; this.nat = null;
       this.note.hidden = false; this.note.textContent = t(v.mode === "wait" ? "stage.wait.text" : "stage.plain.text." + (v.ended ? "end" : v.phase));
     }
-    if ((v.mode === "discussion" || v.mode === "jugement") && !v.card) { this.note.hidden = false; this.note.className = "frame-note"; this.note.textContent = t("stage.empty"); }
-    else if (v.mode === "tutoriel" && v.tuto === "vocab") {
-      this.note.hidden = false; this.note.className = "frame-note vocab";
-      this.note.replaceChildren(el("h2", {}, t("tuto.vocab.title")), el("ul", {}, ...["cases", "critere", "miniature", "grande"].map(k => el("li", {}, t("tuto.vocab." + k)))));
-    } else if (v.mode === "tutoriel" || v.mode === "tri") { this.note.className = "frame-note"; this.note.hidden = true; }
-    else this.note.className = "frame-note";
     this._zoom(v);
   }
-  _calib() {
-    const sizes = [40, 34, 29, 25, 21, 18, 15, 12];
-    const lines = el("div", { class: "calib-lines" }, ...sizes.map((px, i) => el("div", { class: "calib-line" },
-      el("span", { class: "calib-n" }, String(i + 1)), el("span", { style: `font-size:${px}px` }, t("calib.line")))));
-    const grid = el("div", { class: "calib-gridwrap" }, el("div", { class: "calib-grid" }), el("div", { class: "calib-cap" }, t("calib.grid")));
-    return el("div", { class: "calib" }, lines, grid);
-  }
+  // Calibration : un seul extrait de texte à taille normale, sans chiffres, sans tâche de repérage. Le modérateur pose la question à l'oral.
+  _calib() { return el("div", { class: "calib-text" }, el("p", {}, t("calib.text"))); }
   _zoom(v) {
     const z = v.zoom || { niveau: 100, region: 4 };
     if (!this.nat) { this.content.style.transform = ""; this.mini.hidden = true; return; }
@@ -135,15 +141,14 @@ export class Stage {
   // ----- miniatures -----
   _thumb(extra = "") {
     const v = this.view, c = this.cards.get(v.card);
-    if (v.card === CALIB) return el("div", { class: "thumb calib-thumb " + extra }, ...[0, 1, 2, 3, 4].map(i => el("i", { style: `width:${90 - i * 12}%` })));
     return c ? el("img", { class: "thumb " + extra, src: c.png.url, alt: "", draggable: "false" }) : el("div", { class: "thumb" });
   }
   _tokens(v) {
     this.colEls.forEach(x => { x.area.replaceChildren(); x.zones.querySelectorAll(".zone-toks").forEach(n => n.replaceChildren()); });
     const jug = v.mode === "jugement";
-    this.cols.hidden = v.mode === "discussion" || v.mode === "wait" || v.mode === "plain";
+    this.cols.hidden = ["discussion", "wait", "plain", "tutoriel"].includes(v.mode);
     this.cols.classList.toggle("jugement", jug);
-    if (v.mode === "tri" || v.mode === "tutoriel") {
+    if (v.mode === "tri") {
       const n = v.tri.length;
       v.tri.forEach((tk, i) => {
         const ci = CASES.indexOf(tk.case);
@@ -160,13 +165,11 @@ export class Stage {
       [...groups.values()].sort((a, b) => (a[0].kind === "original" ? 0 : 1) - (b[0].kind === "original" ? 0 : 1)).forEach(g => {
         const tk = g[0], ci = CASES.indexOf(tk.case), pas = ci * 3 + tk.zone + 1;
         const adapted = tk.kind === "adapted";
-        const all = g.every(x => x.validated);
-        const node = el("div", { class: "tok " + (adapted ? "adapt" : "orig") + (g.some(x => x.id === v.active) ? " active" : "") + (all && adapted ? " validated" : ""), dataset: { token: g.find(x => x.id === v.active)?.id || tk.id } },
+        const all = g.every(x => x.validated);          // validé : visible sur la console seulement (aucun texte dans les cases)
+        const node = el("div", { class: "tok " + (adapted ? "adapt" : "orig") + (g.some(x => x.id === v.active) ? " active" : ""), dataset: { token: g.find(x => x.id === v.active)?.id || tk.id } },
           this._thumb(adapted ? "round" : ""));
         if (adapted) node.style.setProperty("--bord", bord(pas));
-        node.append(el("div", { class: "tok-label" }, t(adapted ? "stage.tok.adapted" : "stage.tok.original")));
         if (g.length > 1) node.append(el("div", { class: "badge" }, t("stage.badge.x", { n: g.length })));
-        if (adapted && all) node.append(el("div", { class: "tok-valid" }, t("stage.validated")));
         if (adapted && this.interactive) node.dataset.group = g.map(x => x.id).join(",");
         const zEl = this.colEls[ci].zones.children[tk.zone].querySelector(".zone-toks");
         zEl.append(node);

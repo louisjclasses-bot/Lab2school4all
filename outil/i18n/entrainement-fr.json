@@ -12,49 +12,49 @@
    "version": "0.4.0"
   },
   "tuto.1": {
-   "text": "Présentez le vocabulaire, montrez un placement sur la carte de calibration (étape Démonstration), puis faites le relevé.",
-   "context": "Conseil au modérateur, tutoriel",
+   "text": "Les participants voient un seul texte. Demandez : « Lisez-vous bien ce texte ? », écoutez, puis ne cliquez dans le relevé que pour une exception.",
+   "context": "Conseil au modérateur, calibration",
    "status": "source",
    "version": "0.4.0"
   },
   "rel.1": {
-   "text": "Ordinateur, écran moyen. Je lis jusqu'à la ligne 6, pas besoin de zoom.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "Je suis sur un portable, je lis très bien.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "source",
    "version": "0.4.0"
   },
   "rel.2": {
-   "text": "Tablette, petit écran. Ligne 5. Un zoom à 150 % m'aiderait.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "Je suis sur une tablette, un petit écran. Je lis mal, un zoom m'aiderait.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "source",
    "version": "0.4.0"
   },
   "rel.3": {
-   "text": "Ordinateur, grand écran, ligne 7.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "Moi j'ai un grand écran de bureau, tout est bien lisible.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "source",
    "version": "0.4.0"
   },
   "rel.4": {
-   "text": "Ordinateur, écran moyen, ligne 6.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "Portable aussi, ça va.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "source",
    "version": "0.4.0"
   },
   "rel.5": {
-   "text": "Je suis sur mon téléphone, petit écran. Je lis jusqu'à la ligne 3, il me faudrait du zoom à 200 %.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "Tablette, petit écran. Je lis difficilement, j'aurais besoin de zoom.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "source",
    "version": "0.4.0"
   },
   "rel.6": {
-   "text": "Ordinateur, écran moyen, ligne 6.",
-   "context": "Réplique d'un participant simulé au relevé du matériel",
+   "text": "Ordinateur portable, rien à signaler.",
+   "context": "Réplique d'un participant simulé à la calibration",
    "status": "source",
    "version": "0.4.0"
   },
   "rel.c": {
-   "text": "Saisissez le relevé de chaque participant dans le tableau, puis passez au tri.",
+   "text": "Trois participants s'écartent du défaut. Au moins un a besoin de zoom : choisissez le zoom du groupe (100 % ou 150 %), puis passez au tri.",
    "context": "Conseil au modérateur, relevé",
    "status": "source",
    "version": "0.4.0"

@@ -10,7 +10,7 @@ const manifest = await fetchJSON(outil.manifest);
 const root = document.getElementById("root");
 await loadStrings("fr"); applyI18n();
 
-let lib = null, stage = null, curLang = null, epoch = null, lastRev = -1, latest = null, busy = false;
+let lib = null, stage = null, curLang = null, epoch = null, lastRev = -1, latest = null, busy = false, lastApplied = "";
 const link = new Link(m => {
   if (m.k === "view") {
     if (m.epoch !== epoch) { epoch = m.epoch; lastRev = -1; }
@@ -20,7 +20,7 @@ const link = new Link(m => {
   if (m.k === "ping_scene") hello();
 });
 function hello() {
-  link.send({ k: "hello", hashes: lib ? lib.hashes() : null, lang: curLang, errors: lib ? lib.errors : [], display: displayInfo(), total: lib ? lib.defs.length : 0 });
+  link.send({ k: "hello", hashes: lib ? lib.hashes() : null, lang: curLang, errors: lib ? lib.errors : [], display: displayInfo(), total: lib ? lib.defs.length : 0, epoch, rev: lastRev, visible: document.visibilityState === "visible" });
 }
 async function apply() {
   if (busy || !latest) return;
@@ -30,14 +30,20 @@ async function apply() {
       const v = latest; latest = null;
       if (v.lang !== curLang) {
         await loadStrings(v.lang); applyI18n(); curLang = v.lang;
-        lib = new CardLibrary(cardsBase(outil), manifest, v.lang);
+        lib = new CardLibrary(cardsBase(outil), manifest, v.lang, { descriptions: false });
         await lib.preload();
-        root.replaceChildren(); stage = new Stage(root, { cards: lib });
+        root.replaceChildren(); stage = new Stage(root, { cards: lib }); lastApplied = "";
         hello();
       }
+      const sj = JSON.stringify(v); if (sj === lastApplied) continue; lastApplied = sj;      // vue identique : rien à redessiner
       await stage.update(v);
     }
   } finally { busy = false; }
 }
 hello();
-setInterval(hello, 2000);          // signal de présence pour la console
+setInterval(hello, 2000);
+document.addEventListener("visibilitychange", hello);     // la console est prévenue tout de suite si la fenêtre de scène est recouverte ou réaffichée
+if (new URLSearchParams(location.search).get("diag") === "1") {      // diagnostic (console du navigateur seulement) : vues reçues et visibilité
+  document.addEventListener("visibilitychange", () => console.info("[diag scene] visibility", document.visibilityState, "last rev", lastRev));
+  const old = link.onMessage; link.onMessage = m => { if (m.k === "view") console.info("[diag scene] view received, rev", m.rev, "visibility", document.visibilityState); old(m); };
+}          // signal de présence pour la console

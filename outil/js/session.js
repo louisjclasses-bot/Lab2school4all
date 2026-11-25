@@ -1,7 +1,7 @@
 // Session : journal d'événements + commandes (garde-fous). Les commandes retournent {ok, raison?}.
 // Les raisons sont des identifiants de chaînes (clé i18n "err.<raison>"), jamais du texte.
 import { initState, reduce, replay, currentPhase, phaseCardId, presentCount, placedTokens, computeSelection,
-  shiftPos, pas, CALIB } from "./state.js";
+  shiftPos, pas, CALIB, groupZoom, needsZoom, RELEVE_DEFAUT } from "./state.js";
 import { phaseActiveMs } from "./timers.js";
 import { isoNow, clone, CASES } from "./util.js";
 
@@ -86,6 +86,9 @@ export class Session {
     this.dispatch("phase_debut", { phase: np.id, module: np.module, rang: i, prevue_min: np.planned_min });
     if (np.module === "discussion") {
       const detail = computeSelection(s);
+      // Entraînement : l'étape de jugement doit toujours être pratiquable, quel que soit le tri de la personne qui s'entraîne.
+      const forced = this.header && this.header.entrainement && this.header.config && this.header.config.force_eligible;
+      if (!detail.length && forced && s.cards[forced]) detail.push({ carte: forced, rang_tri: s.order.indexOf(forced) + 1, impossible: 0, difficile: 0, cases: [], force: true });
       this.dispatch("selection", { cartes: detail.map(d => d.carte), detail });
     }
     if (["tutoriel", "tri", "discussion", "jugement"].includes(np.module) && s.seq[np.id].length) {
@@ -104,9 +107,10 @@ export class Session {
     const t0 = p.id === "discussion" ? s.cards[id].disc?.entered : p.id === "jugement" ? s.adapt[id]?.entered : s.cards[id].entered;
     return t0 ? this.now() - t0 : 0;
   }
+  // À chaque changement de carte ou de phase, le zoom revient au zoom retenu pour le groupe (100 % si personne n'en a besoin). Chaque changement est journalisé.
   leaveZoom() {
-    const z = this.s.zoom;
-    if (z.niveau !== 100 || z.region !== 4) this.setZoom(100, 4);
+    const z = this.s.zoom, g = groupZoom(this.s);
+    if (z.niveau !== g || z.region !== 4) this.setZoom(g, 4);
   }
   advance(type, extra = {}) {
     const p = this.curPhase(), s = this.s, id = this.curCard();
@@ -243,8 +247,21 @@ export class Session {
   }
 
   // ---------- tutoriel ----------
-  setTutoEtape(etape) { this.dispatch("tutoriel_etape", { etape }); return OK; }
-  setReleve(participant, champ, valeur) { this.dispatch("releve", { participant, champ, valeur: valeur || null }); return OK; }
+  // Relevé : valeur nulle = retour à la valeur par défaut (marquée comme telle dans l'export)
+  setReleve(participant, champ, valeur) {
+    if (!(champ in RELEVE_DEFAUT) || !(participant in this.s.releve)) return KO("releve_invalide");
+    const cur = this.s.releve[participant][champ];
+    if ((valeur ?? null) === null && cur.par_defaut) return OK;
+    if (valeur !== null && valeur !== undefined && cur.valeur === valeur && !cur.par_defaut) return OK;
+    this.dispatch("releve", { participant, champ, valeur: valeur ?? null }); return OK;
+  }
+  // Zoom retenu pour le groupe (100 % ou 150 %) : appliqué tout de suite à la carte partagée, puis à chaque carte.
+  setZoomGroupe(niveau) {
+    if (![100, 150].includes(niveau)) return KO("zoom_invalide");
+    if (this.s.zoom_groupe.niveau !== niveau || this.s.zoom_groupe.par_defaut) this.dispatch("zoom_groupe", { niveau });
+    if (this.curCard()) this.setZoom(groupZoom(this.s), 4);
+    return OK;
+  }
 }
 
 function originalPos(a, t) {

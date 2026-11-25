@@ -10,12 +10,19 @@ export function newCardState(id, rang) {
     question: { statut: null, motif: null, at: null }, skipped: null, done: false };
 }
 
+// Calibration v0.2 : un relevé par participant, pré-rempli. Chaque champ garde sa valeur et indique si c'est encore la valeur par défaut.
+export const RELEVE_DEFAUT = { appareil: "ordinateur", taille: "moyen", besoin_zoom: "non" };
+export const defaultReleve = () => Object.fromEntries(Object.entries(RELEVE_DEFAUT).map(([k, v]) => [k, { valeur: v, par_defaut: true }]));
+// Zoom retenu pour le groupe : appliqué à chaque carte, mais seulement si au moins un participant en a besoin.
+export const needsZoom = s => Object.values(s.releve).some(r => r.besoin_zoom.valeur === "oui");
+export const groupZoom = s => (needsZoom(s) ? s.zoom_groupe.niveau : 100);
+
 export function initState(cfg, order, participants = PARTICIPANTS_DEFAUT) {
   const cards = {};
   order.forEach((id, i) => { cards[id] = newCardState(id, i + 1); });
   cards[CALIB] = newCardState(CALIB, 0);
   const present = {}, releve = {};
-  participants.forEach(p => { present[p] = true; releve[p] = { appareil: null, taille: null, ligne: null, zoom: null }; });
+  participants.forEach(p => { present[p] = true; releve[p] = defaultReleve(); });
   return {
     schema: 1,
     status: "setup",                 // setup | running | paused | ended
@@ -32,10 +39,11 @@ export function initState(cfg, order, participants = PARTICIPANTS_DEFAUT) {
     selection: null,
     adapt: {},
     zoom: { niveau: 100, region: 4, since: null, card: null },
-    tuto: { etape: "vocab" },
-    releve,
+    releve, zoom_groupe: { niveau: 100, par_defaut: true },
     notes: [], incidents: [], sync: { audio: null }, scene: { liaison: null },
-    resumes: 0, lastN: 0
+    resumes: 0, lastN: 0,
+    // Enregistrement de secours (OBS) : dérivé du journal. Jamais de mot de passe ni de chemin complet, seulement des noms de fichiers.
+    enregistrement_secours: { actif: false, debut_iso: null, fin_iso: null, fichiers: [], incidents: [], choix_sans_enregistrement: false, segments: [] }
   };
 }
 
@@ -84,10 +92,26 @@ export function shiftPos(caseName, zone, dir) {
 
 function initAdapt(s, id, ms) {
   const tri = s.cards[id];
+  let pl = placedTokens(tri);
+  if (!pl.length) pl = [{ id: "x1", case: "difficile" }];      // carte rendue éligible d'office (entraînement) mais jamais placée : départ en Difficile
   const toks = [];
-  placedTokens(tri).forEach(t => toks.push({ id: "o" + t.id, kind: "original", case: t.case, zone: 1, validated: true, moved: false, default_start: true }));
-  placedTokens(tri).forEach(t => toks.push({ id: "a" + t.id, kind: "adapted", case: t.case, zone: 1, validated: false, moved: false, default_start: true }));
-  s.adapt[id] = { tokens: toks, ghost: false, nextA: placedTokens(tri).length + 1, entered: ms, left: null };
+  pl.forEach(t => toks.push({ id: "o" + t.id, kind: "original", case: t.case, zone: 1, validated: true, moved: false, default_start: true }));
+  pl.forEach(t => toks.push({ id: "a" + t.id, kind: "adapted", case: t.case, zone: 1, validated: false, moved: false, default_start: true }));
+  s.adapt[id] = { tokens: toks, ghost: false, nextA: pl.length + 1, entered: ms, left: null };
+}
+
+function reduceObs(s, ev) {
+  const o = s.enregistrement_secours, d = ev.data, seg = n => o.segments.find(x => x.n === n);
+  const addFile = (x, f) => { if (f) { x.fichier = f; if (!x.fichiers.includes(f)) x.fichiers.push(f); } };
+  if (ev.type === "obs_choix") o.choix_sans_enregistrement = true;
+  else if (ev.type === "obs_debut") { const x = { n: d.segment, debut_iso: ev.t, fin_iso: null, fichier: null, fichiers: [], cause: null }; addFile(x, d.fichier); o.segments.push(x); }
+  else if (ev.type === "obs_fichier") { const x = seg(d.segment); if (x) addFile(x, d.fichier); }
+  else if (ev.type === "obs_fin") { const x = seg(d.segment); if (x) { x.fin_iso = ev.t; x.cause = d.cause; addFile(x, d.fichier); } }
+  else if (ev.type === "obs_incident") o.incidents.push({ t: ev.t, type: d.type, segment: d.segment ?? null });
+  o.actif = o.segments.length > 0;
+  o.debut_iso = o.segments.length ? o.segments[0].debut_iso : null;
+  o.fin_iso = o.segments.length && o.segments.every(x => x.fin_iso) ? o.segments[o.segments.length - 1].fin_iso : null;
+  o.fichiers = o.segments.flatMap(x => x.fichiers);
 }
 
 export function reduce(s, ev) {
@@ -101,6 +125,7 @@ export function reduce(s, ev) {
     case "sauvegarde_echec": case "sauvegarde_retablie": break;
     case "scene_liaison": s.scene.liaison = { connectee: d.connectee, cartes_identiques: d.cartes_identiques }; break;
     case "sync_audio": s.sync.audio = ms; break;
+    case "obs_choix": case "obs_debut": case "obs_fichier": case "obs_fin": case "obs_incident": reduceObs(s, ev); break;
     case "go": s.go = ms; s.status = "running"; break;
     case "pause_debut": s.pausedSince = ms; s.status = "paused"; break;
     case "pause_fin": s.pausedTotalMs += d.duree_ms; s.pausedSince = null; s.status = "running"; break;
@@ -132,7 +157,7 @@ export function reduce(s, ev) {
       if (d.phase === "tri" || d.phase === "tutoriel") { c.entered = ms; c.left = null; }
       else if (d.phase === "discussion") { s.cards[d.carte].disc = { entered: ms, left: null, skipped: null, done: false }; }
       else if (d.phase === "jugement") { initAdapt(s, d.carte, ms); }
-      s.zoom = { niveau: 100, region: 4, since: ms, card: d.carte };   // remise à zéro à chaque carte
+      s.zoom = { niveau: groupZoom(s), region: 4, since: ms, card: d.carte };   // à chaque carte : le zoom retenu pour le groupe (100 % si personne n'en a besoin)
       break;
     }
     case "carte_suivante": case "carte_sautee": {
@@ -158,8 +183,14 @@ export function reduce(s, ev) {
     case "effectifs": card.counts = { ...d.effectifs }; break;
     case "question_rituelle": card.question = { statut: d.statut, motif: d.motif ?? null, at: ms }; break;
     case "zoom": s.zoom = { niveau: d.niveau, region: d.region, since: ms, card: d.carte }; break;
-    case "tutoriel_etape": s.tuto.etape = d.etape; break;
-    case "releve": s.releve[d.participant][d.champ] = d.valeur; break;
+    case "tutoriel_etape": break;          // anciennes séances : étapes du tutoriel supprimées en 0.6.0
+    case "releve": {                          // valeur nulle : retour à la valeur par défaut
+      const r = s.releve[d.participant][d.champ];
+      if (d.valeur == null) { r.valeur = RELEVE_DEFAUT[d.champ]; r.par_defaut = true; } else { r.valeur = d.valeur; r.par_defaut = false; }
+      break;
+    }
+    case "zoom_groupe": s.zoom_groupe = { niveau: d.niveau, par_defaut: false }; break;
+    case "description_affichee": s.cards[d.carte].description = { langue: d.langue, t: ev.t }; break;
     case "adaptation_placement": {
       const t = s.adapt[d.carte].tokens.find(x => x.id === d.miniature);
       t.case = d.case; t.zone = d.zone; t.moved = true; t.default_start = false; t.validated = false;

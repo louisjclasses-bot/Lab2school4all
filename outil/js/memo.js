@@ -12,7 +12,7 @@ async function boot() {
   const outil = await (await fetch("config/outil.json", { cache: "no-cache" })).json();
   const R = t("keyhelp.range"), DEL = t("key.del"), ENT = t("key.enter");
   const tri = [[[R], "place"], [["S"], "second"], [["X"], "cycle"], [[DEL], "remove"], [["Q"], "question"], [["N"], "next"], [["Z"], "zoom"]];
-  const jug = [[["←", "→"], "shift"], [[R], "place"], [[ENT], "validate"], [["X"], "cycle"], [["D"], "dup"], [[DEL], "remove"], [["R"], "ghost"], [["N"], "next"]];
+  const jug = [[["←", "→"], "shift"], [[R], "place"], [[ENT], "validate"], [["X"], "cycle"], [["D"], "dup"], [[DEL], "remove"], [["N"], "next"]];
   const inc = ["scene", "save", "crash", "tech"];
   root.append(
     el("header", {}, el("div", {}, el("h1", {}, t("memo.title")), el("p", { class: "sub" }, t("memo.sub", { v: outil.tool_version }))),

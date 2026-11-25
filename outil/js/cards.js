@@ -26,8 +26,9 @@ async function loadOne(url, type) {
 }
 
 export class CardLibrary {
-  constructor(base, manifest, lang) {
-    this.base = base; this.lang = lang;
+  constructor(base, manifest, lang, { descriptions = true } = {}) {
+    this.base = base; this.lang = lang; this.withDescriptions = descriptions;
+    this.descriptions = {}; this.descriptionsInfo = { source: "aucune", sha256: null };
     this.defs = manifest.cards.filter(c => c.actif !== false);
     this.loaded = new Map(); this.errors = [];
   }
@@ -35,8 +36,21 @@ export class CardLibrary {
   def(id) { return this.defs.find(c => c.id === id); }
   get(id) { return this.loaded.get(id); }
   label(id) { const d = this.def(id); return d ? (d.libelle[this.lang] || d.libelle.fr) : ""; }
+  // Descriptions de ce que l'exercice implique pour l'élève (console seulement). Source unique : descriptions.json dans le dépôt des cartes (modifications reprises
+  // comme pour les cartes). S'il n'y est pas encore, repli sur la copie de data/descriptions.fallback.json. Une carte sans description n'affiche rien, sans erreur.
+  async loadDescriptions() {
+    const read = async url => { const r = await fetch(url, { cache: "no-cache" }); if (!r.ok) throw new Error(String(r.status)); const buf = await r.arrayBuffer(); return { j: JSON.parse(new TextDecoder().decode(buf)), sha256: await sha256Hex(buf) }; };
+    const ok = x => x && x.j && typeof x.j === "object" && !Array.isArray(x.j);
+    let res = null, source = "depot";
+    try { res = await read(new URL("descriptions.json", this.base).href); } catch (e) { res = null; }
+    if (!ok(res)) { try { res = await read(new URL("../data/descriptions.fallback.json", import.meta.url).href); source = "local"; } catch (e) { res = null; } }
+    if (!ok(res)) { this.descriptions = {}; this.descriptionsInfo = { source: "aucune", sha256: null }; return; }
+    this.descriptions = res.j; this.descriptionsInfo = { source, sha256: res.sha256 };
+  }
+  description(id) { const d = this.descriptions[id], txt = d && d[this.lang]; return typeof txt === "string" && txt.trim() ? { lang: this.lang, text: txt } : null; }
   async preload(onProgress) {
     this.errors = []; let n = 0;
+    const dp = this.withDescriptions ? this.loadDescriptions() : Promise.resolve();
     await Promise.all(this.defs.map(async d => {
       try {
         const f = d[this.lang];
@@ -47,6 +61,7 @@ export class CardLibrary {
       } catch (e) { this.errors.push({ id: d.id, message: String(e.message || e) }); }
       onProgress && onProgress(++n, this.defs.length);
     }));
+    await dp;
     return { ok: this.errors.length === 0, loaded: this.loaded.size, total: this.defs.length, errors: this.errors };
   }
   hashes() {          // empreintes, dans l'ordre du manifeste

@@ -1,0 +1,46 @@
+{
+  "01_ex12": {
+    "fr": "Dans cet exercice, l’enfant doit recopier chaque phrase sur son cahier en la complétant avec un groupe nominal sujet qui convient.",
+    "en": "In this exercise, the child must copy each sentence into their notebook, completing it with an appropriate noun phrase to serve as the subject."
+  },
+  "03_ex03": {
+    "fr": "Dans cet exercice, l’enfant doit lire chaque nombre écrit en lettres dans son manuel, puis écrire ce nombre en chiffres sur son cahier, en associant chaque réponse à la lettre correspondante (a, b, c, d, e).",
+    "en": "In this exercise, the child must read each number written as a word in their textbook, then write that number as a numeral in their notebook, matching each answer to the corresponding letter (a, b, c, d, e)."
+  },
+  "06_ex09": {
+    "fr": "Dans cet exercice, l’enfant doit d’abord recopier sur son cahier les deux colonnes de noms en laissant un espace entre elles. Pour chaque nom d’une colonne, il doit lire les noms de l’autre colonne jusqu’à trouver celui qui lui correspond. Il doit ensuite tracer un trait entre les deux.",
+    "en": "In this exercise, the child must first copy the two columns of nouns into their notebook, leaving a space between them. For each noun in one column, they must read through the nouns in the other column until they find the corresponding match. Then, they must draw a line connecting the two."
+  },
+  "08_ex13": {
+    "fr": "Dans cet exercice, l’enfant doit recopier chaque liste sur son cahier en supprimant l’intrus.",
+    "en": "In this exercise, the child must copy each list into their notebook, removing the \"odd one out.\""
+  },
+  "13_ex14": {
+    "fr": "Dans cet exercice, l’enfant doit recopier chaque phrase sur son cahier en ajoutant les majuscules et les points nécessaires.",
+    "en": "In this exercise, the child must copy each sentence into their notebook, adding the necessary capital letters and periods."
+  },
+  "14_ex31": {
+    "fr": "Dans cet exercice, l’enfant doit recopier les nombres en ordre croissant sur son cahier.",
+    "en": "In this exercise, the child must copy the numbers in ascending order into their notebook."
+  },
+  "15_ex06": {
+    "fr": "Dans cet exercice, l’enfant doit poser chaque addition en colonne sur son cahier en alignant les unités et les dizaines. Il doit ensuite effectuer le calcul et écrire le résultat.",
+    "en": "In this exercise, the child must set up each addition in a column in their notebook, aligning the units and the tens. Then, perform the calculation and write down the result."
+  },
+  "16_ex10": {
+    "fr": "Dans cet exercice, l’enfant doit recopier les noms communs au singulier sur son cahier puis les réécrire au pluriel.",
+    "en": "In this exercise, the child must copy the singular common nouns into their notebook and then rewrite them in the plural form."
+  },
+  "CocheMots_Malin": {
+    "fr": "Dans cet exercice, l’enfant doit recopier chaque phrase du manuel sur son cahier, puis entourer le verbe.",
+    "en": "In this exercise, the child must copy each sentence from the textbook into their notebook, then circle the verb."
+  },
+  "CocheLettres": {
+    "fr": "Dans cet exercice, l’enfant doit recopier chaque mot du manuel sur son cahier, puis souligner le radical et entourer le suffixe.",
+    "en": "In this exercise, the child must copy each word from the textbook into their notebook, then underline the root word and circle the suffix."
+  },
+  "09_ex07": {
+    "fr": "Dans cet exercice, l’enfant doit d’abord tracer sur son cahier le tableau à deux colonnes (« Singulier » et « Pluriel ») comme dans le manuel. Puis il doit recopier chaque groupe nominal dans la bonne colonne.",
+    "en": "In this exercise, the child must first draw a two-column table in their notebook (labeled \"Singular\" and \"Plural\"), just as shown in the textbook. Then, they must copy each noun phrase into the correct column."
+  }
+}

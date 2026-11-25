@@ -2,37 +2,342 @@
  "dictionary_version": 1,
  "note": "Dictionnaire des événements du journal. Une entrée par type : module, version du schéma, champs (type ; '?' = facultatif ou nul). Source de vérité pour les contrôles de l'export (tests) et pour TRAPD/analyse.",
  "types": {
-  "session_creee":        { "module": "session", "version": 1, "fields": { "fg_id": "string", "tool_version": "string" } },
-  "reprise":              { "module": "session", "version": 1, "fields": { "depuis_n": "number", "interruption_ms": "number", "ecarts": "array?" } },
-  "sauvegarde_choisie":   { "module": "session", "version": 1, "fields": { "mode": "string", "fichier": "string?" } },
-  "sauvegarde_echec":     { "module": "session", "version": 1, "fields": { "message": "string" } },
-  "sauvegarde_retablie":  { "module": "session", "version": 1, "fields": {} },
-  "scene_liaison":        { "module": "session", "version": 1, "fields": { "connectee": "boolean", "cartes_identiques": "boolean?", "ecarts": "array?" } },
-  "sync_audio":           { "module": "session", "version": 1, "fields": {} },
-  "go":                   { "module": "session", "version": 1, "fields": {} },
-  "pause_debut":          { "module": "session", "version": 1, "fields": {} },
-  "pause_fin":            { "module": "session", "version": 1, "fields": { "duree_ms": "number" } },
-  "fin_seance":           { "module": "session", "version": 1, "fields": {} },
-  "presents":             { "module": "session", "version": 1, "fields": { "participant": "string", "present": "boolean", "total_presents": "number" } },
-  "incident":             { "module": "session", "version": 1, "fields": { "type": "string", "note": "string?" } },
-  "note":                 { "module": "session", "version": 1, "fields": { "texte": "string", "carte": "string?" } },
-  "phase_debut":          { "module": "phases", "version": 1, "fields": { "phase": "string", "module": "string", "rang": "number", "prevue_min": "number" } },
-  "phase_fin":            { "module": "phases", "version": 1, "fields": { "phase": "string", "prevue_min": "number", "duree_ms": "number", "depassement_ms": "number", "non_traitees": "array" } },
-  "carte_debut":          { "module": "cartes", "version": 1, "fields": { "phase": "string", "carte": "string", "rang": "number" } },
-  "carte_suivante":       { "module": "cartes", "version": 1, "fields": { "phase": "string", "carte": "string", "rang": "number", "duree_ms": "number" } },
-  "carte_sautee":         { "module": "cartes", "version": 1, "fields": { "phase": "string", "carte": "string", "rang": "number", "motif": "string", "duree_ms": "number" } },
-  "zoom":                 { "module": "zoom", "version": 1, "fields": { "carte": "string", "niveau": "number", "region": "number", "niveau_precedent": "number", "region_precedente": "number", "duree_precedente_ms": "number" } },
-  "placement":            { "module": "tri", "version": 1, "fields": { "carte": "string", "miniature": "string", "case": "string", "source": "string", "zoom_niveau": "number", "zoom_region": "number" } },
-  "retrait":              { "module": "tri", "version": 1, "fields": { "carte": "string", "miniature": "string" } },
-  "effectifs":            { "module": "tri", "version": 1, "fields": { "carte": "string", "effectifs": "object", "presents": "number", "total": "number" } },
-  "question_rituelle":    { "module": "tri", "version": 1, "fields": { "carte": "string", "statut": "string", "motif": "string?", "presents": "number" } },
-  "selection":            { "module": "discussion", "version": 1, "fields": { "cartes": "array", "detail": "array" } },
-  "adaptation_placement": { "module": "jugement", "version": 1, "fields": { "carte": "string", "miniature": "string", "case": "string", "zone": "number", "pas": "number", "zoom_niveau": "number", "zoom_region": "number" } },
-  "adaptation_duplication": { "module": "jugement", "version": 1, "fields": { "carte": "string", "miniature": "string", "depuis": "string", "case": "string", "zone": "number", "pas": "number" } },
-  "adaptation_retrait":   { "module": "jugement", "version": 1, "fields": { "carte": "string", "miniature": "string" } },
-  "repere_fantome":       { "module": "jugement", "version": 1, "fields": { "carte": "string", "visible": "boolean" } },
-  "validation_adaptation": { "module": "jugement", "version": 1, "fields": { "carte": "string", "miniature": "string", "case": "string", "zone": "number", "pas": "number", "depart_defaut": "boolean", "position_original": "string" } },
-  "tutoriel_etape":       { "module": "tutoriel", "version": 1, "fields": { "etape": "string" } },
-  "releve":               { "module": "tutoriel", "version": 1, "fields": { "participant": "string", "champ": "string", "valeur": "string?" } }
+  "session_creee": {
+   "module": "session",
+   "version": 1,
+   "fields": {
+    "fg_id": "string",
+    "tool_version": "string"
+   }
+  },
+  "reprise": {
+   "module": "session",
+   "version": 1,
+   "fields": {
+    "depuis_n": "number",
+    "interruption_ms": "number",
+    "ecarts": "array?"
+   }
+  },
+  "sauvegarde_choisie": {
+   "module": "session",
+   "version": 1,
+   "fields": {
+    "mode": "string",
+    "fichier": "string?"
+   }
+  },
+  "sauvegarde_echec": {
+   "module": "session",
+   "version": 1,
+   "fields": {
+    "message": "string"
+   }
+  },
+  "sauvegarde_retablie": {
+   "module": "session",
+   "version": 1,
+   "fields": {}
+  },
+  "scene_liaison": {
+   "module": "session",
+   "version": 1,
+   "fields": {
+    "connectee": "boolean",
+    "cartes_identiques": "boolean?",
+    "ecarts": "array?"
+   }
+  },
+  "sync_audio": {
+   "module": "session",
+   "version": 1,
+   "fields": {}
+  },
+  "go": {
+   "module": "session",
+   "version": 1,
+   "fields": {}
+  },
+  "pause_debut": {
+   "module": "session",
+   "version": 1,
+   "fields": {}
+  },
+  "pause_fin": {
+   "module": "session",
+   "version": 1,
+   "fields": {
+    "duree_ms": "number"
+   }
+  },
+  "fin_seance": {
+   "module": "session",
+   "version": 1,
+   "fields": {}
+  },
+  "presents": {
+   "module": "session",
+   "version": 1,
+   "fields": {
+    "participant": "string",
+    "present": "boolean",
+    "total_presents": "number"
+   }
+  },
+  "incident": {
+   "module": "session",
+   "version": 1,
+   "fields": {
+    "type": "string",
+    "note": "string?"
+   }
+  },
+  "note": {
+   "module": "session",
+   "version": 1,
+   "fields": {
+    "texte": "string",
+    "carte": "string?"
+   }
+  },
+  "phase_debut": {
+   "module": "phases",
+   "version": 1,
+   "fields": {
+    "phase": "string",
+    "module": "string",
+    "rang": "number",
+    "prevue_min": "number"
+   }
+  },
+  "phase_fin": {
+   "module": "phases",
+   "version": 1,
+   "fields": {
+    "phase": "string",
+    "prevue_min": "number",
+    "duree_ms": "number",
+    "depassement_ms": "number",
+    "non_traitees": "array"
+   }
+  },
+  "carte_debut": {
+   "module": "cartes",
+   "version": 1,
+   "fields": {
+    "phase": "string",
+    "carte": "string",
+    "rang": "number"
+   }
+  },
+  "carte_suivante": {
+   "module": "cartes",
+   "version": 1,
+   "fields": {
+    "phase": "string",
+    "carte": "string",
+    "rang": "number",
+    "duree_ms": "number"
+   }
+  },
+  "carte_sautee": {
+   "module": "cartes",
+   "version": 1,
+   "fields": {
+    "phase": "string",
+    "carte": "string",
+    "rang": "number",
+    "motif": "string",
+    "duree_ms": "number"
+   }
+  },
+  "zoom": {
+   "module": "zoom",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "niveau": "number",
+    "region": "number",
+    "niveau_precedent": "number",
+    "region_precedente": "number",
+    "duree_precedente_ms": "number"
+   }
+  },
+  "placement": {
+   "module": "tri",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "miniature": "string",
+    "case": "string",
+    "source": "string",
+    "zoom_niveau": "number",
+    "zoom_region": "number"
+   }
+  },
+  "retrait": {
+   "module": "tri",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "miniature": "string"
+   }
+  },
+  "effectifs": {
+   "module": "tri",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "effectifs": "object",
+    "presents": "number",
+    "total": "number"
+   }
+  },
+  "question_rituelle": {
+   "module": "tri",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "statut": "string",
+    "motif": "string?",
+    "presents": "number"
+   }
+  },
+  "selection": {
+   "module": "discussion",
+   "version": 1,
+   "fields": {
+    "cartes": "array",
+    "detail": "array"
+   }
+  },
+  "adaptation_placement": {
+   "module": "jugement",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "miniature": "string",
+    "case": "string",
+    "zone": "number",
+    "pas": "number",
+    "zoom_niveau": "number",
+    "zoom_region": "number"
+   }
+  },
+  "adaptation_duplication": {
+   "module": "jugement",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "miniature": "string",
+    "depuis": "string",
+    "case": "string",
+    "zone": "number",
+    "pas": "number"
+   }
+  },
+  "adaptation_retrait": {
+   "module": "jugement",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "miniature": "string"
+   }
+  },
+  "repere_fantome": {
+   "module": "jugement",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "visible": "boolean"
+   }
+  },
+  "validation_adaptation": {
+   "module": "jugement",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "miniature": "string",
+    "case": "string",
+    "zone": "number",
+    "pas": "number",
+    "depart_defaut": "boolean",
+    "position_original": "string"
+   }
+  },
+  "tutoriel_etape": {
+   "module": "tutoriel",
+   "version": 1,
+   "fields": {
+    "etape": "string"
+   },
+   "note": "obsolète depuis la 0.6.0 (étapes du tutoriel supprimées) ; conservé pour relire d'anciennes séances"
+  },
+  "releve": {
+   "module": "tutoriel",
+   "version": 1,
+   "fields": {
+    "participant": "string",
+    "champ": "string",
+    "valeur": "string?"
+   }
+  },
+  "obs_choix": {
+   "module": "obs",
+   "version": 1,
+   "fields": {
+    "motif": "string"
+   }
+  },
+  "obs_debut": {
+   "module": "obs",
+   "version": 1,
+   "fields": {
+    "segment": "number",
+    "fichier": "string?",
+    "horloge_ms": "number"
+   }
+  },
+  "obs_fichier": {
+   "module": "obs",
+   "version": 1,
+   "fields": {
+    "segment": "number",
+    "fichier": "string"
+   }
+  },
+  "obs_fin": {
+   "module": "obs",
+   "version": 1,
+   "fields": {
+    "segment": "number",
+    "fichier": "string?",
+    "cause": "string",
+    "horloge_ms": "number"
+   }
+  },
+  "obs_incident": {
+   "module": "obs",
+   "version": 1,
+   "fields": {
+    "type": "string",
+    "segment": "number?"
+   }
+  },
+  "zoom_groupe": {
+   "module": "tutoriel",
+   "version": 1,
+   "fields": {
+    "niveau": "number"
+   }
+  },
+  "description_affichee": {
+   "module": "tri",
+   "version": 1,
+   "fields": {
+    "carte": "string",
+    "langue": "string"
+   }
+  }
  }
 }

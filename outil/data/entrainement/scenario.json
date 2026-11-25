@@ -2,7 +2,7 @@
  "_meta": {
   "version": "0.4.0",
   "generateur": "dev/entrainement_src.py",
-  "note": "Clés : phase, phase:carte, phase:* (autres cartes), tutoriel:releve. who : P1 à P6, coach (conseil), sys (système). Textes : i18n/entrainement-<langue>.json."
+  "note": "Clés : phase, phase:carte, phase:* (autres cartes), tutoriel. who : P1 à P6, coach (conseil), sys (système). Textes : i18n/entrainement-<langue>.json."
  },
  "reveal_ms": 3000,
  "lines": {
@@ -16,9 +16,7 @@
    {
     "id": "tuto.1",
     "who": "coach"
-   }
-  ],
-  "tutoriel:releve": [
+   },
    {
     "id": "rel.1",
     "who": "P1"
@@ -322,6 +320,21 @@
     "zone": 1
    }
   },
-  "releve_participants": 6
+  "releve": {
+   "P2": {
+    "appareil": "tablette",
+    "taille": "petit",
+    "besoin_zoom": "oui"
+   },
+   "P3": {
+    "taille": "grand"
+   },
+   "P5": {
+    "appareil": "tablette",
+    "taille": "petit",
+    "besoin_zoom": "oui"
+   }
+  },
+  "zoom_groupe": 150
  }
 }

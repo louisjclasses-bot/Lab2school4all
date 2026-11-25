@@ -288,18 +288,6 @@
    "status": "draft_translation",
    "version": "0.1.0"
   },
-  "stage.easier": {
-   "text": "easier",
-   "context": "Légende des zones au jugement (côté gauche)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "stage.harder": {
-   "text": "harder",
-   "context": "Légende des zones au jugement (côté droit)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
   "stage.badge": {
    "text": "{i}/{n}",
    "context": "Badge d'une miniature quand la carte a plusieurs placements. {i} = numéro, {n} = total",
@@ -312,24 +300,6 @@
    "status": "draft_translation",
    "version": "0.1.0"
   },
-  "stage.tok.adapted": {
-   "text": "Adapted",
-   "context": "Étiquette de la miniature de l'exercice adapté",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "stage.tok.original": {
-   "text": "Original",
-   "context": "Étiquette de la miniature de l'exercice original",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "stage.validated": {
-   "text": "Confirmed",
-   "context": "Marque d'un placement adapté validé",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
   "stage.zoom": {
    "text": "Zoom {n}%",
    "context": "Texte du mini-plan pendant le zoom",
@@ -339,12 +309,6 @@
   "stage.frame.title": {
    "text": "Adapted exercise",
    "context": "Titre accessible de l'iframe de l'exercice",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "stage.empty": {
-   "text": "No card to deal with in this phase",
-   "context": "Scène quand la sélection est vide",
    "status": "draft_translation",
    "version": "0.1.0"
   },
@@ -369,246 +333,6 @@
   "case.impossible": {
    "text": "Impossible",
    "context": "Nom de la case 4 (libellé provisoire, voir DECISIONS_A_VALIDER)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "calib.line": {
-   "text": "The little cat sleeps on the sofa. 0123456789",
-   "context": "Phrase de la carte de calibration, répétée en 8 tailles",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "calib.grid": {
-   "text": "Fine grid",
-   "context": "Légende de la grille de la carte de calibration",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.title": {
-   "text": "Vocabulary",
-   "context": "Titre du panneau de vocabulaire du tutoriel",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.cases": {
-   "text": "The 4 boxes: Easy, Medium, Difficult, Impossible",
-   "context": "Vocabulaire du tutoriel",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.critere": {
-   "text": "The criterion: how difficult it is for a primary school pupil with dyspraxia",
-   "context": "Formulation provisoire du critère (à fixer dans le guide)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.miniature": {
-   "text": "The thumbnail: the small picture of the card placed in a box",
-   "context": "Vocabulaire du tutoriel",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.vocab.grande": {
-   "text": "The large card: the exercise shown at the top of the screen",
-   "context": "Vocabulaire du tutoriel",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.step.vocab": {
-   "text": "Vocabulary",
-   "context": "Étape 1 du tutoriel (console)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.step.demo": {
-   "text": "Demonstration",
-   "context": "Étape 2 du tutoriel (console)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.step.releve": {
-   "text": "Survey of equipment",
-   "context": "Étape 3 du tutoriel (console)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.console.vocab": {
-   "text": "Present the 4 boxes, the criterion, the thumbnail and the large card (see the guide).",
-   "context": "Aide console, étape vocabulaire",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.console.demo": {
-   "text": "Show a placement and a zoom on the calibration card.",
-   "context": "Aide console, étape démonstration",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "tuto.console.releve": {
-   "text": "Each participant says their device and the smallest line they can read. Enter the answers below.",
-   "context": "Aide console, étape relevé",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.p": {
-   "text": "Participant",
-   "context": "En-tête du tableau de relevé",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.appareil": {
-   "text": "Device",
-   "context": "En-tête du tableau de relevé",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.taille": {
-   "text": "Screen size",
-   "context": "En-tête du tableau de relevé",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne": {
-   "text": "Smallest readable line",
-   "context": "En-tête du tableau de relevé",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.zoom": {
-   "text": "Needs zoom",
-   "context": "En-tête du tableau de relevé",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.todo": {
-   "text": "to record",
-   "context": "Valeur par défaut d'une liste du relevé",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.appareil.ordinateur": {
-   "text": "Computer",
-   "context": "Type d'appareil du participant",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.appareil.tablette": {
-   "text": "Tablet",
-   "context": "Type d'appareil du participant",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.appareil.telephone": {
-   "text": "Phone",
-   "context": "Type d'appareil du participant",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.appareil.autre": {
-   "text": "Other",
-   "context": "Type d'appareil du participant",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.taille.petit": {
-   "text": "Small (under 13 in)",
-   "context": "Classe de taille d'écran (valeurs provisoires)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.taille.moyen": {
-   "text": "Medium (13 to 16 in)",
-   "context": "Classe de taille d'écran (valeurs provisoires)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.taille.grand": {
-   "text": "Large (over 16 in)",
-   "context": "Classe de taille d'écran (valeurs provisoires)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.taille.inconnu": {
-   "text": "Unknown",
-   "context": "Classe de taille d'écran (valeurs provisoires)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne.1": {
-   "text": "line 1",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne.2": {
-   "text": "line 2",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne.3": {
-   "text": "line 3",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne.4": {
-   "text": "line 4",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne.5": {
-   "text": "line 5",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne.6": {
-   "text": "line 6",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne.7": {
-   "text": "line 7",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne.8": {
-   "text": "line 8",
-   "context": "Ligne de la carte de calibration (1 = la plus grande, 8 = la plus petite)",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.ligne.aucune": {
-   "text": "none",
-   "context": "Aucune ligne lisible",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.zoom.non": {
-   "text": "No",
-   "context": "Pas de besoin de zoom",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.zoom.150": {
-   "text": "150%",
-   "context": "Zoom nécessaire",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.zoom.200": {
-   "text": "200%",
-   "context": "Zoom nécessaire",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "releve.note": {
-   "text": "The tool does not control the participants' displays: it only records them.",
-   "context": "Note sous le tableau de relevé",
    "status": "draft_translation",
    "version": "0.1.0"
   },
@@ -813,30 +537,6 @@
   "juge.undup": {
    "text": "Remove duplicate",
    "context": "Retire une miniature dupliquée",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "juge.ghost.show": {
-   "text": "Show the marker",
-   "context": "Montre le repère fantôme aux participants",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "juge.ghost.hide": {
-   "text": "Hide the marker",
-   "context": "Masque le repère fantôme sur la scène",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "juge.ghost.on": {
-   "text": "The marker is visible to the participants.",
-   "context": "État du repère fantôme",
-   "status": "draft_translation",
-   "version": "0.1.0"
-  },
-  "juge.ghost.off": {
-   "text": "The marker is only visible on the console.",
-   "context": "État du repère fantôme",
    "status": "draft_translation",
    "version": "0.1.0"
   },
@@ -1182,12 +882,6 @@
    "status": "draft_translation",
    "version": "0.3.0"
   },
-  "keyhelp.ghost": {
-   "text": "marker",
-   "context": "Rappel des touches : action (repère de l'original)",
-   "status": "draft_translation",
-   "version": "0.3.0"
-  },
   "tri.total.none": {
    "text": "Nothing entered: each box used will count as 1 participant.",
    "context": "Effectifs : aucune saisie (règle des effectifs implicites)",
@@ -1341,18 +1035,6 @@
   "train.b.info": {
    "text": "For information",
    "context": "Texte d'état d'un point d'information du bilan",
-   "status": "draft_translation",
-   "version": "0.4.0"
-  },
-  "train.b.releve": {
-   "text": "Equipment survey entered for {n} of {total} participants.",
-   "context": "Point du bilan",
-   "status": "draft_translation",
-   "version": "0.4.0"
-  },
-  "train.tip.releve": {
-   "text": "In the tutorial, at the \"Survey of equipment\" step, enter at least each participant's device.",
-   "context": "Conseil du bilan",
    "status": "draft_translation",
    "version": "0.4.0"
   },
@@ -1578,12 +1260,6 @@
    "status": "draft_translation",
    "version": "0.4.0"
   },
-  "tour.tuto.1": {
-   "text": "The tutorial has three steps: vocabulary, a placement demonstration, and each participant's equipment survey.",
-   "context": "Visite guidée, tutoriel",
-   "status": "draft_translation",
-   "version": "0.4.0"
-  },
   "tour.tuto.2": {
    "text": "The preview shows what participants see on the shared stage.",
    "context": "Visite guidée, tutoriel",
@@ -1646,12 +1322,6 @@
   },
   "tour.jug.3": {
    "text": "Confirm each adapted thumbnail (Enter). \"Next card\" unlocks when everything is confirmed.",
-   "context": "Visite guidée, jugement",
-   "status": "draft_translation",
-   "version": "0.4.0"
-  },
-  "tour.jug.4": {
-   "text": "The original's marker is visible on the console; R also shows it to participants.",
    "context": "Visite guidée, jugement",
    "status": "draft_translation",
    "version": "0.4.0"
@@ -1803,12 +1473,6 @@
   "pres.05.t": {
    "text": "Tutorial and calibration",
    "context": "Titre de l'étape 5",
-   "status": "draft_translation",
-   "version": "0.4.0"
-  },
-  "pres.05.b": {
-   "text": "Present the vocabulary, show a placement on the calibration card, then record each participant's device and smallest readable line.",
-   "context": "Présentation, texte de l'étape 5",
    "status": "draft_translation",
    "version": "0.4.0"
   },
@@ -2106,11 +1770,569 @@
    "status": "draft_translation",
    "version": "0.4.0"
   },
+  "obs.card.title": {
+   "text": "Backup recording (OBS)",
+   "context": "Titre du bloc de l'écran de démarrage consacré à OBS",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.card.intro": {
+   "text": "OBS records the microphone and the call audio, in addition to Zoom or Teams. It starts the first time the stage is opened.",
+   "context": "Enregistrement de secours (OBS), texte d'introduction",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.host": {
+   "text": "OBS address",
+   "context": "Enregistrement de secours (OBS), champ de saisie",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.port": {
+   "text": "Port",
+   "context": "Enregistrement de secours (OBS), champ de saisie",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.password": {
+   "text": "WebSocket server password",
+   "context": "Enregistrement de secours (OBS), champ de saisie du mot de passe choisi dans OBS",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.password.hint": {
+   "text": "The password is kept in memory only: it is neither saved nor exported, and it must be entered again if the page is reloaded.",
+   "context": "Enregistrement de secours (OBS), explication sous le champ du mot de passe",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.connect": {
+   "text": "Connect to OBS",
+   "context": "Enregistrement de secours (OBS), bouton",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.connecting": {
+   "text": "Connecting to OBS…",
+   "context": "Enregistrement de secours (OBS), état pendant la connexion",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.without": {
+   "text": "Continue without a backup recording",
+   "context": "Enregistrement de secours (OBS), bouton, ouvre une confirmation",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.recheck": {
+   "text": "Check again",
+   "context": "Enregistrement de secours (OBS), bouton de nouvelle vérification",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.without.title": {
+   "text": "Continue without a backup recording?",
+   "context": "Enregistrement de secours (OBS), titre de la confirmation",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.without.body": {
+   "text": "There will only be the Zoom or Teams recording. This choice will be recorded in the session log.",
+   "context": "Enregistrement de secours (OBS), texte de la confirmation",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.without.ok": {
+   "text": "Continue without",
+   "context": "Enregistrement de secours (OBS), bouton de confirmation",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.without.done": {
+   "text": "Choice noted: session without a backup recording.",
+   "context": "Enregistrement de secours (OBS), état après le choix de continuer sans",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.go.title": {
+   "text": "No backup recording",
+   "context": "Enregistrement de secours (OBS), titre de la confirmation au Go quand OBS n'enregistre pas",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.go.body": {
+   "text": "OBS is not recording this session. Continue without a backup recording? This choice will be recorded in the log.",
+   "context": "Enregistrement de secours (OBS), texte de la confirmation au Go",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.link": {
+   "text": "OBS reachable",
+   "context": "Vérification automatique : l'outil peut-il parler à OBS",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.link.todo": {
+   "text": "not tried yet: enter the password, then \"Connect to OBS\"",
+   "context": "Vérification OBS : état initial",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.link.wait": {
+   "text": "connecting",
+   "context": "Vérification OBS : en cours",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.link.ok": {
+   "text": "connected (OBS {v})",
+   "context": "Vérification OBS : réussie. {v} = numéro de version d'OBS",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.link.ok.nov": {
+   "text": "connected",
+   "context": "Vérification OBS : réussie, version inconnue",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.link.none": {
+   "text": "not used: session without a backup recording",
+   "context": "Vérification OBS : le modérateur a choisi de continuer sans",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.err.unreachable": {
+   "text": "OBS cannot be reached. Check that OBS is running and that the WebSocket server is enabled (Tools, WebSocket Server Settings), then the address and port.",
+   "context": "Message d'échec de connexion à OBS",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.err.timeout": {
+   "text": "OBS is not answering. Check that OBS is running (version 28 or later) and that the WebSocket server is enabled.",
+   "context": "Message d'échec de connexion à OBS (délai dépassé)",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.err.auth": {
+   "text": "OBS refused the password. Check the WebSocket server password in OBS.",
+   "context": "Message d'échec de connexion à OBS (mot de passe)",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.err.blocked": {
+   "text": "This browser blocks the connection to OBS from an https page. Use Chrome or Edge.",
+   "context": "Message d'échec de connexion à OBS (navigateur, par exemple Safari)",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.err.protocol": {
+   "text": "This address does not answer like OBS. Check the address and port.",
+   "context": "Message d'échec de connexion à OBS (autre service)",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.idle": {
+   "text": "OBS is not already recording",
+   "context": "Vérification automatique : OBS ne doit pas déjà enregistrer",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.idle.todo": {
+   "text": "checked after connecting",
+   "context": "Vérification OBS : état initial",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.idle.ok": {
+   "text": "OBS is not recording",
+   "context": "Vérification OBS : réussie",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.idle.started": {
+   "text": "recording started by the tool",
+   "context": "Vérification OBS : l'outil a lancé l'enregistrement",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "check.obs.idle.busy": {
+   "text": "OBS is already recording. Stop that recording in OBS, then click \"Check again\": it might contain something other than this session.",
+   "context": "Vérification OBS : avertissement, un enregistrement est déjà en cours",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.v.en_cours": {
+   "text": "Backup recording in progress",
+   "context": "Voyant d'état de l'enregistrement, toujours visible pendant la séance",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.v.arrete": {
+   "text": "Backup recording stopped",
+   "context": "Voyant d'état de l'enregistrement",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.v.injoignable": {
+   "text": "OBS unreachable",
+   "context": "Voyant d'état de l'enregistrement",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.v.pas_demarre": {
+   "text": "Backup recording not started yet",
+   "context": "Voyant d'état de l'enregistrement",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.v.sans": {
+   "text": "No backup recording",
+   "context": "Voyant d'état de l'enregistrement, choix du modérateur",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.v.termine": {
+   "text": "Backup recording finished",
+   "context": "Voyant d'état de l'enregistrement, arrêté par le modérateur",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.alert.injoignable": {
+   "text": "OBS cannot be reached: the backup recording is no longer monitored. Reconnecting automatically.",
+   "context": "Bandeau d'alerte en cours de séance",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.alert.injoignable.hint": {
+   "text": "The recording carries on in OBS until it is stopped. Nothing is lost on the session side.",
+   "context": "Bandeau d'alerte, sous le message",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.alert.auth": {
+   "text": "The tool needs the OBS password to resume monitoring the recording.",
+   "context": "Bandeau d'alerte : mot de passe à saisir de nouveau (après rechargement de la page)",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.alert.arrete": {
+   "text": "The backup recording has stopped.",
+   "context": "Bandeau d'alerte : arrêt inattendu",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.alert.arrete.hint": {
+   "text": "Restarting creates a new file: the session will be covered by several files, all of them logged.",
+   "context": "Bandeau d'alerte, sous le message",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.alert.pas_demarre": {
+   "text": "The backup recording has not started.",
+   "context": "Bandeau d'alerte : le démarrage a échoué ou n'a pas eu lieu",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.relaunch": {
+   "text": "Restart the recording",
+   "context": "Bouton du bandeau d'alerte : démarre un nouveau fichier",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.reconnect": {
+   "text": "Connect",
+   "context": "Bouton du bandeau d'alerte : reconnexion avec le mot de passe saisi",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.alert.password": {
+   "text": "OBS password",
+   "context": "Étiquette du champ de mot de passe dans le bandeau d'alerte",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.title": {
+   "text": "Backup recording",
+   "context": "Titre du bloc de fin de séance",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.running": {
+   "text": "The recording is still running in OBS. Stop it here once the call is closed.",
+   "context": "Fin de séance : l'enregistrement n'est pas arrêté",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.stop": {
+   "text": "Stop the backup recording",
+   "context": "Bouton de fin de séance, ouvre une confirmation",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.stop.title": {
+   "text": "Stop the recording in OBS?",
+   "context": "Titre de la confirmation d'arrêt",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.stop.body": {
+   "text": "Do this when the session is over and the call is closed. After stopping, OBS finalises the file.",
+   "context": "Texte de la confirmation d'arrêt",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.stop.ok": {
+   "text": "Stop the recording",
+   "context": "Bouton de confirmation d'arrêt",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.stopped": {
+   "text": "Recording stopped.",
+   "context": "Fin de séance : l'arrêt a réussi",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.files": {
+   "text": "Files (names only):",
+   "context": "Fin de séance : liste des fichiers d'enregistrement",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.nofile": {
+   "text": "file name not provided by OBS",
+   "context": "Fin de séance : un segment sans nom de fichier",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.none": {
+   "text": "No backup recording for this session.",
+   "context": "Fin de séance : rien n'a été enregistré",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.end.failed": {
+   "text": "Cannot stop from the tool: stop the recording directly in OBS.",
+   "context": "Fin de séance : l'arrêt a échoué",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "obs.seg": {
+   "text": "Segment {n}",
+   "context": "Fin de séance : numéro de segment d'enregistrement",
+   "status": "draft_translation",
+   "version": "0.5.0"
+  },
+  "alert.save.short": {
+   "text": "Backup failing",
+   "context": "Bandeau d'alerte compact : le fichier de sauvegarde n'est plus écrit",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "alert.scene.short": {
+   "text": "Stage not connected",
+   "context": "Bandeau d'alerte compact",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "obs.alert.injoignable.short": {
+   "text": "OBS unreachable",
+   "context": "Bandeau d'alerte compact, reconnexion automatique en cours",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "obs.alert.auth.short": {
+   "text": "OBS password needed",
+   "context": "Bandeau d'alerte compact : mot de passe à saisir de nouveau",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "obs.alert.arrete.short": {
+   "text": "Backup recording stopped",
+   "context": "Bandeau d'alerte compact : arrêt inattendu",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "obs.alert.pas_demarre.short": {
+   "text": "Backup recording not started",
+   "context": "Bandeau d'alerte compact : le démarrage a échoué ou n'a pas eu lieu",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "check.obs.short.unreachable": {
+   "text": "unreachable (details in the OBS block)",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "check.obs.short.timeout": {
+   "text": "not answering (details in the OBS block)",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "check.obs.short.auth": {
+   "text": "password refused",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "check.obs.short.blocked": {
+   "text": "browser blocks it: use Chrome or Edge",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "check.obs.short.protocol": {
+   "text": "wrong address or port",
+   "context": "Vérification OBS, version courte de la raison d'échec",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "check.obs.idle.busy.short": {
+   "text": "OBS is already recording (see the OBS block)",
+   "context": "Vérification OBS, version courte de l'avertissement",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "calib.text": {
+   "text": "The little cat sleeps on the sofa. It is a lovely day, and the children are playing in the garden with their red ball.",
+   "context": "Texte unique de l'écran de calibration (sans chiffres), affiché sur la scène à taille normale",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "tuto.console.releve": {
+   "text": "Ask aloud: \"Can you read this text well?\" The survey is pre-filled: only click for an exception.",
+   "context": "Console, calibration : consigne au modérateur",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "releve.p": {
+   "text": "Participant",
+   "context": "En-tête du tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "releve.appareil": {
+   "text": "Device",
+   "context": "En-tête du tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "releve.taille": {
+   "text": "Screen size",
+   "context": "En-tête du tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "releve.zoom": {
+   "text": "Needs zoom",
+   "context": "En-tête du tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "releve.tablette": {
+   "text": "Tablet",
+   "context": "Bouton d'exception du relevé (l'ordinateur est la valeur par défaut)",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "releve.petit": {
+   "text": "Small (phone)",
+   "context": "Bouton d'exception du relevé : petit écran (la taille moyenne, portable, est la valeur par défaut)",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "releve.grand": {
+   "text": "Large (desktop screen)",
+   "context": "Bouton d'exception du relevé : grand écran",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "releve.zoom.oui": {
+   "text": "Yes",
+   "context": "Bouton d'exception du relevé : le participant a besoin de zoom (non est la valeur par défaut)",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "releve.legend": {
+   "text": "Default: computer, medium screen (laptop), no need for zoom. Unchanged values are marked as such in the export.",
+   "context": "Légende sous le tableau de relevé",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "zoomg.title": {
+   "text": "Zoom chosen for the group",
+   "context": "Choix du zoom du groupe, affiché si au moins un participant a besoin de zoom",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "zoomg.hint": {
+   "text": "It applies to the shared card, so to the whole group, and to every card.",
+   "context": "Explication du zoom du groupe",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "zoomg.badge": {
+   "text": "Group zoom: {n}%",
+   "context": "Rappel permanent dans l'en-tête de la console quand un zoom de groupe est retenu",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "tour.tuto.1": {
+   "text": "Calibration: participants see a single text. Ask aloud whether they can read it well, then only click for an exception in the survey.",
+   "context": "Visite guidée, calibration",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "train.b.releve": {
+   "text": "Survey exceptions entered as announced: {n} of {total} participants.",
+   "context": "Point du bilan d'entraînement",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "train.tip.releve": {
+   "text": "In the tutorial, turn on only what departs from the default: tablet, small or large screen, need for zoom.",
+   "context": "Conseil du bilan",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "train.b.zoomg": {
+   "text": "Group zoom chosen: {n}%.",
+   "context": "Point du bilan d'entraînement",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "train.tip.zoomg": {
+   "text": "When at least one participant needs zoom, choose the group zoom (100% or 150%): it applies to every card.",
+   "context": "Conseil du bilan",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "pres.05.b": {
+   "text": "Participants are shown a single text. Ask aloud whether they can read it well; the survey is pre-filled, you only click for an exception, and the zoom chosen for the group applies to every card.",
+   "context": "Présentation, texte de l'étape 5",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
+  "desc.title": {
+   "text": "To read aloud",
+   "context": "Titre du cadre de la description de l'exercice, sur la console, pendant le tri",
+   "status": "draft_translation",
+   "version": "0.6.0"
+  },
   "scene.on": {
    "text": "Stage connected",
    "context": "Indicateur de liaison",
    "status": "draft_translation",
    "version": "0.1.0"
+  },
+  "scene.hidden": {
+   "text": "Stage covered: it is not updating",
+   "context": "Voyant de la scène quand la fenêtre de la scène est entièrement masquée par une autre fenêtre ou réduite (le navigateur arrête alors de la redessiner)",
+   "status": "draft_translation",
+   "version": "0.6.0"
   },
   "scene.off": {
    "text": "Stage not connected",

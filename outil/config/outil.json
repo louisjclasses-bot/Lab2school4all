@@ -1,5 +1,5 @@
 {
- "tool_version": "0.4.1",
+ "tool_version": "0.6.0",
  "cards_base": {
   "dev": "/Lab2school4all-main/",
   "prod": "https://louisjclasses-bot.github.io/Lab2school4all/"
@@ -31,5 +31,11 @@
  "training_configs": {
   "fr": "config/entrainement-fr.json",
   "en": "config/entrainement-en.json"
+ },
+ "obs": {
+  "host": "localhost",
+  "port": 4455,
+  "poll_s": 5,
+  "reconnect_s": 3
  }
 }

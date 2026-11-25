@@ -7,11 +7,12 @@ import { Store } from "./store.js";
 import { Backup, canWriteFiles } from "./backup.js";
 import { Session } from "./session.js";
 import { sceneView, consoleView } from "./view.js";
-import { currentPhase, phaseCardId, presentCount, placedTokens, effectifsEffectifs, CALIB } from "./state.js";
+import { currentPhase, phaseCardId, presentCount, placedTokens, effectifsEffectifs, CALIB, groupZoom, needsZoom } from "./state.js";
 import { timing } from "./timers.js";
 import { el, CASES, seededShuffle, sha256Text, displayInfo, fmtHM, fmtMS, fmtClock, pad2 } from "./util.js";
 import { Trainer, loadScenario } from "./training.js";
 import { Tour } from "./tour.js";
+import { ObsRecorder } from "./obs_rec.js";
 
 const Q = new URLSearchParams(location.search);
 const DEV = Q.has("dev");
@@ -24,16 +25,24 @@ const epoch = Math.random().toString(36).slice(2);
 const ui = { active: null, countsDraft: null, countsTimer: null, toast: null, loading: null, tick: [] };
 let stage = null;
 let trainer = null, tour = null;                 // entraînement (FG simulé) et visite guidée
+let obs = null;                                  // enregistrement de secours via OBS (absent en entraînement)
 const toured = new Set();
 const TRAINING = () => !!(cfg && cfg.entrainement);
 const previewBox = el("div", { class: "preview-box" });
 const notesBox = el("div", { class: "card notes-card" });
 const presentsBox = el("div", { class: "card presents-card" });
 
+// Signal de présence de la scène (toutes les 2 s). Il ne doit jamais reconstruire l'interface : seuls les voyants sont mis à jour en place.
+// La vue n'est renvoyée à la scène que si ce qu'elle annonce a changé (nouvelle scène, langue, cartes) ou si elle était absente.
+let helloSig = "";
 const link = new Link(m => {
   if (m.k === "hello") {
-    sceneSeen = Date.now(); sceneInfo = m;
-    pushView(); checkLiaison(); renderIf();
+    const wasAlive = sceneAlive(); sceneSeen = Date.now(); sceneInfo = m;
+    const sig = JSON.stringify([m.hashes, m.lang, m.errors && m.errors.length, m.total]);
+    // La scène annonce la dernière vue reçue : si elle n'est pas la dernière envoyée (message perdu ou retardé), elle est renvoyée sans attendre un changement.
+    const behind = rev > 0 && (m.epoch !== epoch || m.rev !== rev);
+    if (sig !== helloSig || !wasAlive || behind) { helloSig = sig; pushView(true); }
+    checkLiaison(); updateIndicators();
   }
 });
 
@@ -47,9 +56,12 @@ async function boot() {
   try { resumeList = (await store.list()).filter(r => r.status === "en_cours"); } catch (e) { resumeList = []; }
   store.onState = () => updateIndicators();
   document.addEventListener("keydown", onKey);
+  if (Q.has("diag")) import("./diag.js").then(m => m.startDiag(() => stats));          // ?diag=1 : journal des rechargements, du focus et des reconstructions
+  // Fermer la console pendant que l'enregistrement de secours tourne : le navigateur demande confirmation (texte imposé par le navigateur).
+  window.addEventListener("beforeunload", e => { if (obs && obs.recording) { e.preventDefault(); e.returnValue = ""; } });
   setInterval(tick, 250);
   renderSetup();
-  if (DEV) window.__fg = { get session() { return session; }, get backup() { return backup; }, store, get lib() { return lib; }, get stage() { return stage; }, ui, boot: { selectConfig, validateEvent }, get cfg() { return cfg; }, setClock: f => { if (session) session.clock = f; } };
+  if (DEV) window.__fg = { get session() { return session; }, get backup() { return backup; }, store, get lib() { return lib; }, get stage() { return stage; }, ui, boot: { selectConfig, validateEvent }, get cfg() { return cfg; }, get obs() { return obs; }, stats, setClock: f => { if (session) session.clock = f; } };
 }
 
 function validateEvent(ev) {       // contrôle du dictionnaire (développement et tests)
@@ -90,7 +102,7 @@ async function createSession(extra = {}) {
     tool_version: outil.tool_version, guide_version: cfg.guide_version, order_seed: String(cfg.order_seed),
     order_source: orderInfo.source, order_sequence: orderInfo.sequence || null, order_issue: orderInfo.issue || null,
     config_hash: await sha256Text(JSON.stringify(cfg)), deck_hash: await sha256Text(JSON.stringify(cardsHdr.map(c => [c.id, c.png?.sha256, c.html?.sha256]))),
-    reference_profile: outil.reference_profile, display: displayInfo(), cards_base: lib.base,
+    reference_profile: outil.reference_profile, display: displayInfo(), cards_base: lib.base, descriptions: lib.descriptionsInfo,
     order, participants: outil.participants, config: cfg, cards: cardsHdr, dictionary_version: schema.dictionary_version,
     started_at: new Date().toISOString(), entrainement: !!cfg.entrainement, ...extra
   };
@@ -164,12 +176,18 @@ function attach(sess) {
     session.events.forEach(ev => store.appendEvent(header.session_id, ev));
   }
   session.onEvent(onEvent);
+  lastSceneView = lastConsoleView = "";
+  obs && obs.dispose();
+  obs = header.entrainement ? null : new ObsRecorder({ session: sess, host: outil.obs.host, port: outil.obs.port, pollMs: outil.obs.poll_s * 1000, reconnectMs: outil.obs.reconnect_s * 1000, onChange: obsChanged,
+    onConnected: o => { if (!header.entrainement && session.s.status !== "ended") store.putSession({ id: header.session_id, header, status: "en_cours", updated: Date.now(), obs: o }); } });
   previewBox.replaceChildren();
   stage = new Stage(previewBox, { cards: lib, interactive: true, fit: "container", onAction: onStageAction });
 }
 
 function onEvent(ev) {
   if (!header.entrainement) store.appendEvent(header.session_id, ev);
+  // Description de l'exercice : consignée (carte, langue, heure d'affichage) quand la carte originale est présentée au tri.
+  if (ev.type === "carte_debut" && ev.data.phase === "tri" && lib && lib.description(ev.data.carte)) session.dispatch("description_affichee", { carte: ev.data.carte, langue: lib.description(ev.data.carte).lang });
   backup.markDirty();
   if (ev.type === "phase_fin") backup.phaseEnd();
   if (ev.type === "carte_debut") { ui.active = null; ui.countsDraft = null; }
@@ -185,10 +203,12 @@ async function finishSession() {
 }
 
 // ------------------------------------------------------------------ liaison scène
-function pushView() {
+let lastSceneView = "", lastConsoleView = "";
+function pushView(force = false) {
   if (!session) return;
-  link.send({ k: "view", epoch, rev: ++rev, view: { ...sceneView(session.s, cfg.language), entrainement: TRAINING() } });
-  if (stage) stage.update(consoleView(session.s, cfg.language, ui));
+  const v = { ...sceneView(session.s, cfg.language), entrainement: TRAINING() }, sj = JSON.stringify(v);
+  if (force || sj !== lastSceneView) { lastSceneView = sj; link.send({ k: "view", epoch, rev: ++rev, view: v }); }
+  if (stage) { const cv = consoleView(session.s, cfg.language, ui), cj = JSON.stringify(cv); if (force || cj !== lastConsoleView) { lastConsoleView = cj; stage.update(cv); } }
 }
 function sceneAlive() { return Date.now() - sceneSeen < 6000; }
 function sceneSame() {
@@ -209,9 +229,75 @@ function openScene() {
   // la scène lit les cartes à la même adresse que la console, y compris quand elle est forcée par ?cards=
   sceneWin = window.open("scene.html" + (Q.get("cards") ? "?cards=" + encodeURIComponent(Q.get("cards")) : ""), "fg-scene", "popup,width=1280,height=720");
   link.win = sceneWin;
+  startRecordingOnOpen();
+}
+// Première ouverture de la scène : connexion si besoin, puis StartRecord. Ne bloque jamais l'ouverture.
+async function startRecordingOnOpen() {
+  if (!obs || obs.used || obs.without) return;
+  if (!obs.client.connected && obs.link === "idle") await obs.connect();
+  if (obs.client.connected && !obs.used) { const r = await obs.start(); if (!r.ok && r.reason === "deja_en_cours") renderIf(); }
+}
+// Bandeau d'alerte OBS : arrêt inattendu, démarrage manqué ou OBS injoignable. Le champ de mot de passe n'apparaît que si la liaison en a besoin.
+function obsAlert(kind) {
+  const needPw = !obs.client.connected && (!obs.hasPassword || obs.link === "auth");
+  const msg = kind === "arrete" ? "obs.alert.arrete" : kind === "pas_demarre" ? "obs.alert.pas_demarre" : needPw ? "obs.alert.auth" : "obs.alert.injoignable";
+  const hint = kind === "arrete" ? "obs.alert.arrete.hint" : kind === "injoignable" && !needPw ? "obs.alert.injoignable.hint" : null;
+  const shortMsg = msg + ".short";
+  const pw = el("input", { id: "obs-alert-pw", type: "password", autocomplete: "off", "aria-label": t("obs.alert.password"), placeholder: t("obs.alert.password"), onkeydown: e => { if (e.key === "Enter") reconnect(); } });
+  const reconnect = () => obs.connect(pw.value);
+  const act = [];
+  if (needPw) act.push(pw, btn("obs.reconnect", reconnect, { cls: "primary", data: { act: "obs-reconnect" } }));
+  if (kind !== "injoignable" || obs.client.connected) act.push(btn("obs.relaunch", async () => { await obs.start(); obsChanged(); }, { cls: "primary", disabled: !obs.client.connected, data: { act: "obs-relaunch" } }));
+  return el("div", { class: "alert " + (kind === "arrete" ? "bad" : "warn"), role: "alert", dataset: { obs: kind }, title: t(msg) + (hint ? " " + t(hint) : "") }, el("span", { class: "ico warn", "aria-hidden": "true" }),
+    el("div", { class: "alert-txt" }, el("strong", {}, t(shortMsg))), el("div", { class: "alert-act" }, ...act));
+}
+function obsChanged() {
+  if (!session) return;
+  updateIndicators();
+  const sig = obs ? [obs.recording, obs.used, obs.client.connected, session.s.status].join(":") : "";
+  if (session.s.status === "ended" && sig !== ui.obsEndSig) { ui.obsEndSig = sig; renderRun(); }
 }
 
 // ------------------------------------------------------------------ rendu
+// Rendu complet de la console. Garde-fous : jamais entre le mousedown et le mouseup (le clic serait perdu), et le focus, la position du curseur
+// et le défilement sont restitués. Les compteurs servent aux tests de stabilité (__fg.stats).
+const stats = { renders: 0, setups: 0, deferred: 0 };
+let pointerDown = false, renderPending = false, downAt = 0;
+const pressed = () => pointerDown && performance.now() - downAt < 3000;        // un appui jamais relâché ne doit pas bloquer l'affichage
+const releasePointer = () => { if (!pointerDown) return; pointerDown = false; if (renderPending) { renderPending = false; setTimeout(() => renderIf(), 0); } };
+document.addEventListener("pointerdown", () => { pointerDown = true; downAt = performance.now(); }, true);
+document.addEventListener("pointerup", releasePointer, true); document.addEventListener("pointercancel", releasePointer, true); window.addEventListener("blur", releasePointer);
+const kebab = s => s.replace(/[A-Z]/g, m => "-" + m.toLowerCase());
+function focusKey(e) {
+  if (e.id) return "#" + e.id;
+  const d = Object.entries(e.dataset || {}); if (!d.length) return null;
+  return e.tagName.toLowerCase() + d.map(([k, v]) => `[data-${kebab(k)}="${String(v).replace(/"/g, '\\"')}"]`).join("");
+}
+function keepState(fn) {
+  const a = document.activeElement, key = a && a !== document.body ? focusKey(a) : null;
+  const sel = a && typeof a.selectionStart === "number" ? [a.selectionStart, a.selectionEnd] : null;
+  const sy = [window.scrollX, window.scrollY], sim = document.querySelector(".sim-lines");
+  const simTop = sim ? sim.scrollTop : null, simAtEnd = sim ? sim.scrollHeight - sim.scrollTop - sim.clientHeight < 4 : false;
+  fn();
+  const sim2 = document.querySelector(".sim-lines"); if (sim2 && simTop !== null) sim2.scrollTop = simAtEnd ? sim2.scrollHeight : simTop;
+  const b = key && document.querySelector(key);
+  if (b && b !== document.activeElement) { b.focus({ preventScroll: true }); if (sel && typeof b.setSelectionRange === "function") { try { b.setSelectionRange(sel[0], sel[1]); } catch (e) { /* champ sans curseur */ } } }
+  if (sy[0] || sy[1]) window.scrollTo(sy[0], sy[1]);          // en dernier : rendre le focus ou le curseur visible peut faire défiler la page
+}
+// ---- ajustement de l'échelle : toute l'interface est en rem, donc changer la taille de police de la page la redimensionne d'un bloc.
+// On cherche la plus grande échelle pour laquelle la console tient dans la fenêtre sans défilement (recherche dichotomique, une seule peinture).
+const FIT = { max: 1.25, min: 0.6, step: 0.025 };
+function fitUi() {
+  const root = document.documentElement;
+  const fits = z => { root.style.fontSize = (16 * z) + "px"; return root.scrollHeight <= window.innerHeight && root.scrollWidth <= window.innerWidth; };
+  const n = Math.round((FIT.max - FIT.min) / FIT.step); let lo = 0, hi = n;
+  while (lo < hi) { const mid = (lo + hi) >> 1; if (fits(FIT.max - mid * FIT.step)) hi = mid; else lo = mid + 1; }
+  const z = FIT.max - lo * FIT.step; fits(z); ui.zoomUi = Math.round(z * 1000) / 1000;
+  stage && stage._scale();
+}
+let fitRaf = 0;
+function scheduleFit() { if (fitRaf) return; fitRaf = requestAnimationFrame(() => { fitRaf = 0; fitUi(); }); }
+window.addEventListener("resize", scheduleFit);
 function renderIf() { if (session && session.s.status !== "setup") renderRun(); else if (app.dataset.view === "setup") renderSetup(); }
 const $ = (s, r = app) => r.querySelector(s);
 function btn(textKey, onclick, opts = {}) {
@@ -226,7 +312,8 @@ function res(r) { if (r && !r.ok) toast(t("err." + r.raison)); return r; }
 function popLabel(code) { const k = "pop." + code; const v = t(k); return v.startsWith("[") ? code : v; }
 
 // ---- démarrage de la séance
-function renderSetup() {
+function renderSetup() { if (pressed()) { renderPending = true; stats.deferred++; return; } stats.setups++; keepState(doRenderSetup); fitUi(); }
+function doRenderSetup() {
   app.dataset.view = "setup";
   app.replaceChildren();
   const head = el("header", { class: "bar" }, el("strong", {}, cfg ? cfg.fg_id : t("setup.nofg")));
@@ -240,24 +327,58 @@ function renderSetup() {
   const file = el("input", { type: "file", accept: "application/json", hidden: true, id: "cfg-file" });
   file.addEventListener("change", async () => { const f = file.files[0]; if (f) selectConfig(JSON.parse(await f.text())); });
   if (!TRAINING()) left.append(file, btn("setup.loadfile", () => file.click(), { cls: "link" }));
-  left.append(el("div", { class: "lbl" }, t("setup.lang")));
   const langRow = el("div", { class: "seg" }, ...["fr", "en"].map(l => el("button", { type: "button", class: "btn" + (cfg && cfg.language === l ? " on" : ""), dataset: { lang: l }, disabled: !cfg || TRAINING(),
     onclick: () => selectConfig(cfg, l) }, l.toUpperCase())));
-  left.append(langRow);
+  left.append(el("div", { class: "lang-row" }, el("span", { class: "lbl" }, t("setup.lang")), langRow));
   if (cfg) left.append(el("p", { class: "meta" }, t("setup.versions", { tool: outil.tool_version, guide: cfg.guide_version })));
   if (session) left.append(el("div", { class: "lbl" }, t("setup.present")), presentsRow());
-  const right = el("section", { class: "card" }, el("h2", {}, t("setup.checks")), checksTable());
+  const right = el("section", { class: "card checks-card" }, el("h2", {}, t("setup.checks")), checksTable());
   const main = el("main", { class: "setup" });
   if (resumeList.length && !session) main.append(resumePanel());
-  main.append(el("div", { class: "setup-left" }, left, TRAINING() ? null : learnCard()), right, setupFooter());
+  main.append(el("div", { class: "setup-a" }, left, TRAINING() ? null : learnCard()), el("div", { class: "setup-b" }, right, obs ? obsCard() : null), setupFooter());
   app.append(...[head, trainingBanner(), main].filter(Boolean));
   setTimeout(maybeTour, 0);
   updateIndicators();
 }
+// ---- enregistrement de secours (OBS) : carte de démarrage, construite une fois par affichage (les champs gardent leur saisie)
+function obsReasonText(reason) { return t("check.obs.err." + (reason || "unreachable")); }
+function obsCard() {
+  const host = el("input", { id: "obs-host", type: "text", value: obs.host, autocomplete: "off", spellcheck: "false", oninput: e => obs.setSettings({ host: e.target.value }) });
+  const port = el("input", { id: "obs-port", type: "number", value: String(obs.port), min: "1", max: "65535", oninput: e => obs.setSettings({ port: e.target.value }) });
+  const pw = el("input", { id: "obs-pw", type: "password", value: "", autocomplete: "off", "aria-describedby": "obs-pw-hint", oninput: e => obs.setPassword(e.target.value),
+    onkeydown: e => { if (e.key === "Enter") obsConnect(); } });
+  const card = el("section", { class: "card obs-card", dataset: { check: "obs" } }, el("h2", {}, t("obs.card.title")), el("p", { class: "hint" }, t("obs.card.intro")),
+    el("div", { class: "obs-form" }, el("div", {}, el("label", { for: "obs-host" }, t("obs.host")), host), el("div", { class: "obs-port" }, el("label", { for: "obs-port" }, t("obs.port")), port),
+      el("div", {}, el("label", { for: "obs-pw" }, t("obs.password")), pw), btn("obs.connect", obsConnect, { cls: "primary", data: { act: "obs-connect" } })),
+    el("p", { id: "obs-pw-hint", class: "hint" }, t("obs.password.hint")),
+    el("div", { class: "obs-state" }, el("p", { class: "obs-status", role: "status", "aria-live": "polite" }), el("div", { class: "row obs-more" })));
+  updateObsCard(card);
+  return card;
+}
+async function obsConnect() { await obs.connect(); }
+function askWithout(onOk) { dialog({ title: t("obs.without.title"), body: t("obs.without.body"), ok: "obs.without.ok", onOk }); }
+function updateObsCard(card = $(".obs-card")) {
+  if (!card || !obs) return;
+  const st = card.querySelector(".obs-status"), more = card.querySelector(".obs-more"), ck = obs.check, sig = [obs.link, ck.joignable, ck.reason, ck.dejaEnCours, obs.without, obs.used].join("|");
+  card.querySelector("[data-act=obs-connect]").disabled = obs.link === "connecting" || obs.without || obs.used;
+  if (more.dataset.sig === sig) return;
+  more.dataset.sig = sig;
+  const failed = ck.joignable === false, busy = ck.joignable && ck.dejaEnCours;
+  let text = "", ico = "circle";
+  if (obs.without) { text = t("obs.without.done"); }
+  else if (obs.used) { text = t("check.obs.idle.started"); ico = "check"; }
+  else if (obs.link === "connecting") text = t("obs.connecting");
+  else if (failed) { text = obsReasonText(ck.reason); ico = "warn"; }
+  else if (busy) { text = t("check.obs.idle.busy"); ico = "warn"; }
+  else if (ck.joignable) { text = ck.version ? t("check.obs.link.ok", { v: ck.version }) : t("check.obs.link.ok.nov"); ico = "check"; }
+  st.replaceChildren(...(text ? [el("span", { class: "ico " + ico, "aria-hidden": "true" }), el("span", {}, text)] : [])); scheduleFit();
+  more.replaceChildren(...[(failed || busy) && !obs.without && !obs.used ? btn("", () => askWithout(() => obs.chooseWithout("injoignable")), { raw: t("obs.without"), data: { act: "obs-without" } }) : null,
+    busy && !obs.without ? btn("obs.recheck", () => obs.recheck(), { data: { act: "obs-recheck" } }) : null].filter(Boolean));
+}
 function learnCard() {
   const lg = curLangFn();
   const link = (key, href, act) => el("a", { class: "btn", href, target: "_blank", rel: "noopener", dataset: { act } }, t(key));
-  return el("section", { class: "card learn-card" }, el("h2", {}, t("learn.title")), el("p", { class: "hint" }, t("learn.hint")),
+  return el("section", { class: "card learn-card" }, el("h2", { title: t("learn.hint") }, t("learn.title")),
     el("div", { class: "row-btns" }, btn("learn.train.fr", () => startTraining("fr"), { cls: "primary", data: { act: "train-fr" } }), btn("learn.train.en", () => startTraining("en"), { cls: "primary", data: { act: "train-en" } })),
     el("div", { class: "row-btns" }, link("learn.pres", "presentation.html?lang=" + lg, "presentation"), link("learn.memo", "aide-memoire.html?lang=" + lg, "memo")));
 }
@@ -274,20 +395,20 @@ function resumePanel() {
 }
 function row(status, name, detail, extra) {
   const icon = { ok: "check", ko: "cross", todo: "circle", warn: "warn", wait: "circle" }[status];
-  return el("tr", { class: "chk " + status, dataset: { status } },
-    el("td", {}, el("span", { class: "ico " + icon, "aria-hidden": "true" }), el("span", {}, t("check.st." + status))),
-    el("th", { scope: "row" }, name), el("td", {}, el("div", { class: "chk-detail" }, detail), extra ? el("div", { class: "chk-act" }, extra) : null));
+  return el("div", { class: "chk " + status, role: "group", dataset: { status } },
+    el("span", { class: "chk-st" }, el("span", { class: "ico " + icon, "aria-hidden": "true" }), el("span", {}, t("check.st." + status))),
+    el("span", { class: "chk-name" }, name), el("div", { class: "chk-body" }, el("div", { class: "chk-detail" }, detail), extra ? el("div", { class: "chk-act" }, extra) : null));
 }
 function checksTable() {
-  const tb = el("table", { class: "checks" });
+  const tb = el("div", { class: "checks" }), steps = el("div", { class: "chk-group steps" }), auto = el("div", { class: "chk-group auto" });
   const s = session ? session.s : null, d = displayInfo();
-  const sect = txt => el("tr", { class: "chk-sect" }, el("th", { colspan: 3, scope: "colgroup" }, txt));
+  const sect = txt => el("h3", { class: "chk-sect" }, txt);
   const step = (n, txt) => el("span", { class: "stepname" }, el("span", { class: "stepn", "aria-hidden": "true" }, String(n)), txt);
   // 1. Étapes à faire par le modérateur, dans l'ordre
-  tb.append(sect(t("setup.steps")));
+  tb.append(steps); steps.append(sect(t("setup.steps")));
   const alive = sceneAlive();
   const tagged = (r, k) => { r.dataset.check = k; return r; };
-  tb.append(tagged(row(alive ? "ok" : "todo", step(1, t("check.link")),
+  steps.append(tagged(row(alive ? "ok" : "todo", step(1, t("check.link")),
     el("span", {}, t(alive ? (sceneSame()?.length ? "check.link.diff" : "check.link.ok") : "check.link.todo"), el("span", { class: "hint block" }, t("check.link.share"))),
     btn("check.link.open", openScene, { disabled: !session, data: { act: "open-scene" } })), "link"));
   const bk = s && s.backup.mode;
@@ -296,22 +417,31 @@ function checksTable() {
     btn("check.backup.choose", async () => { try { await backup.chooseFile(`${cfg.fg_id}_${new Date().toISOString().slice(0, 10)}.json`); session.setBackup("continu", backup.name); renderSetup(); } catch (e) { if (e.name !== "AbortError") toast(t("err.sauvegarde_fichier")); } }, { disabled: !session || !canWriteFiles(), data: { act: "choose-file" }, cls: canWriteFiles() ? "" : "" }),
     btn("check.backup.degrade", () => { backup.useDegraded(`${cfg.fg_id}_${new Date().toISOString().slice(0, 10)}`); session.setBackup("degrade", null); renderSetup(); }, { disabled: !session, data: { act: "degrade" } }),
     DEV ? btn("check.backup.opfs", async () => { await backup.useOPFS(`${cfg.fg_id}_test.json`); session.setBackup("continu", backup.name); renderSetup(); }, { data: { act: "opfs" } }) : null);
-  tb.append(tagged(row(bk ? (bk === "degrade" ? "warn" : "ok") : "todo", step(2, t("check.backup")), bkDetail, TRAINING() ? null : bkBtns), "backup"));
-  tb.append(tagged(row(s && s.sync.audio ? "ok" : "todo", step(3, t("check.sync")), s && s.sync.audio ? t("check.sync.done", { at: fmtClock(s.sync.audio) }) : t("check.sync.todo"),
+  steps.append(tagged(row(bk ? (bk === "degrade" ? "warn" : "ok") : "todo", step(2, t("check.backup")), bkDetail, TRAINING() ? null : bkBtns), "backup"));
+  steps.append(tagged(row(s && s.sync.audio ? "ok" : "todo", step(3, t("check.sync")), s && s.sync.audio ? t("check.sync.done", { at: fmtClock(s.sync.audio) }) : t("check.sync.todo"),
     btn("check.sync.btn", () => { session.syncAudio(); renderSetup(); }, { disabled: !session, data: { act: "sync" } })), "sync"));
   // 2. Contrôles faits par l'outil
-  tb.append(sect(t("setup.auto")));
+  tb.append(auto); auto.append(sect(t("setup.auto")));
   const cardsSt = ui.loading ? "wait" : !lib ? "todo" : lib.errors.length ? "ko" : "ok";
-  tb.append(row(cardsSt, t("check.cards"), ui.loading ? t("check.cards.loading", ui.loading) : !lib ? t("check.cards.none") : lib.errors.length ? t("check.cards.err", { n: lib.errors.length, ids: lib.errors.map(e => e.id).join(", ") }) : t("check.cards.ok", { n: lib.loaded.size, total: lib.defs.length })));
+  auto.append(row(cardsSt, t("check.cards"), ui.loading ? t("check.cards.loading", ui.loading) : !lib ? t("check.cards.none") : lib.errors.length ? t("check.cards.err", { n: lib.errors.length, ids: lib.errors.map(e => e.id).join(", ") }) : t("check.cards.ok", { n: lib.loaded.size, total: lib.defs.length })));
   if (header) {
     const o = { source: header.order_source, seq: header.order_sequence, issue: header.order_issue };
     const txt = o.issue ? t("check.order." + o.issue, { id: o.seq || "", seed: cfg.order_seed }) : o.source === "sequence" ? t("check.order.seq", { id: o.seq }) : o.source === "config" ? t("check.order.config") : t("check.order.seed", { seed: cfg.order_seed });
-    tb.append(row(o.issue ? "warn" : "ok", t("check.order"), txt));
+    auto.append(row(o.issue ? "warn" : "ok", t("check.order"), txt));
   }
-  tb.append(row(d.arial_available ? "ok" : "warn", t("check.arial"), t(d.arial_available ? "check.arial.ok" : "check.arial.ko")));
-  tb.append(row(d.window_w >= 1280 && d.window_h >= 720 ? "ok" : "warn", t("check.display"), t("check.display.detail", { w: d.window_w, h: d.window_h, r: d.pixel_ratio })));
-  tb.append(row(typeof indexedDB !== "undefined" ? "ok" : "ko", t("check.store"), t(resumeList.length ? "check.store.resume" : "check.store.ok")));
+  if (obs) for (const r of obsRows()) auto.append(r);
+  auto.append(row(d.arial_available ? "ok" : "warn", t("check.arial"), t(d.arial_available ? "check.arial.ok" : "check.arial.ko")));
+  auto.append(row(d.window_w >= 1280 && d.window_h >= 600 ? "ok" : "warn", t("check.display"), t("check.display.detail", { w: d.window_w, h: d.window_h, r: d.pixel_ratio })));
+  auto.append(row(typeof indexedDB !== "undefined" ? "ok" : "ko", t("check.store"), t(resumeList.length ? "check.store.resume" : "check.store.ok")));
   return tb;
+}
+function obsRows() {
+  const ck = obs.check, v = obs.link;
+  const linkSt = obs.without ? "warn" : v === "connecting" ? "wait" : ck.joignable === true ? "ok" : ck.joignable === false ? "ko" : "todo";
+  const linkTxt = obs.without ? t("check.obs.link.none") : v === "connecting" ? t("check.obs.link.wait") : ck.joignable === true ? (ck.version ? t("check.obs.link.ok", { v: ck.version }) : t("check.obs.link.ok.nov")) : ck.joignable === false ? t("check.obs.short." + (ck.reason || "unreachable")) : t("check.obs.link.todo");
+  const idleSt = obs.used ? "ok" : ck.joignable !== true ? "todo" : ck.dejaEnCours ? "warn" : "ok";
+  const idleTxt = obs.used ? t("check.obs.idle.started") : ck.joignable !== true ? t("check.obs.idle.todo") : ck.dejaEnCours ? t("check.obs.idle.busy.short") : t("check.obs.idle.ok");
+  return [row(linkSt, t("check.obs.link"), linkTxt), row(idleSt, t("check.obs.idle"), idleTxt)];
 }
 function missing() {
   const m = [];
@@ -328,8 +458,17 @@ function setupFooter() {
     el("span", { class: "ico " + (m.length ? "circle" : "check"), "aria-hidden": "true" }),
     el("strong", { class: "msg" }, m.length ? t("setup.blocked", { what: m.map(k => t(k)).join(", ") }) : t(sceneAlive() ? "setup.ready" : "setup.ready.noscene")),
     el("span", { class: "grow" }),
-    btn("setup.go", () => { res(session.go()); }, { cls: "primary big", disabled: m.length > 0, data: { act: "go" } }));
+    btn("setup.go", goClicked, { cls: "primary big", disabled: m.length > 0, data: { act: "go" } }));
   return f;
+}
+// Go : si OBS ne l'enregistre pas encore, on tente de démarrer ; sinon le modérateur confirme explicitement de continuer sans (consigné).
+async function goClicked() {
+  if (obs && !obs.without && !obs.used) {
+    if (!obs.client.connected && obs.link === "idle") await obs.connect();
+    if (obs.client.connected) await obs.start();
+    if (!obs.used) return dialog({ title: t("obs.go.title"), body: t("obs.go.body"), ok: "obs.without.ok", onOk: () => { obs.chooseWithout("go"); res(session.go()); } });
+  }
+  res(session.go());
 }
 function presentsRow() {
   const s = session.s;
@@ -354,6 +493,8 @@ async function resumeSession(sid) {
   const last = Date.parse(events[events.length - 1].t);
   const diff = header.cards.filter(c => lib.hashes()[c.id] !== (c.png?.sha256 + ":" + c.html?.sha256)).map(c => c.id);
   attach(sess);
+  if (obs && rec.obs) obs.setSettings(rec.obs);     // adresse et port d'OBS avant le plantage (jamais le mot de passe)
+  if (obs && obs.recording) obs.connect();         // sans mot de passe en mémoire : réussit seulement si OBS n'en demande pas ; sinon le bandeau le redemande
   resumeList = resumeList.filter(r => r.id !== sid);
   if (handle && perm === "granted") { try { await backup.useHandle(handle, handle.name); } catch (e) { toast(t("err.sauvegarde_reprise")); } }
   else if (handle) toast(t("err.sauvegarde_reprise"));
@@ -378,7 +519,8 @@ async function exportOld(sid) {
 
 // ---- séance en cours
 function timeBlock(id) { return el("div", { class: "tb", dataset: { tb: id } }, el("div", { class: "tb-label" }, t("time." + id)), el("div", { class: "tb-digits" }), el("div", { class: "tb-bar" }, el("div", { class: "tb-fill" })), el("div", { class: "tb-state" })); }
-function renderRun() {
+function renderRun() { if (pressed()) { renderPending = true; stats.deferred++; return; } stats.renders++; keepState(doRenderRun); fitUi(); }
+function doRenderRun() {
   const s = session.s, p = currentPhase(s);
   app.dataset.view = "run";
   const cid = p ? phaseCardId(s, p.id) : null;
@@ -387,19 +529,20 @@ function renderRun() {
     el("strong", {}, cfg.fg_id),
     el("span", { class: "phase-name" }, t("console.phase", { name: s.status === "ended" ? t("phase.end") : p ? t("phase." + p.id) : "" })),
     cid && p.module !== "tutoriel" && s.status !== "ended" ? el("span", { class: "counter" }, t("console.card", { n: s.cursor[p.id] + 1, total: seqN })) : null,
+    groupZoom(s) > 100 && s.status !== "ended" ? el("span", { class: "counter zoomg-badge", role: "status" }, t("zoomg.badge", { n: groupZoom(s) })) : null,
     el("span", { class: "grow" }),
     btn("console.progress", showProgress, { data: { act: "progress" } }),
     btn(s.status === "paused" ? "console.resume" : "console.pause", () => res(s.status === "paused" ? session.resume() : session.pause()), { data: { act: "pause" }, cls: s.status === "paused" ? "warn" : "", disabled: s.status === "ended" }),
     btn("console.incident", () => { session.incident("technique"); toast(t("console.incident.logged", { at: fmtClock(Date.now()) })); }, { cls: "danger", data: { act: "incident" } }));
   const times = el("div", { class: "timebar" },
     el("div", { class: "tb elapsed", dataset: { tb: "elapsed" } }, el("div", { class: "tb-label" }, t("time.elapsed")), el("div", { class: "tb-digits" })),
-    timeBlock("step"), timeBlock("global"), el("div", { class: "indicators" }, el("div", { class: "ind save" }), el("div", { class: "ind scene" })));
+    timeBlock("step"), timeBlock("global"), el("div", { class: "indicators" }, el("div", { class: "ind save" }), el("div", { class: "ind scene" }), obs ? el("div", { class: "ind obs" }) : null));
   const sim = trainer && TRAINING() && s.status !== "ended" ? trainer.panel() : null;     // en entraînement, les répliques passent en premier
-  const left = el("div", { class: "col-left" }, sim, el("section", { class: "card" }, el("h2", {}, t("console.preview")), previewBox), zoomPanel(), keysHelp());
+  const left = el("div", { class: "col-left" }, el("section", { class: "card preview-card" }, el("h2", {}, t("console.preview")), previewBox), descriptionCard(s, p), zoomPanel());
   presentsBox.replaceChildren(el("h2", {}, t("console.present"), el("span", { class: "n" }, t("console.present.n", { n: presentCount(s), total: outil.participants.length }))), presentsRow());
   notesBox.replaceChildren(...notesContent());
-  const right = el("div", { class: "col-right" }, phasePanel(), presentsBox, notesBox);
-  app.replaceChildren(...[head, trainingBanner(), times, el("div", { class: "alerts", "aria-live": "assertive" }), el("main", { class: "run" }, left, right)].filter(Boolean));
+  const mid = el("div", { class: "col-mid" }, phasePanel()), right = el("div", { class: "col-right" }, sim, presentsBox, notesBox, keysHelp());
+  app.replaceChildren(...[head, trainingBanner(), times, el("div", { class: "alerts", "aria-live": "assertive" }), el("main", { class: "run" }, left, mid, right)].filter(Boolean));
   applyI18n(app); tick(); updateIndicators();
   stage && stage._scale();
   setTimeout(maybeTour, 0);
@@ -410,14 +553,21 @@ function keysHelp() {
   const R = t("keyhelp.range"), DEL = t("key.del"), ENT = t("key.enter");
   const sets = {
     tri: [[[R], "place"], [["S"], "second"], [["X"], "cycle"], [[DEL], "remove"], [["Q"], "question"], [["N"], "next"], [["Z"], "zoom"]],
-    demo: [[[R], "place"], [["S"], "second"], [["X"], "cycle"], [[DEL], "remove"], [["Z"], "zoom"]],
+    tutoriel: [[["Z"], "zoom"]],
     discussion: [[["N"], "next"], [["Z"], "zoom"]],
-    jugement: [[["←", "→"], "shift"], [[R], "place"], [[ENT], "validate"], [["X"], "cycle"], [["D"], "dup"], [[DEL], "remove"], [["R"], "ghost"], [["N"], "next"], [["Z"], "zoom"]]
+    jugement: [[["←", "→"], "shift"], [[R], "place"], [[ENT], "validate"], [["X"], "cycle"], [["D"], "dup"], [[DEL], "remove"], [["N"], "next"], [["Z"], "zoom"]]
   };
-  const set = p.module === "tutoriel" ? (s.tuto.etape === "demo" ? sets.demo : null) : sets[p.module];
+  const set = sets[p.module];
   if (!set) return null;
   return el("section", { class: "keys", "aria-labelledby": "keys-h" }, el("h2", { id: "keys-h" }, t("console.keys.title")),
     el("ul", { class: "keylist" }, ...set.map(([ks, a]) => el("li", {}, ...ks.map(k => el("kbd", {}, k)), el("span", {}, t("keyhelp." + a))))));
+}
+// Ce que l'exercice implique pour l'élève : à lire à voix haute, au tri seulement (jamais pour un exercice adapté). Les textes viennent de descriptions.json.
+function descriptionCard(s, p) {
+  if (!p || p.module !== "tri" || s.status === "ended") return null;
+  const id = phaseCardId(s, "tri"), d = id && lib.description(id);
+  if (!d) return null;
+  return el("section", { class: "card desc-card", "aria-labelledby": "desc-h" }, el("h2", { id: "desc-h" }, t("desc.title")), el("p", { class: "desc-text", lang: d.lang }, d.text));
 }
 function notesContent() {
   const ta = ui.noteTA || (ui.noteTA = el("textarea", { rows: 2, placeholder: t("console.note.ph"), id: "note-ta", "aria-labelledby": "notes-h" }));
@@ -439,7 +589,7 @@ function phasePanel() {
   const s = session.s, p = currentPhase(s);
   const box = el("section", { class: "card phase-card", dataset: { module: p ? p.module : "" } });
   if (s.status === "ended" && TRAINING() && trainer) return bilanPanel(box);
-  if (s.status === "ended") { box.append(el("h2", {}, t("console.ended")), btn("console.export.restricted", exportRestricted, { data: { act: "export-restricted" } })); return box; }
+  if (s.status === "ended") { box.append(el("h2", {}, t("console.ended")), btn("console.export.restricted", exportRestricted, { data: { act: "export-restricted" } }), obsEndBlock() || ""); return box; }
   if (!p) return box;
   if (p.module === "plain") box.append(el("h2", {}, t("phase." + p.id)), el("p", {}, t("plain.hint." + p.id)));
   if (p.module === "tutoriel") panelTuto(box);
@@ -447,6 +597,19 @@ function phasePanel() {
   if (p.module === "discussion") panelDisc(box);
   if (p.module === "jugement") panelJuge(box);
   box.append(nextPhaseRow());
+  return box;
+}
+// Fin de séance : l'enregistrement de secours ne s'arrête jamais tout seul, seulement par ce bouton, avec confirmation.
+function obsEndBlock() {
+  if (!obs || TRAINING()) return null;
+  const o = session.s.enregistrement_secours, box = el("div", { class: "obs-end" }, el("h3", {}, t("obs.end.title")));
+  if (!o.segments.length) { box.append(el("p", { class: "hint" }, t("obs.end.none"))); return box; }
+  if (obs.recording) {
+    box.append(el("p", { class: "hint" }, t("obs.end.running")),
+      btn("obs.end.stop", () => dialog({ title: t("obs.end.stop.title"), body: t("obs.end.stop.body"), ok: "obs.end.stop.ok",
+        onOk: async () => { const r = await obs.stop(); if (!r.ok) toast(t("obs.end.failed")); obsChanged(); renderRun(); } }), { cls: "primary", disabled: !obs.client.connected, data: { act: "obs-stop" } }));
+  } else box.append(el("p", { class: "qstate ok" }, el("span", { class: "ico check", "aria-hidden": "true" }), t("obs.end.stopped")));
+  box.append(el("p", {}, t("obs.end.files")), el("ul", { class: "obs-files" }, ...o.segments.map(sg => el("li", {}, t("obs.seg", { n: sg.n }) + " : " + (sg.fichiers.length ? sg.fichiers.join(", ") : t("obs.end.nofile"))))));
   return box;
 }
 function bilanPanel(box) {
@@ -574,9 +737,7 @@ function panelJuge(box) {
     btn("juge.validate", () => tk && res(session.validateAdapted(tk.id)), { cls: "primary", key: t("key.enter"), disabled: !tk || tk.validated, data: { act: "validate" } })));
   box.append(caseButtons(tk && tk.case));
   box.append(el("div", { class: "row" }, btn("juge.dup", () => tk && dupActive(tk.id), { key: "D", disabled: !tk, data: { act: "dup" } }),
-    btn("juge.undup", () => tk && res(session.removeAdapted(tk.id)), { key: t("key.del"), disabled: !tk || !tk.duplique_de, data: { act: "undup" } }),
-    btn("", () => res(session.setGhost(!a.ghost)), { raw: t(a.ghost ? "juge.ghost.hide" : "juge.ghost.show"), key: "R", data: { act: "ghost" } })));
-  box.append(el("p", { class: "ghoststate" }, t(a.ghost ? "juge.ghost.on" : "juge.ghost.off")));
+    btn("juge.undup", () => tk && res(session.removeAdapted(tk.id)), { key: t("key.del"), disabled: !tk || !tk.duplique_de, data: { act: "undup" } })));
   box.append(el("div", { class: "row" }, btn(session.isLastCard() ? "tri.finish" : "tri.next", () => res(session.nextCard()), { cls: "primary big", key: "N", disabled: !session.canNext(), data: { act: "next" } }),
     btn("tri.skipcard", () => askMotif("dlg.skipcard", m => res(session.skipCard(m))), { data: { act: "skip-card" } })));
 }
@@ -590,35 +751,35 @@ function cycleActive() {
   if (!ids.length) return;
   ui.active = ids[(ids.indexOf(ui.active) + 1) % ids.length]; pushView(); renderRun();
 }
+// Calibration v0.2 : l'écran partagé montre un seul texte ; le modérateur demande à l'oral si on le lit bien et ne clique que pour une exception.
 function panelTuto(box) {
-  const s = session.s, steps = ["vocab", "demo", "releve"];
-  box.append(el("h2", {}, t("phase.tutoriel")),
-    el("div", { class: "seg steps" }, ...steps.map(e => el("button", { type: "button", class: "btn" + (s.tuto.etape === e ? " on" : ""), dataset: { step: e }, onclick: () => session.setTutoEtape(e) }, t("tuto.step." + e)))));
-  box.append(el("p", { class: "hint" }, t("tuto.console." + s.tuto.etape)));
-  if (s.tuto.etape === "demo") tokenControls(box, s.cards[CALIB].tokens.filter(x => x.case), "tri");
-  if (s.tuto.etape === "releve") box.append(releveTable());
+  box.append(el("h2", {}, t("phase.tutoriel")), el("p", { class: "hint" }, t("tuto.console.releve")), releveTable());
+  if (needsZoom(session.s)) box.append(zoomGroupBlock());
 }
-const RELEVE = {
-  appareil: ["ordinateur", "tablette", "telephone", "autre"],
-  taille: ["petit", "moyen", "grand", "inconnu"],
-  ligne: ["1", "2", "3", "4", "5", "6", "7", "8", "aucune"],
-  zoom: ["non", "150", "200"]
-};
+// Exceptions seulement : un bouton qui s'allume pour s'écarter de la valeur par défaut, et qui se rééteint (retour au défaut) au second clic.
+const RELEVE_EXC = { appareil: [["tablette", "releve.tablette"]], taille: [["petit", "releve.petit"], ["grand", "releve.grand"]], besoin_zoom: [["oui", "releve.zoom.oui"]] };
+function zoomGroupBlock() {
+  const g = session.s.zoom_groupe;
+  return el("div", { class: "zoomg" }, el("strong", {}, t("zoomg.title")),
+    el("div", { class: "seg" }, ...[100, 150].map(n => el("button", { type: "button", class: "btn" + (g.niveau === n ? " on" : ""), "aria-pressed": String(g.niveau === n), dataset: { zoomg: n }, onclick: () => res(session.setZoomGroupe(n)) }, n + " %"))),
+    el("p", { class: "hint" }, t("zoomg.hint")));
+}
 function releveTable() {
   const s = session.s;
-  const tb = el("table", { class: "releve" }, el("thead", {}, el("tr", {}, el("th", {}, t("releve.p")), ...Object.keys(RELEVE).map(k => el("th", {}, t("releve." + k))))));
+  const tb = el("table", { class: "releve" }, el("thead", {}, el("tr", {}, el("th", {}, t("releve.p")), el("th", {}, t("releve.appareil")), el("th", {}, t("releve.taille")), el("th", {}, t("releve.zoom")))));
   const body = el("tbody");
   outil.participants.forEach(p => {
     const tr = el("tr", { class: s.present[p] ? "" : "absent" }, el("th", { scope: "row" }, p));
-    Object.entries(RELEVE).forEach(([champ, opts]) => {
-      const sel = el("select", { "aria-label": p + " " + t("releve." + champ), dataset: { p, champ } }, el("option", { value: "" }, t("releve.todo")),
-        ...opts.map(o => el("option", { value: o, selected: s.releve[p][champ] === o }, t("releve." + champ + "." + o))));
-      sel.addEventListener("change", () => session.setReleve(p, champ, sel.value));
-      tr.append(el("td", {}, sel));
+    Object.entries(RELEVE_EXC).forEach(([champ, opts]) => {
+      tr.append(el("td", {}, el("div", { class: "tgl-group" }, ...opts.map(([valeur, key]) => {
+        const on = s.releve[p][champ].valeur === valeur;
+        return el("button", { type: "button", class: "btn tgl" + (on ? " on" : ""), "aria-pressed": String(on), "aria-label": p + " : " + t("releve." + champ) + " : " + t(key), dataset: { p, champ, valeur },
+          onclick: () => res(session.setReleve(p, champ, on ? null : valeur)) }, t(key));
+      }))));
     });
     body.append(tr);
   });
-  tb.append(body); return el("div", { class: "releve-wrap" }, tb, el("p", { class: "hint" }, t("releve.note")));
+  tb.append(body); return el("div", { class: "releve-wrap" }, tb, el("p", { class: "hint" }, t("releve.legend")));
 }
 
 function exportRestricted() {         // copie sans le texte des notes libres (elles peuvent contenir des noms)
@@ -675,14 +836,13 @@ function onKey(e) {
   if (e.ctrlKey || e.metaKey || e.altKey || !session || session.s.status !== "running") return;
   const s = session.s, p = currentPhase(s); if (!p) return;
   const k = e.key.toLowerCase();
-  const tri = p.module === "tri" || (p.module === "tutoriel" && s.tuto.etape === "demo"), jug = p.module === "jugement";
+  const tri = p.module === "tri", jug = p.module === "jugement";
   if (/^[1-4]$/.test(k) && (tri || jug)) placeActive(CASES[+k - 1]);
   else if ((k === "arrowleft" || k === "arrowright") && jug) { const id = ui.active; if (id) res(session.shiftAdapted(id, k === "arrowleft" ? -1 : 1)); }
   else if (k === "enter" && jug) { if (ui.active) res(session.validateAdapted(ui.active)); }
   else if (k === "q" && p.module === "tri") { flushCounts(); res(session.confirmQuestion()); }
   else if (k === "n" && ["tri", "discussion", "jugement"].includes(p.module)) { flushCounts(); res(session.nextCard()); }
   else if (k === "s" && tri) { const toks = placedTokens(s.cards[phaseCardId(s, p.id)]); if (toks.length && toks.length < 4) { ui.active = "new"; pushView(); renderRun(); } }
-  else if (k === "r" && jug) res(session.setGhost(!s.adapt[phaseCardId(s, p.id)].ghost));
   else if (k === "d" && jug && ui.active) dupActive(ui.active);
   else if (k === "x" && (tri || jug)) cycleActive();
   else if ((k === "delete" || k === "backspace") && tri && ui.active && ui.active !== "new") res(session.removeToken(ui.active));
@@ -693,6 +853,17 @@ function onKey(e) {
 }
 
 // ------------------------------------------------------------------ minuteurs et indicateurs
+// Écritures du DOM par les minuteries : seulement quand la valeur change (une écriture identique crée quand même une mutation)
+const setText = (n, v) => { if (n && n.textContent !== v) n.textContent = v; };
+const setClass = (n, v) => { if (n && n.className !== v) n.className = v; };
+const setWidth = (n, v) => { if (n && n.style.width !== v) n.style.width = v; };
+function setInd(node, cls, ico, text, textCls = "") {   // voyant : icône et texte mis à jour en place
+  if (!node) return;
+  setClass(node, cls);
+  let i = node.firstElementChild, tx = i && i.nextElementSibling;
+  if (!i || !tx) { i = el("span", { "aria-hidden": "true" }); tx = el("span", {}); node.replaceChildren(i, tx); }
+  setClass(i, "ico " + ico); setClass(tx, textCls); if (!tx.className) tx.removeAttribute("class"); setText(tx, text);
+}
 function tick() {
   if (!session) return;
   const s = session.s;
@@ -702,14 +873,14 @@ function tick() {
   if (tour && tour.active) tour.place();
   const tm = timing(s, session.now(), { total_work_min: cfg.total_work_min || outil.total_work_min, warn_ratio: outil.alerts.warn_ratio });
   if (!tm) return;
-  $("[data-tb=elapsed] .tb-digits") && ($("[data-tb=elapsed] .tb-digits").textContent = fmtHM(tm.elapsed));
+  setText($("[data-tb=elapsed] .tb-digits"), fmtHM(tm.elapsed));
   for (const [id, b] of [["step", tm.step], ["global", tm.global]]) {
     const n = $(`[data-tb=${id}]`); if (!n) continue;
-    if (!b) { n.querySelector(".tb-digits").textContent = "--:--"; n.querySelector(".tb-state").textContent = ""; n.querySelector(".tb-fill").style.width = "0"; n.className = "tb"; continue; }
-    n.className = "tb " + b.level + (tm.paused ? " paused" : "");
-    n.querySelector(".tb-digits").textContent = b.level === "over" ? t("time.overfmt", { t: fmtMS(b.overMs) }) : fmtMS(b.remaining);
-    n.querySelector(".tb-fill").style.width = (b.ratio * 100) + "%";
-    n.querySelector(".tb-state").textContent = tm.paused ? t("time.paused") : t("time.lvl." + b.level);
+    if (!b) { setText(n.querySelector(".tb-digits"), "--:--"); setText(n.querySelector(".tb-state"), ""); setWidth(n.querySelector(".tb-fill"), "0px"); setClass(n, "tb"); continue; }
+    setClass(n, "tb " + b.level + (tm.paused ? " paused" : ""));
+    setText(n.querySelector(".tb-digits"), b.level === "over" ? t("time.overfmt", { t: fmtMS(b.overMs) }) : fmtMS(b.remaining));
+    setWidth(n.querySelector(".tb-fill"), Math.round(b.ratio * 1000) / 10 + "%");
+    setText(n.querySelector(".tb-state"), tm.paused ? t("time.paused") : t("time.lvl." + b.level));
   }
   updateIndicators();
 }
@@ -719,44 +890,49 @@ function updateIndicators() {
   const save = $(".ind.save"), scn = $(".ind.scene");
   if (backup && save) {
     const st = backup.status();
-    save.className = "ind save " + st;
     const ico = st === "ok" ? "check" : st === "off" || st === "none" ? "circle" : "warn";
     const txt = st === "ok" ? t("save.ok", { at: fmtClock(backup.lastSaved) }) : st === "none" ? t("save.none") : st === "error" ? t("save.error", { msg: backup.error }) : st === "stale" ? t("save.stale") : t("save.off");
-    save.replaceChildren(el("span", { class: "ico " + ico, "aria-hidden": "true" }), el("span", { class: "save-txt" }, txt + (backup.mode ? " (" + t("save.mode." + backup.mode) + ")" : "")));
+    setInd(save, "ind save " + st, ico, txt + (backup.mode ? " (" + t("save.mode." + backup.mode) + ")" : ""), "save-txt");
   }
-  if (scn) {
-    const al = sceneAlive(); scn.className = "ind scene " + (al ? "ok" : "warn");
-    scn.replaceChildren(el("span", { class: "ico " + (al ? "check" : "warn"), "aria-hidden": "true" }), el("span", {}, t(al ? "scene.on" : "scene.off")));
+  if (scn) { const al = sceneAlive(), cov = al && sceneInfo && sceneInfo.visible === false; setInd(scn, "ind scene " + (al && !cov ? "ok" : "warn"), al && !cov ? "check" : "warn", t(cov ? "scene.hidden" : al ? "scene.on" : "scene.off")); }
+  const ov = $(".ind.obs");
+  if (ov && obs) {           // voyant de l'enregistrement de secours : texte et icône, sans couleur seule, sans animation
+    const k = obs.view, good = k === "en_cours" || k === "termine";
+    setInd(ov, "ind obs " + (good ? "ok" : k === "sans" ? "off" : "warn"), good ? "check" : k === "sans" ? "circle" : "warn", t("obs.v." + k));
   }
   // Bandeau d'alertes en cours de séance, avec les boutons de réparation. Reconstruit seulement au changement d'état (un clic n'est jamais perdu).
   const box = $(".alerts");
   if (box && session && backup) {
     const st = backup.status(), live = session.s.status === "running" || session.s.status === "paused";
     const saveNeed = session.s.status !== "setup" && ["error", "off", "stale"].includes(st), sceneNeed = live && !sceneAlive();
-    const sig = [saveNeed, st, backup.mode, sceneNeed].join(":");
+    const ov = obs && !TRAINING() && session.s.status !== "setup" ? obs.view : null;
+    const obsNeed = ov === "injoignable" || ov === "arrete" || (ov === "pas_demarre" && live);
+    const sig = [saveNeed, st, backup.mode, sceneNeed, obsNeed ? [ov, obs.client.connected, obs.hasPassword, obs.link === "auth"].join("/") : ""].join(":");
     if (box.dataset.sig !== sig) {
       box.dataset.sig = sig;
       const items = [];
-      if (saveNeed) items.push(el("div", { class: "alert bad", role: "alert" }, el("span", { class: "ico warn", "aria-hidden": "true" }),
-        el("div", { class: "alert-txt" }, el("strong", {}, $(".ind.save .save-txt")?.textContent || ""), el("span", {}, t("alert.save.hint"))),
+      if (saveNeed) items.push(el("div", { class: "alert bad", role: "alert", title: ($(".ind.save .save-txt")?.textContent || "") + " " + t("alert.save.hint") }, el("span", { class: "ico warn", "aria-hidden": "true" }),
+        el("div", { class: "alert-txt" }, el("strong", {}, t("alert.save.short"))),
         el("div", { class: "alert-act" },
           TRAINING() ? btn("save.rechoose", () => { backup.useMemory(cfg.fg_id); session.setBackup("memoire", null); }, { cls: "primary", data: { act: "rechoose-file" } }) :
           canWriteFiles() ? btn("save.rechoose", rechooseFile, { cls: "primary", data: { act: "rechoose-file" } }) : null,
           DEV && !TRAINING() ? btn("check.backup.opfs", async () => { await backup.useOPFS(`${cfg.fg_id}_test2.json`); session.setBackup("continu", backup.name); }, { data: { act: "rechoose-opfs" } }) : null,
           TRAINING() ? btn("check.backup.degrade", () => { backup.useMemory(cfg.fg_id); session.setBackup("memoire", null); }, { data: { act: "to-degrade" } }) :
           backup.mode !== "degrade" ? btn("check.backup.degrade", () => { backup.useDegraded(`${cfg.fg_id}_${header.session_id.slice(-15)}`); session.setBackup("degrade", null); backup.snapshot(); }, { data: { act: "to-degrade" } }) : null)));
-      if (sceneNeed) items.push(el("div", { class: "alert warn", role: "alert" }, el("span", { class: "ico warn", "aria-hidden": "true" }),
-        el("div", { class: "alert-txt" }, el("strong", {}, t("alert.scene"))),
+      if (sceneNeed) items.push(el("div", { class: "alert warn", role: "alert", title: t("alert.scene") }, el("span", { class: "ico warn", "aria-hidden": "true" }),
+        el("div", { class: "alert-txt" }, el("strong", {}, t("alert.scene.short"))),
         el("div", { class: "alert-act" }, btn("scene.reopen", openScene, { cls: "primary", data: { act: "reopen-scene" } }))));
-      box.replaceChildren(...items);
+      if (obsNeed) items.push(obsAlert(ov));
+      box.replaceChildren(...items); scheduleFit();
     }
   }
   const chk = $(".checks");
   if (chk && app.dataset.view === "setup") {
-    const sig = JSON.stringify([ui.loading, lib && lib.errors.length, session && session.s.backup.mode, session && session.s.sync.audio, sceneAlive(), backup && backup.name, sceneInfo && sceneInfo.hashes ? 1 : 0]);
+    const sig = JSON.stringify([ui.loading, lib && lib.errors.length, session && session.s.backup.mode, session && session.s.sync.audio, sceneAlive(), backup && backup.name, sceneInfo && sceneInfo.hashes ? 1 : 0, obs ? [obs.link, obs.check.joignable, obs.check.dejaEnCours, obs.without, obs.used] : null]);
     if (sig === ui.sig) return;
     ui.sig = sig;
     chk.replaceWith(checksTable());
+    updateObsCard(); scheduleFit();
     const f = $(".footer-card"); if (f) f.replaceWith(setupFooter());
   }
 }
